@@ -1,0 +1,48 @@
+{# paper.html — Individual paper digest page #}
+{% extends "base.html" %}
+
+{% block title %}{{ paper.title }} — {{ site.title }}{% endblock %}
+
+{% block content %}
+<article class="paper-digest">
+  <header class="paper-header">
+    <a href="{{ site.base_url | default('') }}/explore/" class="breadcrumb">← All Papers</a>
+    <span class="era-badge era-{{ paper.era }}">{{ paper.era }}</span>
+    <h1>{{ paper.title }}</h1>
+    <div class="paper-meta">
+      <span class="meta-authors">{{ paper.authors | join(', ') }}</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-year">{{ paper.year }}</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-venue">{{ paper.venue }}</span>
+    </div>
+    {% if paper.url %}
+    <a href="{{ paper.url }}" class="paper-link" target="_blank" rel="noopener">
+      View original ↗
+    </a>
+    {% endif %}
+  </header>
+
+  <div class="paper-streams">
+    {% for sid in paper.streams %}
+    {% if sid in stream_lookup %}
+    <a href="{{ site.base_url | default('') }}/topics/{{ sid }}/" class="stream-badge" style="--badge-color: {{ stream_lookup[sid].color }}">
+      {{ stream_lookup[sid].icon }} {{ stream_lookup[sid].short_name | default(sid) }}
+    </a>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if paper.tags %}
+  <div class="paper-tag-list">
+    {% for tag in paper.tags %}
+    <span class="tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="digest-body">
+    {{ paper.body_html }}
+  </div>
+</article>
+{% endblock %}

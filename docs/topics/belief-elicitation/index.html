@@ -1,0 +1,149 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belief Elicitation — Human-Agent Decision Making</title>
+  <meta name="description" content="A topic-organized research archive at the intersection of cognitive science and AI agents — focused on how humans represent, elicit, communicate, and act on uncertainty.
+">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">◈</span>
+        <span class="brand-text">HADM</span>
+      </a>
+      <div class="nav-links">
+        
+        <a href="/topics/">Topics</a>
+        
+        <a href="/explore/">Explore</a>
+        
+        <a href="/about/">About</a>
+        
+        <a href="">GitHub</a>
+        
+      </div>
+    </div>
+  </nav>
+
+  <main class="site-main">
+    
+<section class="page-header" style="--stream-color: #4A90D9">
+  <a href="/topics/" class="breadcrumb">← All Topics</a>
+  <div class="stream-header">
+    <span class="stream-icon-large">🎯</span>
+    <h1>Belief Elicitation & Calibration</h1>
+  </div>
+  <p class="page-subtitle">How do we extract what people actually believe under uncertainty, and how well-calibrated are those beliefs?</p>
+</section>
+
+
+<section class="topic-content">
+  <h1 id="belief-elicitation-calibration">Belief Elicitation &amp; Calibration</h1>
+<blockquote>
+<p>How do we extract what people actually believe under uncertainty, and how well-calibrated are those beliefs?</p>
+</blockquote>
+<h2 id="concept-overview">Concept Overview</h2>
+<p>Before anyone can make a good decision under uncertainty, they need beliefs — probabilities, distributions, or at least ordinal likelihoods about relevant outcomes. But beliefs don't come pre-packaged. They must be <em>elicited</em>, and the elicitation method shapes what you get.</p>
+<p>This stream covers the full pipeline: the mathematical foundations of proper elicitation (scoring rules that incentivize truthful reporting), the psychological realities that complicate it (people can't introspect on their beliefs directly), the interface mechanisms that operationalize it (sliders, wheels, distribution builders, verbal scales), and the question of calibration — whether stated beliefs track actual frequencies.</p>
+<p>Key tensions in this stream:
+- <strong>Incentive compatibility vs. cognitive accessibility</strong>: Proper scoring rules are incentive-compatible but cognitively demanding. Simpler interfaces are accessible but may distort reports.
+- <strong>Point estimates vs. full distributions</strong>: Most tasks elicit point probabilities; real uncertainty is distributional.
+- <strong>Calibration vs. resolution</strong>: Being well-calibrated (your 70% events happen 70% of the time) is different from being well-resolved (your 90% events are different from your 60% events).</p>
+<h2 id="evolution-timeline">Evolution Timeline</h2>
+<p><strong>Foundations (1950s–1980s):</strong> The mathematical theory of proper scoring rules (Brier 1950, Savage 1971) established that certain reward structures incentivize truthful probability reports. Concurrently, the calibration literature (Lichtenstein, Fischhoff &amp; Phillips 1982) documented systematic overconfidence — people's stated 90% confidence intervals contain the truth far less than 90% of the time.</p>
+<p><strong>Mechanism design era (1990s–2010s):</strong> Focus shifted to designing practical elicitation mechanisms. Distribution builders (Goldstein &amp; Rothschild 2014) let people construct full probability distributions through interactive interfaces. Work on the "matching probability" method and binary lottery procedures attempted to bridge theory and practice.</p>
+<p><strong>Current frontier (2020s):</strong> Three active threads: (1) LLM-assisted elicitation — using conversational agents to help people articulate beliefs they struggle to quantify; (2) eliciting beliefs about AI systems — how confident should a user be in a model's prediction?; (3) calibration training and debiasing — can interactive feedback improve real-world calibration?</p>
+<h2 id="open-questions">Open Questions</h2>
+<ol>
+<li>Can conversational AI agents elicit better-calibrated beliefs than traditional interfaces (sliders, wheels), and if so, is the improvement from better introspective access or social desirability effects?</li>
+<li>How should elicitation methods adapt when the target belief is about an AI model's output — a domain where people have little base-rate experience?</li>
+<li>What is the right trade-off between elicitation granularity (full distributions) and cognitive cost, especially in time-pressured or high-stakes settings?</li>
+<li>How do different elicitation formats interact with the probability weighting documented in prospect theory (see: utility-decision-quality)?</li>
+</ol>
+</section>
+
+
+
+<section class="cross-references">
+  <h2>Related Streams</h2>
+  <div class="related-grid">
+    
+    
+    <a href="/topics/uncertainty-communication/" class="related-card" style="--stream-color: #7B68EE">
+      <span>📊</span>
+      <span>Uncertainty Communication</span>
+    </a>
+    
+    
+    
+    <a href="/topics/utility-decision-quality/" class="related-card" style="--stream-color: #E8833A">
+      <span>⚖️</span>
+      <span>Utility & Decision Quality</span>
+    </a>
+    
+    
+    
+    <a href="/topics/agents-as-advisors/" class="related-card" style="--stream-color: #2ECC71">
+      <span>🤖</span>
+      <span>Agents as Advisors</span>
+    </a>
+    
+    
+  </div>
+</section>
+
+
+
+<section class="stream-papers">
+  <h2>Papers in This Stream</h2>
+
+  
+  
+  <div class="era-section">
+    <h3 class="era-heading">Foundational</h3>
+    
+    <div class="paper-row">
+      <span class="paper-year">1979</span>
+      <div class="paper-info">
+        
+        <a href="/papers/kahneman-tversky-1979/" class="paper-title-link">
+          Prospect Theory: An Analysis of Decision Under Risk
+        </a>
+        
+        <span class="paper-authors">Daniel Kahneman, Amos Tversky</span>
+        <span class="paper-venue">Econometrica</span>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</section>
+
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Human-Agent Decision Making — Research Digest & Concept Archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+  
+</body>
+</html>

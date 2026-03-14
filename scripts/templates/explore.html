@@ -1,0 +1,118 @@
+{# explore.html — Search and filter all papers #}
+{% extends "base.html" %}
+
+{% block title %}Explore — {{ site.title }}{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>Explore Papers</h1>
+  <p class="page-subtitle">Search and filter across all paper digests.</p>
+</section>
+
+<section class="explore-controls">
+  <div class="search-box">
+    <input type="text" id="search-input" placeholder="Search titles, authors, tags..." autocomplete="off">
+  </div>
+  <div class="filter-row">
+    <div class="filter-group">
+      <label>Stream</label>
+      <select id="filter-stream">
+        <option value="">All streams</option>
+        {% for stream in streams %}
+        <option value="{{ stream.id }}">{{ stream.icon }} {{ stream.short_name | default(stream.name) }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Era</label>
+      <select id="filter-era">
+        <option value="">All eras</option>
+        <option value="foundational">Foundational</option>
+        <option value="key-development">Key Development</option>
+        <option value="frontier">Frontier</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<section class="explore-results">
+  <div class="results-count"><span id="results-count">{{ papers | length }}</span> papers</div>
+  <div class="paper-list" id="paper-list">
+    {% for paper in papers | sort(attribute='year') | reverse %}
+    <div class="paper-row"
+         data-title="{{ paper.title | lower }}"
+         data-authors="{{ paper.authors | join(' ') | lower }}"
+         data-tags="{{ paper.tags | join(' ') | lower }}"
+         data-streams="{{ paper.streams | join(' ') }}"
+         data-era="{{ paper.era }}"
+         data-year="{{ paper.year }}">
+      <span class="paper-year">{{ paper.year }}</span>
+      <div class="paper-info">
+        <a href="{{ site.base_url | default('') }}/papers/{{ paper.id }}/" class="paper-title-link">
+          {{ paper.title }}
+        </a>
+        <span class="paper-authors">{{ paper.authors | join(', ') }}</span>
+      </div>
+      <div class="paper-tags">
+        <span class="era-badge era-{{ paper.era }}">{{ paper.era }}</span>
+        {% for sid in paper.streams %}
+        {% if sid in stream_lookup %}
+        <span class="stream-badge" style="--badge-color: {{ stream_lookup[sid].color }}">
+          {{ stream_lookup[sid].icon }}
+        </span>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function() {
+  const searchInput = document.getElementById('search-input');
+  const filterStream = document.getElementById('filter-stream');
+  const filterEra = document.getElementById('filter-era');
+  const paperList = document.getElementById('paper-list');
+  const resultsCount = document.getElementById('results-count');
+  const rows = paperList.querySelectorAll('.paper-row');
+
+  function applyFilters() {
+    const query = searchInput.value.toLowerCase().trim();
+    const stream = filterStream.value;
+    const era = filterEra.value;
+    let count = 0;
+
+    rows.forEach(row => {
+      const title = row.dataset.title || '';
+      const authors = row.dataset.authors || '';
+      const tags = row.dataset.tags || '';
+      const rowStreams = row.dataset.streams || '';
+      const rowEra = row.dataset.era || '';
+
+      const matchesSearch = !query ||
+        title.includes(query) ||
+        authors.includes(query) ||
+        tags.includes(query);
+      const matchesStream = !stream || rowStreams.includes(stream);
+      const matchesEra = !era || rowEra === era;
+
+      if (matchesSearch && matchesStream && matchesEra) {
+        row.style.display = '';
+        count++;
+      } else {
+        row.style.display = 'none';
+      }
+    });
+
+    resultsCount.textContent = count;
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  filterStream.addEventListener('change', applyFilters);
+  filterEra.addEventListener('change', applyFilters);
+})();
+</script>
+{% endblock %}

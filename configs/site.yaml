@@ -1,0 +1,42 @@
+# Site Configuration
+# Controls the GitHub Pages static site rendered to docs/
+
+site:
+  title: "Human-Agent Decision Making"
+  subtitle: "Research Digest & Concept Archive"
+  description: >
+    A topic-organized research archive at the intersection of cognitive science
+    and AI agents — focused on how humans represent, elicit, communicate, and
+    act on uncertainty.
+  base_url: ""  # Set to repo name if using project pages, e.g., "/human-agent-decision-making"
+  author: ""
+  github_repo: ""  # e.g., "username/human-agent-decision-making"
+
+navigation:
+  - label: "Topics"
+    url: "/topics/"
+  - label: "Explore"
+    url: "/explore/"
+  - label: "About"
+    url: "/about/"
+  - label: "GitHub"
+    url: ""  # Fill in with repo URL
+
+theme:
+  font_family: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+  font_mono: "'JetBrains Mono', 'Fira Code', monospace"
+  max_width: "900px"
+  colors:
+    bg: "#ffffff"
+    bg_alt: "#f8f9fa"
+    text: "#1a1a2e"
+    text_muted: "#6c757d"
+    accent: "#4A90D9"
+    border: "#e0e0e0"
+  dark_colors:
+    bg: "#1a1a2e"
+    bg_alt: "#16213e"
+    text: "#e0e0e0"
+    text_muted: "#a0a0a0"
+    accent: "#7B68EE"
+    border: "#2a2a4a"

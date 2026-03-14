@@ -1,0 +1,90 @@
+# Master Paper Registry
+# Each entry corresponds to a digest file in content/papers/{id}.md
+# This file is the single source of truth for paper metadata used by the build script.
+
+papers:
+
+  # --- Stream 3: Utility / Decision Quality (primary) ---
+  - id: kahneman-tversky-1979
+    title: "Prospect Theory: An Analysis of Decision Under Risk"
+    authors: [Daniel Kahneman, Amos Tversky]
+    year: 1979
+    venue: Econometrica
+    url: "https://doi.org/10.2307/1914185"
+    streams: [utility-decision-quality, risk-ambiguity, sampling-representation, belief-elicitation]
+    era: foundational
+    tags: [prospect-theory, value-function, probability-weighting, loss-aversion,
+           certainty-effect, reflection-effect, isolation-effect, reference-dependence]
+
+  # --- Placeholder entries for future digests ---
+  # Uncomment and create the corresponding content/papers/{id}.md file when ready.
+
+  # - id: tversky-kahneman-1992
+  #   title: "Advances in Prospect Theory: Cumulative Representation of Uncertainty"
+  #   authors: [Amos Tversky, Daniel Kahneman]
+  #   year: 1992
+  #   venue: "Journal of Risk and Uncertainty"
+  #   url: "https://doi.org/10.1007/BF00122574"
+  #   streams: [utility-decision-quality, sampling-representation]
+  #   era: foundational
+  #   tags: [cumulative-prospect-theory, probability-weighting, rank-dependence]
+
+  # - id: ellsberg-1961
+  #   title: "Risk, Ambiguity, and the Savage Axioms"
+  #   authors: [Daniel Ellsberg]
+  #   year: 1961
+  #   venue: "Quarterly Journal of Economics"
+  #   url: "https://doi.org/10.2307/1884324"
+  #   streams: [risk-ambiguity, utility-decision-quality]
+  #   era: foundational
+  #   tags: [ambiguity-aversion, ellsberg-paradox, knightian-uncertainty]
+
+  # - id: hertwig-et-al-2004
+  #   title: "Decisions from Experience and the Effect of Rare Events in Risky Choice"
+  #   authors: [Ralph Hertwig, Greg Barron, Elke U. Weber, Ido Erev]
+  #   year: 2004
+  #   venue: "Psychological Science"
+  #   url: "https://doi.org/10.1111/j.0956-7976.2004.00715.x"
+  #   streams: [sampling-representation, temporal-dynamics]
+  #   era: foundational
+  #   tags: [description-experience-gap, sampling, rare-events, probability-weighting]
+
+  # - id: dietvorst-et-al-2015
+  #   title: "Algorithm Aversion: People Erroneously Avoid Algorithms After Seeing Them Err"
+  #   authors: [Berkeley J. Dietvorst, Joseph P. Simmons, Cade Massey]
+  #   year: 2015
+  #   venue: "Journal of Experimental Psychology: General"
+  #   url: "https://doi.org/10.1037/xge0000033"
+  #   streams: [agents-as-advisors, attention-memory-salience]
+  #   era: foundational
+  #   tags: [algorithm-aversion, trust, human-AI, judgment]
+
+  # - id: gigerenzer-hoffrage-1995
+  #   title: "How to Improve Bayesian Reasoning Without Instruction: Frequency Formats"
+  #   authors: [Gerd Gigerenzer, Ulrich Hoffrage]
+  #   year: 1995
+  #   venue: "Psychological Review"
+  #   url: "https://doi.org/10.1037/0033-295X.102.4.684"
+  #   streams: [uncertainty-communication, belief-elicitation]
+  #   era: foundational
+  #   tags: [natural-frequencies, bayesian-reasoning, base-rate, risk-communication]
+
+  # - id: bordalo-et-al-2012
+  #   title: "Salience Theory of Choice Under Risk"
+  #   authors: [Pedro Bordalo, Nicola Gennaioli, Andrei Shleifer]
+  #   year: 2012
+  #   venue: "Quarterly Journal of Economics"
+  #   url: "https://doi.org/10.1093/qje/qjs018"
+  #   streams: [attention-memory-salience, utility-decision-quality]
+  #   era: key-development
+  #   tags: [salience, attention, choice-under-risk, context-dependence]
+
+  # - id: benartzi-thaler-1995
+  #   title: "Myopic Loss Aversion and the Equity Premium Puzzle"
+  #   authors: [Shlomo Benartzi, Richard H. Thaler]
+  #   year: 1995
+  #   venue: "Quarterly Journal of Economics"
+  #   url: "https://doi.org/10.2307/2118511"
+  #   streams: [temporal-dynamics, utility-decision-quality]
+  #   era: foundational
+  #   tags: [myopic-loss-aversion, evaluation-frequency, equity-premium, prospect-theory]
