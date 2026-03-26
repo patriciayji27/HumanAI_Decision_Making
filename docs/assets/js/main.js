@@ -1,6 +1,4 @@
 /* Human-Agent Decision Making — Main JS */
-
-// Theme toggle (for future use)
 (function() {
   'use strict';
 
@@ -18,8 +16,9 @@
   // Active nav link highlighting
   const currentPath = window.location.pathname;
   document.querySelectorAll('.nav-links a').forEach(link => {
+    if (link.classList.contains('active')) return;
     const href = link.getAttribute('href');
-    if (href && currentPath.startsWith(href) && href !== '/') {
+    if (href && currentPath.includes(href) && href !== 'index.html') {
       link.style.color = 'var(--text)';
     }
   });

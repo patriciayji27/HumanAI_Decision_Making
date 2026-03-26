@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sampling, Granularity & Experience — Human-Agent Decision Making</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+    <div class="nav-links">
+      <a href="../../index.html">Home</a>
+      <a href="belief-elicitation.html" class="active">Streams</a>
+      <a href="../../explore.html">Explore</a>
+      <a href="../../build.html">Build</a>
+    </div>
+  </div>
+</nav>
+
+<main class="site-main">
+
+  <div class="stream-hero">
+    <div class="stream-icon">📈</div>
+    <h1>Sampling, Granularity, Tails & Uncertainty Representation</h1>
+    <p class="stream-oneliner">People who learn about a risk by reading "5% chance of failure" treat it very differently from people who learn the same risk by experiencing 1 failure in 20 trials. The description-experience gap is one of the most robust findings in judgment research — and it has troubling implications for AI that explains risk via text.</p>
+  </div>
+
+  <div class="xref-row">
+    <a class="xref-chip" href="belief-elicitation.html">→ Belief Elicitation</a>
+    <a class="xref-chip" href="uncertainty-communication.html">→ Uncertainty Communication</a>
+    <a class="xref-chip" href="temporal-dynamics.html">→ Temporal Dynamics</a>
+    <a class="xref-chip" href="agents-as-advisors.html">→ AI Agents</a>
+  </div>
+
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--settled);"></span> What the field is confident about</h2>
+    <div class="claims-list">
+      <div class="claim-card settled">
+        <strong>The description-experience gap is robust: described probabilities and experienced probabilities produce different behavior.</strong>
+        <p>Hertwig, Barron, Weber & Erev (2004) established that people who learn about a gamble from description overweight rare events (consistent with prospect theory's probability weighting), while people who learn from sequential sampling underweight rare events. The gap is large and has been replicated across dozens of studies. The mechanism: with small samples, rare events are often not encountered at all, producing behavior that looks like underweighting.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Sample size matters enormously, and people don't sample enough.</strong>
+        <p>When people learn from experience, they typically take too few samples to encounter rare events reliably. This isn't irrational — sampling is costly — but it means experience-based judgments systematically underrepresent tails. For decisions where tails matter (safety, catastrophic risk), experience-based learning is dangerous without supplementary described information.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Granularity of outcome information affects risk perception.</strong>
+        <p>Showing the full distribution of outcomes (not just the expected value) changes behavior. Goldstein, Johnson & Sharpe (2008) found that showing retirement outcome distributions made people more conservative. The granularity at which uncertainty is presented — single number, interval, histogram, full distribution — is a design variable with causal effects on the decisions people make.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--contested);"></span> Where the field is still confused</h2>
+    <div class="claims-list">
+      <div class="claim-card contested">
+        <strong>Whether the description-experience gap is about sampling error or a genuine processing difference.</strong>
+        <p>Fox & Hadar (2006) argued that much of the gap disappears when you control for the information people actually received (their sample). If people just happened not to encounter the rare event, they're not underweighting it — they're responding rationally to their experience. But other work (Camilleri & Newell, 2011) shows the gap persists even when controlling for information — suggesting a genuine processing mode difference, not just sampling noise.</p>
+      </div>
+      <div class="claim-card contested">
+        <strong>How to combine description and experience optimally.</strong>
+        <p>In the real world, people often have both described statistics and personal experience. How should these be integrated? Description corrects the small-sample problem. Experience provides vivid, memorable instances. The evidence suggests people overweight experience relative to description, even when the description is more reliable — but the optimal combination rule depends on the decision context.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section">
+    <h2>The Description-Experience Gap</h2>
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Information Source</th><th>Treatment of Rare Events</th><th>Behavioral Pattern</th><th>When It Helps</th><th>When It Hurts</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Description (stated probabilities)</td><td>Overweighted</td><td>Risk-averse for gains with rare large payoffs; buys lottery tickets & insurance</td><td>User takes rare risks seriously</td><td>User overreacts to tiny probabilities</td></tr>
+          <tr><td>Experience (sequential sampling)</td><td>Underweighted (often not encountered)</td><td>Risk-seeking for gains; ignores rare catastrophic losses</td><td>User isn't paralyzed by unlikely fears</td><td>User ignores genuine tail risk</td></tr>
+          <tr><td>Mixed (description + experience)</td><td>Experience dominates</td><td>Personal experience overweights statistical description</td><td>Vivid experience motivates action</td><td>Anecdote overrides base rate</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="topic-section">
+    <h2>Best Papers to Start With</h2>
+    <ul class="papers-short-list">
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Hertwig, Barron, Weber & Erev (2004)</span> <span class="p-note">The description-experience gap — foundational demonstration</span></li>
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Hertwig & Erev (2009)</span> <span class="p-note">Review and synthesis of the gap literature</span></li>
+      <li><span class="p-era badge-contested">Contested</span> <span class="p-ref">Fox & Hadar (2006)</span> <span class="p-note">Sampling error account — challenges the processing-mode explanation</span></li>
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Goldstein, Johnson & Sharpe (2008)</span> <span class="p-note">Distribution display changes investment behavior</span></li>
+    </ul>
+  </div>
+
+  <div class="topic-section">
+    <h2>What This Means for Human-AI Systems</h2>
+    <p><strong>LLMs communicate by description — which means they trigger description-mode processing.</strong> When an AI says "there's a 3% chance of X," the user is in description mode: overweighting the rare event. When the same user has experienced the AI being wrong 3 times out of 100, they're in experience mode: possibly underweighting the error rate. Designers should be aware of which mode the user is in and choose uncertainty communication strategies accordingly.</p>
+    <p><strong>Experience-based interfaces (like HOPs) leverage sampling-mode processing deliberately.</strong> Hypothetical outcome plots, quantile dotplots, and interactive simulations convert described uncertainty into experienced uncertainty. The evidence from Stream 2 suggests this improves probability estimation for many tasks — but it also inherits the underweighting-of-rare-events problem. For high-consequence rare events, pure experience-based displays may need a described supplement.</p>
+  </div>
+
+  <div class="my-take">
+    <div class="my-take-label">My Take</div>
+    <p>The description-experience gap is one of the few findings in this archive that has obvious, immediate, and underexploited implications for AI system design. Most AI systems are pure description: they tell you a number or a verbal probability. But the evidence says people process experienced information differently — and sometimes better, sometimes worse. The right design probably combines both: described probability (to ensure rare events are represented) plus experiential sampling (to make the probability viscerally real). HOPs do this. Quantile dotplots approximate it. More AI systems should use these formats — and the fact that they don't is, again, a design failure, not a knowledge gap.</p>
+  </div>
+
+</main>
+
+<footer class="site-footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
+</body>
+</html>

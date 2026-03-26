@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uncertainty Communication — Human-Agent Decision Making</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+    <div class="nav-links">
+      <a href="../../index.html">Home</a>
+      <a href="belief-elicitation.html" class="active">Streams</a>
+      <a href="../../explore.html">Explore</a>
+      <a href="../../build.html">Build</a>
+    </div>
+  </div>
+</nav>
+
+<main class="site-main">
+
+  <div class="stream-hero">
+    <div class="stream-icon">📊</div>
+    <h1>Uncertainty Communication</h1>
+    <p class="stream-oneliner">Format is never neutral. The same probability, presented as a percentage, a frequency, a bar chart, or an animated sample, produces different comprehension, different risk perceptions, and different decisions — often with effect sizes large enough to flip a preference.</p>
+  </div>
+
+  <div class="xref-row">
+    <a class="xref-chip" href="belief-elicitation.html">→ Belief Elicitation</a>
+    <a class="xref-chip" href="utility-decision-quality.html">→ Decision Quality</a>
+    <a class="xref-chip" href="attention-memory-salience.html">→ Attention & Salience</a>
+    <a class="xref-chip" href="sampling-representation.html">→ Sampling & Experience</a>
+    <a class="xref-chip" href="agents-as-advisors.html">→ AI Agents</a>
+  </div>
+
+  <!-- SETTLED -->
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--settled);"></span> What the field is confident about</h2>
+    <div class="claims-list">
+      <div class="claim-card settled">
+        <strong>Natural frequencies dramatically improve Bayesian reasoning.</strong>
+        <p>Presenting statistical information as "30 out of 1,000" rather than "3%" raises correct Bayesian inference from ~15% to ~50% (Gigerenzer & Hoffrage, 1995). The effect is one of the largest and most replicated in the field. The mechanism is debated (evolved frequency processing vs. reduced computational complexity), but the practical implication is clear: any interface that requires Bayesian reasoning should use frequency formats.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Numeracy moderates virtually everything.</strong>
+        <p>Low-numeracy individuals (~30–50% of the general population) struggle with probabilistic information in almost any format, but are disproportionately harmed by formats requiring arithmetic. High-numeracy individuals extract both more precise and more affective meaning from numbers (Peters et al., 2006). A single uncertainty display cannot be optimal for all users. This creates a fundamental tension between standardization and personalization.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Error bars and confidence intervals are chronically misunderstood — even by researchers.</strong>
+        <p>Most published scientists cannot correctly determine whether two overlapping error bars indicate statistical significance (Belia et al., 2005). Most researchers misinterpret 95% CIs as "95% probability the true value is in this interval" — which is incorrect under frequentist inference (Hoekstra et al., 2014). If experts can't read these displays correctly, designing them for non-expert users is actively misleading.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTESTED -->
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--contested);"></span> Where the field is still confused</h2>
+    <div class="claims-list">
+      <div class="claim-card contested">
+        <strong>The comprehension-use gap: displays that improve understanding don't always improve decisions.</strong>
+        <p>Hofman, Goldstein & Hullman (2020) showed that comprehension accuracy and decision quality can diverge — and that optimizing for one can degrade the other. A display that makes the distribution crystal clear may not help the person figure out what to do. The field hasn't determined whether this gap is closable or reflects a fundamental trade-off between transparency and actionability.</p>
+      </div>
+      <div class="claim-card contested">
+        <strong>Whether interactive and animated displays actually improve decisions (or just engagement).</strong>
+        <p>Hypothetical outcome plots (HOPs) improve probability estimation in lab studies (Kale, Kay & Hullman, 2021). Interactive tools increase engagement and subjective understanding (Hullman et al., 2018). But the evidence that interaction improves objective decision quality is mixed — users sometimes gain an illusion of understanding that exceeds their actual comprehension.</p>
+      </div>
+      <div class="claim-card contested">
+        <strong>How to communicate tail risk without distorting the overall picture.</strong>
+        <p>Most displays emphasize the center of the distribution (expected values, CIs) and underrepresent tails. But in medical rare events, financial crashes, and infrastructure failure, the tails are what matter. Making tails salient enough to produce appropriate precaution — without triggering excessive worry — is an unsolved design problem.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VISUAL FORMATS: Evidence table -->
+  <div class="topic-section">
+    <h2>Visual Uncertainty Formats Compared</h2>
+
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Format</th><th>What It Shows Well</th><th>Main Failure Mode</th><th>Best Audience</th><th>Best Evidence</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Error bars / CI</td><td>Interval around estimate</td><td>Widely misread; different bar types (SE, SD, 95% CI) look identical</td><td>Trained researchers only</td><td>Belia et al. (2005); Hoekstra et al. (2014)</td></tr>
+          <tr><td>Fan chart / cone</td><td>Widening uncertainty over time</td><td>Area encodes probability nonlinearly; "cone" misread as storm size</td><td>Trained analysts</td><td>Broad et al. (2007) — hurricane cone</td></tr>
+          <tr><td>Icon array</td><td>Proportions as discrete countable units</td><td>Only works for single binary outcome at one probability</td><td>Low-numeracy populations</td><td>Garcia-Retamero & Cokely (2013)</td></tr>
+          <tr><td>Quantile dotplot</td><td>Distribution shape via equally-likely dots</td><td>Unfamiliar; requires explanation</td><td>General public with brief training</td><td>Kay et al. (2016) — improved decision quality</td></tr>
+          <tr><td>Hypothetical outcome plot (HOP)</td><td>Uncertainty as experienced variability over time</td><td>Requires animation; sensitive to frame rate and draw count</td><td>Visual learners; comparison tasks</td><td>Hullman et al. (2015); Kale et al. (2021)</td></tr>
+          <tr><td>Density / violin plot</td><td>Full distributional shape continuously</td><td>Requires understanding density-as-area; nontrivial for untrained users</td><td>Statistical audience</td><td>Standard; widely used in data viz</td></tr>
+          <tr><td>Gradient / opacity plot</td><td>Continuous probability without artificial boundaries</td><td>Hard to read precise values from color</td><td>Data journalism; dashboards</td><td>Emerging; limited formal evaluation</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TEXTUAL / VERBAL -->
+  <div class="topic-section">
+    <h2>Verbal and Numeric Communication</h2>
+
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Format</th><th>Strength</th><th>Weakness</th><th>Key Finding</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Verbal expression ("likely")</td><td>Natural; low cognitive cost</td><td>Enormous variability: "likely" = 0.55 to 0.90</td><td>Even IPCC standardized terms are misread ~40% of time (Budescu et al., 2009)</td></tr>
+          <tr><td>Verbal + numeric hybrid ("very likely [>90%]")</td><td>Preserves natural language + adds precision</td><td>Dual processing required</td><td>Significantly improved interpretation vs. verbal-only (Budescu et al., 2014)</td></tr>
+          <tr><td>Precise numeric ("73% chance")</td><td>Compact; conventional</td><td>False precision inflates credibility</td><td>Precise forecasts treated as more credible even when precision exceeds accuracy (Joslyn et al., 2009)</td></tr>
+          <tr><td>Natural frequency ("30 out of 1,000")</td><td>Preserves sampling structure; supports Bayesian reasoning</td><td>Works best for single binary outcomes</td><td>15% → 50% correct Bayesian inference (Gigerenzer & Hoffrage, 1995)</td></tr>
+          <tr><td>Relative risk ("25% reduction")</td><td>Sounds impressive</td><td>Hides base rate; systematically misleading</td><td>Absolute risk always preferred in medical communication guidelines</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BEST PAPERS -->
+  <div class="topic-section">
+    <h2>Best Papers to Start With</h2>
+    <ul class="papers-short-list">
+      <li>
+        <span class="p-era badge-settled">Settled</span>
+        <span class="p-ref">Gigerenzer & Hoffrage (1995)</span>
+        <span class="p-note">Natural frequency advantage — the most impactful format finding</span>
+      </li>
+      <li>
+        <span class="p-era badge-settled">Settled</span>
+        <span class="p-ref">Spiegelhalter, Pearson & Short (2011)</span>
+        <span class="p-note">Taxonomy and review of uncertainty visualization approaches</span>
+      </li>
+      <li>
+        <span class="p-era badge-settled">Settled</span>
+        <span class="p-ref">Garcia-Retamero & Cokely (2013)</span>
+        <span class="p-note">Icon arrays work for low-numeracy populations</span>
+      </li>
+      <li>
+        <span class="p-era badge-contested">Contested</span>
+        <span class="p-ref">Hofman, Goldstein & Hullman (2020)</span>
+        <span class="p-note">The comprehension-use gap — the most important unsolved problem</span>
+      </li>
+      <li>
+        <span class="p-era badge-contested">Contested</span>
+        <span class="p-ref">Kay, Kola, Hullman & Munson (2016)</span>
+        <span class="p-note">Quantile dotplots — bridging frequency reasoning with distributional display</span>
+      </li>
+      <li>
+        <span class="p-era badge-frontier">Frontier</span>
+        <span class="p-ref">Padilla, Kay & Hullman (2022)</span>
+        <span class="p-note">Cognitive science framework for uncertainty visualization</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- DESIGN IMPLICATIONS -->
+  <div class="topic-section">
+    <h2>What This Means for Human-AI Systems</h2>
+    <p><strong>LLMs communicate in the worst format for precision.</strong> Natural language is the highest-variability, lowest-precision uncertainty format in the evidence table above. Every LLM that says "I'm fairly confident" without a numeric anchor is operating at the bottom of the format hierarchy. The minimum viable improvement: hybrid verbal-numeric expressions. The better improvement: adaptive display that matches the user's numeracy.</p>
+
+    <p><strong>The comprehension-use gap means "explain the uncertainty" is not a sufficient design goal.</strong> If the user understands the uncertainty perfectly but makes the same (bad) decision anyway, comprehension-focused design has failed. For action-oriented contexts (medical decisions, financial choices, safety calls), the display should be optimized for decision quality directly — even if that means sacrificing some distributional transparency.</p>
+
+    <p><strong>Personalization by numeracy is the highest-value next step.</strong> If an AI system could detect the user's numeracy level — from their questions, their errors, or a brief assessment — and adapt its uncertainty format accordingly, it would address the single largest moderator in this literature. High-numeracy users get density plots and calibrated probabilities. Low-numeracy users get icon arrays and natural frequencies. This isn't hard to build, but it requires the system to care about communication design, not just model accuracy.</p>
+  </div>
+
+  <!-- OPEN EXPERIMENTS -->
+  <div class="topic-section">
+    <h2>Open Experiment Ideas</h2>
+    <ul class="experiments-list">
+      <li>
+        <strong>Comprehension vs. decision quality: which formats optimize which?</strong>
+        Test 5+ uncertainty formats on both a comprehension task (report the probability correctly) and a decision task (make a better choice). Measure whether the rankings differ — and if so, by how much.
+      </li>
+      <li>
+        <strong>LLM verbal uncertainty decoding study</strong>
+        Present users with LLM outputs that express different verbal uncertainty levels. Measure what probability they assign to each hedging expression. Compare to the LLM's actual accuracy at that hedging level. Quantify the gap.
+      </li>
+      <li>
+        <strong>Adaptive numeracy-matched displays</strong>
+        Build an AI system that assesses user numeracy from a 3-question screener, then adapts its uncertainty display format accordingly. Test whether this improves decision quality compared to a one-size-fits-all display.
+      </li>
+    </ul>
+  </div>
+
+  <!-- MY TAKE -->
+  <div class="my-take">
+    <div class="my-take-label">My Take</div>
+    <p>The uncertainty communication literature is the most immediately applicable stream in this archive — and it's underused in AI system design. Most ML teams treat communication as a downstream UX problem: build the model, then figure out how to show the output. The evidence says this order is backwards. The communication format causally determines the user's behavior, sometimes more strongly than the model's accuracy. Choosing how to show uncertainty should be a first-class design decision, made alongside model architecture choices — not an afterthought. The biggest practical win right now is probably the simplest: stop using verbal-only uncertainty in AI outputs. Add numbers. Use frequencies for medical and diagnostic contexts. Use quantile dotplots for distributional comparisons. The evidence supporting these recommendations is rock-solid. The fact that most AI systems ignore it is a design failure, not a knowledge gap.</p>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Human-Agent Decision Making — A personal research archive</p>
+</footer>
+
+</body>
+</html>

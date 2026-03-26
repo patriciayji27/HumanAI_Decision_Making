@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temporal Dynamics — Human-Agent Decision Making</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+    <div class="nav-links">
+      <a href="../../index.html">Home</a>
+      <a href="belief-elicitation.html" class="active">Streams</a>
+      <a href="../../explore.html">Explore</a>
+      <a href="../../build.html">Build</a>
+    </div>
+  </div>
+</nav>
+
+<main class="site-main">
+
+  <div class="stream-hero">
+    <div class="stream-icon">⏱️</div>
+    <h1>Temporal Dynamics: Myopia, Feedback & Time Horizon</h1>
+    <p class="stream-oneliner">How often you check your portfolio changes how much risk you take. Myopic loss aversion — the interaction of loss aversion with evaluation frequency — is one of the cleanest examples of how interface design causally shapes financial behavior.</p>
+  </div>
+
+  <div class="xref-row">
+    <a class="xref-chip" href="utility-decision-quality.html">→ Decision Quality</a>
+    <a class="xref-chip" href="risk-ambiguity.html">→ Risk & Ambiguity</a>
+    <a class="xref-chip" href="sampling-representation.html">→ Sampling & Experience</a>
+    <a class="xref-chip" href="agents-as-advisors.html">→ AI Agents</a>
+  </div>
+
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--settled);"></span> What the field is confident about</h2>
+    <div class="claims-list">
+      <div class="claim-card settled">
+        <strong>Myopic loss aversion is real and economically significant.</strong>
+        <p>Benartzi & Thaler (1995) showed that loss-averse investors who evaluate their portfolios frequently take less risk than those who evaluate infrequently — because frequent evaluation increases the probability of seeing a loss, and losses loom large. The equity premium puzzle (stocks paying too much relative to bonds) can be explained if investors are loss-averse and evaluate annually. Gneezy & Potters (1997) confirmed this experimentally: subjects who saw outcomes every period invested less in risky options than those who saw outcomes every three periods.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Feedback frequency changes learning and risk-taking.</strong>
+        <p>More frequent feedback doesn't always help. In tasks with noisy outcomes, frequent feedback amplifies random variation and encourages overfitting to noise. In investment contexts, this means people who check their portfolios daily make worse long-run decisions than people who check monthly — not because they have less information, but because the information is dominated by noise at short horizons.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Narrow framing amplifies loss aversion.</strong>
+        <p>When people evaluate each bet in isolation (narrow framing) rather than considering the portfolio (broad framing), loss aversion has maximum impact. Aggregating multiple decisions into a single evaluation window reduces the perceived probability of loss and increases risk-taking. This is the mechanism behind myopic loss aversion — and it's a design variable, not a fixed cognitive trait.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--contested);"></span> Where the field is still confused</h2>
+    <div class="claims-list">
+      <div class="claim-card contested">
+        <strong>What the optimal evaluation frequency is for different decision contexts.</strong>
+        <p>Less frequent evaluation reduces myopic loss aversion — but it also reduces the user's ability to detect genuine problems (a crashing stock, a failing strategy). The optimal frequency depends on the signal-to-noise ratio in the feedback, which varies by domain. The field hasn't produced actionable guidelines for when to show more vs. less feedback.</p>
+      </div>
+      <div class="claim-card contested">
+        <strong>Whether AI advisors should manage the user's information exposure.</strong>
+        <p>An AI that restricts how often a user sees portfolio performance (to reduce myopic loss aversion) is making a paternalistic choice. Is this justified? The user might prefer daily updates even if they lead to worse decisions. This is the same autonomy-versus-optimality tension that runs through Stream 3.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section">
+    <h2>Best Papers to Start With</h2>
+    <ul class="papers-short-list">
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Benartzi & Thaler (1995)</span> <span class="p-note">Myopic loss aversion — the foundational paper</span></li>
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Gneezy & Potters (1997)</span> <span class="p-note">Experimental confirmation: evaluation frequency → risk-taking</span></li>
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Thaler, Tversky, Kahneman & Schwartz (1997)</span> <span class="p-note">Broad vs. narrow framing and investment behavior</span></li>
+      <li><span class="p-era badge-contested">Contested</span> <span class="p-ref">Haigh & List (2005)</span> <span class="p-note">Myopic loss aversion among professional traders — expertise doesn't eliminate it</span></li>
+    </ul>
+  </div>
+
+  <div class="topic-section">
+    <h2>What This Means for Human-AI Systems</h2>
+    <p><strong>Feedback frequency is a design variable with causal effects on behavior.</strong> An AI dashboard that shows real-time performance updates is not neutral — it's pushing users toward myopic evaluation and loss-averse behavior. Designers should choose update frequency deliberately, based on the signal-to-noise ratio and the user's decision horizon. For long-horizon decisions (retirement investing, strategic planning), less frequent, aggregated feedback is almost certainly better.</p>
+    <p><strong>Broad framing can be nudged by interface design.</strong> Showing multiple decisions or outcomes in aggregate (portfolio-level returns, not individual stock movements) encourages broad framing and reduces loss aversion. AI systems that present aggregated performance — "your portfolio is up 12% this year" rather than "today: AAPL −2.3%, MSFT +0.8%, ..." — are making a deliberate temporal framing choice that the evidence supports.</p>
+  </div>
+
+  <div class="my-take">
+    <div class="my-take-label">My Take</div>
+    <p>Temporal dynamics is the stream with the most direct, actionable implications for interface design — and the least ambiguity about what to do. Myopic loss aversion is well-established. The mechanism is clear. The intervention (reduce evaluation frequency, encourage broad framing) is straightforward. The only hard question is the autonomy one: does the designer have the right to manage the user's information exposure, even when doing so improves their outcomes? I think the answer depends on transparency — if the system explains <em>why</em> it defaults to weekly rather than daily updates, the user can choose. If it just withholds information without explanation, it's paternalistic in the bad sense.</p>
+  </div>
+
+</main>
+
+<footer class="site-footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attention, Memory & Salience — Human-Agent Decision Making</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+    <div class="nav-links">
+      <a href="../../index.html">Home</a>
+      <a href="belief-elicitation.html" class="active">Streams</a>
+      <a href="../../explore.html">Explore</a>
+      <a href="../../build.html">Build</a>
+    </div>
+  </div>
+</nav>
+
+<main class="site-main">
+
+  <div class="stream-hero">
+    <div class="stream-icon">🔍</div>
+    <h1>Attention, Memory, Salience & Cognitive Load</h1>
+    <p class="stream-oneliner">Many "biases" may actually be attention failures. If salience theory is right, fixing the interface — not retraining the person — is the correct intervention for many choice anomalies.</p>
+  </div>
+
+  <div class="xref-row">
+    <a class="xref-chip" href="utility-decision-quality.html">→ Decision Quality</a>
+    <a class="xref-chip" href="uncertainty-communication.html">→ Uncertainty Communication</a>
+    <a class="xref-chip" href="sampling-representation.html">→ Sampling & Experience</a>
+    <a class="xref-chip" href="agents-as-advisors.html">→ AI Agents</a>
+  </div>
+
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--settled);"></span> What the field is confident about</h2>
+    <div class="claims-list">
+      <div class="claim-card settled">
+        <strong>People have a limited attention budget, and interfaces consume it.</strong>
+        <p>Cognitive load theory (Sweller, 1988) distinguishes intrinsic load (task complexity), extraneous load (bad design), and germane load (productive learning effort). Reducing extraneous load — noise, clutter, irrelevant information — consistently improves decision quality. AI explanations that are too detailed can be worse than no explanation at all, because they exhaust the attention budget before the user reaches the decision-relevant information.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Salience drives attention, and attention drives choice — even when it shouldn't.</strong>
+        <p>Bordalo, Gennaioli & Shleifer (2012) showed that people overweight the states where options differ most, providing an attention-based explanation for the Allais paradox and related anomalies. Gabaix (2014) formalized sparsity-based bounded rationality: agents optimally allocate limited attention, but the allocation is shaped by salience, not just by decision relevance. The practical implication: what the interface makes visually prominent affects what the user treats as important.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Anchoring is one of the most robust biases and it operates through attention.</strong>
+        <p>Initial values — whether relevant or arbitrary — pull subsequent estimates toward them. AI recommendations create powerful anchors: once the user sees the AI's suggestion, their own judgment shifts toward it. The accept-rate for AI recommendations is typically 80%+ not because users agree, but because the anchor is hard to overcome.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--contested);"></span> Where the field is still confused</h2>
+    <div class="claims-list">
+      <div class="claim-card contested">
+        <strong>Whether AI explanations are net-positive or net-negative for attention allocation.</strong>
+        <p>An AI explanation can redirect attention to decision-relevant features (good), or flood the user with features they can't process (bad), or make irrelevant features salient through detail (bad). The net effect depends on explanation design, user expertise, and decision complexity — and we don't have a general theory for predicting which regime we're in.</p>
+      </div>
+      <div class="claim-card contested">
+        <strong>Whether "cognitive uncertainty" (Enke & Graeber) subsumes attention-based accounts.</strong>
+        <p>If many anomalies are explained by people being uncertain about their own preferences (and compressing toward defaults), this might unify attention-based, probability-weighting, and framing-based explanations under a single umbrella. But the relationship between cognitive uncertainty and salience theory is unresolved.</p>
+      </div>
+      <div class="claim-card contested">
+        <strong>Can AI serve as an attention guide rather than an information provider?</strong>
+        <p>Instead of giving the user more data, an AI could highlight which data to focus on — directing limited attention to the highest-value information. This is promising but raises concerns about manipulation: who decides what's "highest value," and how does the user verify the AI's attention guidance is serving their interests?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section">
+    <h2>Canonical Paradigms & Measures</h2>
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Paradigm</th><th>What It Tests</th><th>Key Finding</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Salience theory (Bordalo et al., 2012)</td><td>Attention to states where options differ most</td><td>Explains Allais paradox via attention, not probability weighting</td><td><span class="p-era badge-contested" style="padding: 2px 8px; border-radius: 3px;">Contested</span></td></tr>
+          <tr><td>Sparsity model (Gabaix, 2014)</td><td>Optimal attention allocation under bounded rationality</td><td>Agents simplify by attending to a sparse set of factors</td><td><span class="p-era badge-settled" style="padding: 2px 8px; border-radius: 3px;">Settled</span></td></tr>
+          <tr><td>Cognitive load theory (Sweller, 1988)</td><td>How task + interface complexity affect learning/performance</td><td>Reducing extraneous load consistently improves outcomes</td><td><span class="p-era badge-settled" style="padding: 2px 8px; border-radius: 3px;">Settled</span></td></tr>
+          <tr><td>Nudge framework (Thaler & Sunstein, 2008)</td><td>Choice architecture effects on behavior</td><td>Defaults, framing, and salience reliably shift choices</td><td><span class="p-era badge-settled" style="padding: 2px 8px; border-radius: 3px;">Settled</span></td></tr>
+          <tr><td>Cognitive uncertainty (Enke & Graeber, 2023)</td><td>Uncertainty about own valuations</td><td>Measurable construct linking attention to choice quality</td><td><span class="p-era badge-frontier" style="padding: 2px 8px; border-radius: 3px;">Frontier</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="topic-section">
+    <h2>Best Papers to Start With</h2>
+    <ul class="papers-short-list">
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Bordalo, Gennaioli & Shleifer (2012)</span> <span class="p-note">Salience theory — attention-based choice anomalies</span></li>
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Gabaix (2014)</span> <span class="p-note">Sparsity-based bounded rationality</span></li>
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Thaler & Sunstein (2008)</span> <span class="p-note">Nudge — synthesized attention/architecture research into practice</span></li>
+      <li><span class="p-era badge-frontier">Frontier</span> <span class="p-ref">Enke & Graeber (2023)</span> <span class="p-note">Cognitive uncertainty — potentially unifying framework</span></li>
+    </ul>
+  </div>
+
+  <div class="topic-section">
+    <h2>What This Means for Human-AI Systems</h2>
+    <p><strong>AI explanation design is an attention allocation problem.</strong> Every feature, confidence score, and reasoning step in an AI explanation competes for the user's limited attention. The question is not "what information can we show?" but "what information should the user attend to, and how do we make exactly that information salient?" Over-explanation is a real risk — information that doesn't help the decision wastes cognitive budget that could have been spent on the decision itself.</p>
+    <p><strong>Anchoring from AI recommendations is the default, not the exception.</strong> If the user sees the AI's suggestion before forming their own judgment, their judgment is anchored. Protocol design (see Stream 8, Substream E) should account for this: in high-stakes settings, consider having the human decide first and the AI provide a second opinion, rather than the reverse.</p>
+  </div>
+
+  <div class="my-take">
+    <div class="my-take-label">My Take</div>
+    <p>This stream is underrated in the AI decision support literature. Most work on human-AI collaboration focuses on trust and reliance (Stream 8) or uncertainty communication (Stream 2), but the bottleneck may actually be attention. An AI system that is perfectly calibrated, perfectly explained, and perfectly designed for trust — but that overwhelms the user's cognitive budget with too much information — will still fail. The most promising intervention might be the simplest: show less. An AI that strategically omits information (showing only the 2-3 features most relevant to this decision) may outperform an AI that exhaustively explains everything. But "strategic omission" is hard to do well and easy to do manipulatively — which is why this stream matters for both design and ethics.</p>
+  </div>
+
+</main>
+
+<footer class="site-footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build & Contribute — Human-Agent Decision Making</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Human-Agent Decision Making</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="content/topics/belief-elicitation.html">Streams</a>
+      <a href="explore.html">Explore</a>
+      <a href="build.html" class="active">Build</a>
+    </div>
+  </div>
+</nav>
+
+<main class="site-main">
+
+  <h1 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; margin-bottom: var(--space-md);">Build & Contribute</h1>
+  <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-2xl); max-width: 620px;">This page is for maintainers. It covers the repo structure, paper digest schema, build pipeline, and how to add new content. If you're here to read research, <a href="index.html">start here instead</a>.</p>
+
+  <div class="build-section">
+    <h2>Project Structure</h2>
+    <div class="file-tree">
+├── content/<br>
+│&nbsp;&nbsp;&nbsp;├── topics/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# One Markdown file per research stream<br>
+│&nbsp;&nbsp;&nbsp;└── papers/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# One Markdown file per paper digest<br>
+├── data/<br>
+│&nbsp;&nbsp;&nbsp;├── papers.yaml&nbsp;&nbsp;&nbsp;&nbsp;# Master paper registry (metadata + tags)<br>
+│&nbsp;&nbsp;&nbsp;└── streams.yaml&nbsp;&nbsp;&nbsp;# Stream definitions and relationships<br>
+├── docs/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# GitHub Pages static site (generated)<br>
+├── scripts/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Build, add-paper, fetch-frontier tools<br>
+├── prompts/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# LLM prompt templates for paper processing<br>
+├── schemas/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# JSON schema for data validation<br>
+└── configs/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Site and pipeline configuration
+    </div>
+  </div>
+
+  <div class="build-section">
+    <h2>Quick Start</h2>
+    <pre><code># Install dependencies
+pip install -r requirements.txt
+
+# Build the static site from content/
+python scripts/build_site.py
+
+# Add a new paper (creates a template)
+python scripts/add_paper.py --id author-year
+
+# Generate a digest from a PDF (LLM-assisted, requires API key)
+python scripts/digest_paper.py --pdf path/to/paper.pdf --stream utility-decision-quality
+
+# Scan arXiv for recent frontier papers in a stream
+python scripts/fetch_frontier.py --stream agents-as-advisors --months 3</code></pre>
+  </div>
+
+  <div class="build-section">
+    <h2>Paper Digest Format</h2>
+    <p>Every paper gets a structured digest in YAML+Markdown with consistent fields: one-liner, core contribution, key concepts (with descriptions), methodology, limitations, legacy/influence, and optional personal reading notes.</p>
+    <p>Papers are tagged by stream and epistemic status: <span style="color: var(--settled); font-weight: 600;">settled</span> (robust, replicated, widely accepted), <span style="color: var(--contested); font-weight: 600;">contested</span> (active disagreement or important qualifications), or <span style="color: var(--frontier); font-weight: 600;">frontier</span> (recent, promising, not yet replicated or integrated).</p>
+    <p>Each paper verdict should answer: What did this paper actually add? What would break if it were wrong? What later work weakened it? Should a new researcher still read it?</p>
+  </div>
+
+  <div class="build-section">
+    <h2>Epistemic Status Tags</h2>
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Tag</th><th>Meaning</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="p-era badge-settled" style="padding: 2px 8px; border-radius: 3px; font-size: 0.78rem;">Settled</span></td><td>Robust finding, widely replicated, part of the field's working knowledge</td><td>Overconfidence in confidence intervals; frequency advantage in Bayesian reasoning</td></tr>
+          <tr><td><span class="p-era badge-contested" style="padding: 2px 8px; border-radius: 3px; font-size: 0.78rem;">Contested</span></td><td>Active debate, important qualifications, or competing explanations</td><td>Whether overconfidence is a bias or a statistical artifact; probability weighting vs. salience</td></tr>
+          <tr><td><span class="p-era badge-frontier" style="padding: 2px 8px; border-radius: 3px; font-size: 0.78rem;">Frontier</span></td><td>Recent, promising, not yet replicated or fully integrated</td><td>Cognitive uncertainty as a unified explanation; AI-mediated elicitation</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="build-section">
+    <h2>Adding a Paper</h2>
+    <p>Run <code>python scripts/add_paper.py --id author-year</code> to scaffold a new paper digest from the template. Fill in the digest fields, add the entry to <code>data/papers.yaml</code>, and run <code>python scripts/build_site.py</code> to regenerate the site.</p>
+    <p>For LLM-assisted digestion: <code>python scripts/digest_paper.py --pdf path/to/paper.pdf --stream stream-id</code> generates a draft digest from a PDF. The draft needs human review — treat it as a starting point, not a finished product.</p>
+  </div>
+
+  <div class="build-section">
+    <h2>Website</h2>
+    <p>The archive is published as a static site via GitHub Pages from the <code>docs/</code> directory. To deploy: push to GitHub, enable GitHub Pages on the <code>docs/</code> folder.</p>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Human-Agent Decision Making — A personal research archive at the intersection of cognitive science and AI agents</p>
+</footer>
+
+</body>
+</html>

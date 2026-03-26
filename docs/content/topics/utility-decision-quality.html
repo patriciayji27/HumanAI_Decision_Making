@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decision Quality & Normative Benchmarks — Human-Agent Decision Making</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+    <div class="nav-links">
+      <a href="../../index.html">Home</a>
+      <a href="belief-elicitation.html" class="active">Streams</a>
+      <a href="../../explore.html">Explore</a>
+      <a href="../../build.html">Build</a>
+    </div>
+  </div>
+</nav>
+
+<main class="site-main">
+
+  <div class="stream-hero">
+    <div class="stream-icon">⚖️</div>
+    <h1>Decision Quality & Normative Benchmarks</h1>
+    <p class="stream-oneliner">Every AI advisor embeds assumptions about what "better" decisions look like. Expected utility is too rigid. Revealed preference is contaminated by framing effects. The normative benchmark problem is the central unsolved challenge for AI-assisted choice.</p>
+  </div>
+
+  <div class="xref-row">
+    <a class="xref-chip" href="belief-elicitation.html">→ Belief Elicitation</a>
+    <a class="xref-chip" href="uncertainty-communication.html">→ Uncertainty Communication</a>
+    <a class="xref-chip" href="attention-memory-salience.html">→ Attention & Salience</a>
+    <a class="xref-chip" href="risk-ambiguity.html">→ Risk & Ambiguity</a>
+    <a class="xref-chip" href="temporal-dynamics.html">→ Temporal Dynamics</a>
+    <a class="xref-chip" href="agents-as-advisors.html">→ AI Agents</a>
+  </div>
+
+  <!-- SETTLED -->
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--settled);"></span> What the field is confident about</h2>
+    <div class="claims-list">
+      <div class="claim-card settled">
+        <strong>People systematically violate expected utility — and the violations are structured, not random.</strong>
+        <p>The Allais paradox (certainty effect), the reflection effect (risk-seeking in losses, risk-averse in gains), the isolation effect (choices depend on shared components that should be ignored), and framing effects (lives saved vs. lives lost) are all robust, replicable, and predicted by prospect theory. The descriptive inadequacy of EUT is established beyond dispute.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Loss aversion is real and approximately 2:1.</strong>
+        <p>Losses loom about twice as large as gains of equal magnitude (Tversky & Kahneman, 1992: λ ≈ 2.25). This interacts with reference dependence to produce risk-seeking for losses and risk-aversion for gains. The 2:1 ratio has been estimated across dozens of studies, though the exact coefficient varies by domain and method.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Decision quality ≠ decision outcome.</strong>
+        <p>A good decision can have a bad outcome (the right bet that lost). A bad decision can have a good outcome (the wrong bet that won). Evaluating decisions by outcomes conflates skill with luck. Process-based evaluation — did the person gather information, consider alternatives, articulate values, reason correctly? — is the right framework (Howard, 1988). But it's harder to operationalize.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTESTED -->
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--contested);"></span> Where the field is still confused</h2>
+    <div class="claims-list">
+      <div class="claim-card contested">
+        <strong>Is the mechanism probability weighting (prospect theory) or attention allocation (salience theory)?</strong>
+        <p>Both predict Allais-type violations, but through different mechanisms. Prospect theory says people distort probabilities (overweight small, underweight large). Salience theory (Bordalo, Gennaioli & Shleifer, 2012) says people overweight whichever payoffs grab attention — the distortion is context-dependent. This matters for design: if it's attentional, fixing the display fixes the bias. If it's probability weighting, the bias persists regardless of display.</p>
+      </div>
+      <div class="claim-card contested">
+        <strong>Is loss aversion a bias to correct or a preference to respect?</strong>
+        <p>Some loss aversion may reflect genuine asymmetry in the experience of gains and losses — it really does hurt more to lose $100 than it feels good to gain $100. Some may be a processing artifact that people would want corrected on reflection. AI advisors need to distinguish these cases — or at least make the distinction transparent to the user. The field hasn't provided tools for this.</p>
+      </div>
+      <div class="claim-card contested">
+        <strong>Are preferences stable entities to be discovered, or constructed in the moment?</strong>
+        <p>EUT assumes preferences are stable. Prospect theory and its descendants show they're sensitive to framing, context, and the elicitation method. Enke & Graeber (2023) add "cognitive uncertainty" — people are uncertain about their own valuations. If preferences are constructed, "what the person really wants" may not have a determinate answer, and "respecting user autonomy" becomes conceptually murky.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPETING MODELS: Evidence table -->
+  <div class="topic-section">
+    <h2>Descriptive Models Compared</h2>
+
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Model</th><th>Core Mechanism</th><th>What It Explains Best</th><th>Where It Struggles</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Prospect Theory (CPT)</td><td>Reference dependence, S-shaped value function, probability weighting</td><td>Allais paradox, reflection effect, framing effects, loss aversion</td><td>Multi-attribute choice; social preferences; the reference point is often ad hoc</td><td><span class="p-era badge-settled" style="padding: 2px 8px; border-radius: 3px;">Settled</span></td></tr>
+          <tr><td>Salience Theory</td><td>Attention drawn to states where options differ most</td><td>Allais paradox, context-dependent anomalies, pricing data</td><td>Predicts less well for individual-level choices; harder to parameterize</td><td><span class="p-era badge-contested" style="padding: 2px 8px; border-radius: 3px;">Contested</span></td></tr>
+          <tr><td>Regret Theory</td><td>Anticipated regret from foregone alternatives</td><td>Violations of independence; situations where outcomes of unchosen options are visible</td><td>Limited to cases with explicit alternative outcomes</td><td><span class="p-era badge-contested" style="padding: 2px 8px; border-radius: 3px;">Contested</span></td></tr>
+          <tr><td>Cognitive Uncertainty</td><td>People are uncertain about their own valuations; compress toward defaults</td><td>Many anomalies as "noise" rather than stable biases; stake effects</td><td>New — limited empirical testing across domains</td><td><span class="p-era badge-frontier" style="padding: 2px 8px; border-radius: 3px;">Frontier</span></td></tr>
+          <tr><td>Rank-Dependent Utility</td><td>Probability weighting on cumulative probabilities</td><td>Preserves stochastic dominance while allowing weighting</td><td>Nested within CPT; less distinctive alone</td><td><span class="p-era badge-settled" style="padding: 2px 8px; border-radius: 3px;">Settled</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UTILITY ELICITATION METHODS -->
+  <div class="topic-section">
+    <h2>Utility Elicitation Methods</h2>
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Method</th><th>What It Measures</th><th>Main Problem</th><th>Theory Dependence</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Certainty equivalents</td><td>Point on the value/utility function</td><td>Sensitive to gamble probabilities (confounded with weighting function)</td><td>High — different under EUT vs. CPT</td></tr>
+          <tr><td>Probability equivalents</td><td>Probability weight at a utility ratio</td><td>Confounds value function with weighting function</td><td>High</td></tr>
+          <tr><td>Trade-off method (Wakker & Deneffe, 1996)</td><td>Value function, canceling out probability weighting</td><td>Requires multiple consistent indifference judgments; cognitively demanding</td><td>Lower — designed to be theory-neutral</td></tr>
+          <tr><td>Observed choice (revealed preference)</td><td>Behavioral consistency with a model</td><td>Preferences are framing-dependent; different frames yield different "preferences"</td><td>Very high — assumes stable preferences</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BEST PAPERS -->
+  <div class="topic-section">
+    <h2>Best Papers to Start With</h2>
+    <ul class="papers-short-list">
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Kahneman & Tversky (1979)</span> <span class="p-note">Prospect theory — still the dominant descriptive model</span></li>
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Tversky & Kahneman (1992)</span> <span class="p-note">Cumulative prospect theory — parametric forms, multi-outcome extension</span></li>
+      <li><span class="p-era badge-contested">Contested</span> <span class="p-ref">Bordalo, Gennaioli & Shleifer (2012)</span> <span class="p-note">Salience theory — attention-based alternative to probability weighting</span></li>
+      <li><span class="p-era badge-frontier">Frontier</span> <span class="p-ref">Enke & Graeber (2023)</span> <span class="p-note">Cognitive uncertainty — anomalies as noise, not stable bias</span></li>
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Kőszegi & Rabin (2006)</span> <span class="p-note">Endogenous reference points via expectations — major theoretical advance</span></li>
+    </ul>
+  </div>
+
+  <!-- DESIGN IMPLICATIONS -->
+  <div class="topic-section">
+    <h2>What This Means for Human-AI Systems</h2>
+    <p><strong>The normative benchmark problem is unavoidable.</strong> Any AI that claims to "improve" decisions is implicitly adopting a model of what "better" means. If it uses EUT, it will override intuitions the person endorses. If it uses prospect theory, it will preserve framing effects the person would want corrected. If it uses revealed preference, it inherits framing-dependent, inconsistent data. There is no neutral choice. Making the benchmark explicit — and letting the user endorse or modify it — is the minimum viable design response.</p>
+
+    <p><strong>If the mechanism is attentional (salience theory), interface redesign is the intervention.</strong> If Allais-type violations happen because people over-attend to salient payoffs, then changing which payoffs are visually prominent should change the "bias." This is cheap and scalable. If the mechanism is probability weighting (prospect theory), the bias persists regardless of display — and the only intervention is training or debiasing, which is expensive and fragile.</p>
+
+    <p><strong>Cognitive uncertainty (Enke & Graeber) suggests a constructive role for AI.</strong> If people are uncertain about their own preferences, an AI that helps them clarify — through structured comparisons, Socratic questioning, or decomposition — may improve decisions not by correcting biases but by reducing noise. This is a less paternalistic and more promising frame for AI decision support.</p>
+  </div>
+
+  <!-- MY TAKE -->
+  <div class="my-take">
+    <div class="my-take-label">My Take</div>
+    <p>Prospect theory is the best tool we have, but the field treats it too much like a gospel and not enough like a tool. Its parametric form (CPT) fits lab data well, but the reference point — the most important parameter — is usually assumed ad hoc. Kőszegi-Rabin endogenize it, but their solution assumes rational expectations, which defeats the purpose if you're modeling bounded agents. The most productive direction is probably the competition between prospect theory and salience theory, because it's the competition most likely to produce design-actionable answers. If salience theory wins, you can fix biases by redesigning displays. If prospect theory wins, you can't. That difference matters enormously for AI interface design, and it's testable.</p>
+  </div>
+
+</main>
+
+<footer class="site-footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
+</body>
+</html>

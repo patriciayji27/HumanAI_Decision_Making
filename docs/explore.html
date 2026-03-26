@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore — Human-Agent Decision Making</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Human-Agent Decision Making</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="content/topics/belief-elicitation.html">Streams</a>
+      <a href="explore.html" class="active">Explore</a>
+      <a href="build.html">Build</a>
+    </div>
+  </div>
+</nav>
+
+<main class="site-main wide">
+
+  <h1 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; margin-bottom: var(--space-sm);">Explore Papers</h1>
+  <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-xl);">Search and filter across all papers in the archive. Each paper includes an epistemic status tag and a one-line verdict.</p>
+
+  <!-- Search & Filter -->
+  <div style="display: flex; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-xl); align-items: flex-end;">
+    <div style="flex: 1; min-width: 240px;">
+      <label style="font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); display: block; margin-bottom: 4px;">Search</label>
+      <input type="text" id="search-input" placeholder="Author, title, or keyword..." style="width: 100%; padding: 8px 12px; font-family: var(--font-body); font-size: 0.88rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); outline: none;">
+    </div>
+    <div>
+      <label style="font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); display: block; margin-bottom: 4px;">Stream</label>
+      <select id="filter-stream" style="padding: 8px 12px; font-family: var(--font-body); font-size: 0.88rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card);">
+        <option value="all">All streams</option>
+        <option value="1">1 · Belief Elicitation</option>
+        <option value="2">2 · Uncertainty Communication</option>
+        <option value="3">3 · Decision Quality</option>
+        <option value="4">4 · Attention & Salience</option>
+        <option value="5">5 · Risk & Ambiguity</option>
+        <option value="6">6 · Temporal Dynamics</option>
+        <option value="7">7 · Sampling & Experience</option>
+        <option value="8">8 · AI Agents</option>
+      </select>
+    </div>
+    <div>
+      <label style="font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); display: block; margin-bottom: 4px;">Status</label>
+      <select id="filter-status" style="padding: 8px 12px; font-family: var(--font-body); font-size: 0.88rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card);">
+        <option value="all">All</option>
+        <option value="settled">Settled</option>
+        <option value="contested">Contested</option>
+        <option value="frontier">Frontier</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="results-count" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: var(--space-md);"></div>
+
+  <!-- Paper list rendered by JS -->
+  <div id="paper-list"></div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Human-Agent Decision Making — A personal research archive</p>
+</footer>
+
+<script>
+// Paper data — grows as you add digests
+const papers = [
+  {
+    title: "Prospect Theory: An Analysis of Decision under Risk",
+    authors: "Kahneman & Tversky",
+    year: 1979,
+    streams: ["3", "1", "5", "7"],
+    status: "settled",
+    verdict: "Still the dominant descriptive model. Loss aversion, reference dependence, and probability weighting remain the framework most applied work builds on.",
+    url: "content/papers/kahneman-tversky-1979.html"
+  },
+  {
+    title: "How to Solve the Base-Rate Problem Using Natural Frequencies",
+    authors: "Gigerenzer & Hoffrage",
+    year: 1995,
+    streams: ["2", "1"],
+    status: "settled",
+    verdict: "Established that format causally affects reasoning. Natural frequencies improve Bayesian inference from ~15% to ~50% correct. Rock-solid effect.",
+    url: ""
+  },
+  {
+    title: "Cognitive Uncertainty",
+    authors: "Enke & Graeber",
+    year: 2023,
+    streams: ["3", "4"],
+    status: "frontier",
+    verdict: "Measurable construct linking attention limits to choice quality. Potentially unifies many anomalies as noise rather than stable biases. Too early to know if it holds broadly.",
+    url: ""
+  },
+  {
+    title: "Algorithm Aversion: People Erroneously Avoid Algorithms After Seeing Them Err",
+    authors: "Dietvorst, Simmons & Massey",
+    year: 2015,
+    streams: ["8"],
+    status: "settled",
+    verdict: "Foundational demonstration that seeing an algorithm fail reduces reliance below rational levels. Robust across domains.",
+    url: ""
+  },
+  {
+    title: "Does the Whole Exceed the Sum of Its Parts? The Effect of AI Explanations on Complementary Team Performance",
+    authors: "Bansal et al.",
+    year: 2021,
+    streams: ["8", "4"],
+    status: "settled",
+    verdict: "Complementarity requires humans to identify when AI is wrong — which is precisely the task humans are worst at.",
+    url: ""
+  },
+  {
+    title: "Salience Theory of Choice Under Risk",
+    authors: "Bordalo, Gennaioli & Shleifer",
+    year: 2012,
+    streams: ["4", "3"],
+    status: "contested",
+    verdict: "Attention-based alternative to probability weighting. Explains Allais-type violations without distorted probabilities. If right, fixing the display fixes the bias.",
+    url: ""
+  },
+  {
+    title: "Calibration of Probabilities: The State of the Art to 1980",
+    authors: "Lichtenstein, Fischhoff & Phillips",
+    year: 1982,
+    streams: ["1"],
+    status: "settled",
+    verdict: "Established overconfidence as one of the most robust findings in judgment research. 90% CIs contain truth ~50% of time.",
+    url: ""
+  },
+  {
+    title: "Decisions from Experience and the Effect of Rare Events in Risky Choice",
+    authors: "Hertwig, Barron, Weber & Erev",
+    year: 2004,
+    streams: ["7", "2"],
+    status: "settled",
+    verdict: "Foundational demonstration of the description-experience gap. Described probabilities overweight rare events; experienced probabilities underweight them.",
+    url: ""
+  },
+  {
+    title: "Myopic Loss Aversion and the Equity Premium Puzzle",
+    authors: "Benartzi & Thaler",
+    year: 1995,
+    streams: ["6", "3"],
+    status: "settled",
+    verdict: "Showed that evaluation frequency × loss aversion explains the equity premium puzzle. Clean, actionable, and design-relevant.",
+    url: ""
+  },
+  {
+    title: "Visualizing Uncertainty with Hypothetical Outcome Plots",
+    authors: "Hullman, Resnick & Adar",
+    year: 2015,
+    streams: ["2", "7"],
+    status: "contested",
+    verdict: "Introduced animated uncertainty displays. Converts statistical reading into frequency estimation. Lab evidence is positive but real-world validation is thin.",
+    url: ""
+  },
+  {
+    title: "Risk as Feelings",
+    authors: "Loewenstein, Weber, Hsee & Welch",
+    year: 2001,
+    streams: ["5", "2"],
+    status: "settled",
+    verdict: "Showed that emotional reactions to risk diverge from cognitive assessments and often dominate decisions. Changed how the field thinks about risk communication.",
+    url: ""
+  },
+  {
+    title: "Ambiguity and Comparative Ignorance",
+    authors: "Fox & Tversky",
+    year: 1995,
+    streams: ["5"],
+    status: "settled",
+    verdict: "Source preference: people's willingness to bet depends on perceived competence relative to the uncertainty source. Directly relevant to AI trust.",
+    url: ""
+  },
+  {
+    title: "When Does Aggregating Predictions From the Crowd Improve Prediction Quality?",
+    authors: "Steyvers et al.",
+    year: 2022,
+    streams: ["8"],
+    status: "contested",
+    verdict: "Bayesian model of human-AI integration. Elegant but assumes uncorrelated errors and calibrated confidence — conditions rarely met in practice.",
+    url: ""
+  },
+  {
+    title: "Algorithm Appreciation: People Prefer Algorithmic to Human Judgment",
+    authors: "Logg, Minson & Moore",
+    year: 2019,
+    streams: ["8"],
+    status: "contested",
+    verdict: "The flip side of algorithm aversion. People over-rely on algorithms for objective-seeming tasks. Direction depends on perceived task subjectivity.",
+    url: ""
+  },
+  {
+    title: "Quantile Dotplots for Visualizing Uncertainty",
+    authors: "Kay, Kola, Hullman & Munson",
+    year: 2016,
+    streams: ["2", "7"],
+    status: "contested",
+    verdict: "Bridges frequency-based reasoning with distributional display. Improved decision quality compared to density plots and intervals. Promising but still niche.",
+    url: ""
+  },
+  {
+    title: "Prediction, Judgment, and Complexity",
+    authors: "Hofman, Goldstein & Hullman",
+    year: 2020,
+    streams: ["2", "3"],
+    status: "contested",
+    verdict: "Demonstrated the comprehension-use gap: displays that improve understanding don't always improve decisions. The most important unsolved problem in uncertainty communication.",
+    url: ""
+  }
+];
+
+const streamNames = {
+  "1": "Belief Elicitation", "2": "Uncertainty Communication",
+  "3": "Decision Quality", "4": "Attention & Salience",
+  "5": "Risk & Ambiguity", "6": "Temporal Dynamics",
+  "7": "Sampling & Experience", "8": "AI Agents"
+};
+const streamColors = {
+  "1": "#3572A5", "2": "#2A9D8F", "3": "#E76F51", "4": "#9B59B6",
+  "5": "#DC4C64", "6": "#2E86AB", "7": "#E9C46A", "8": "#264653"
+};
+
+function renderPapers(filtered) {
+  const container = document.getElementById('paper-list');
+  const countEl = document.getElementById('results-count');
+  countEl.textContent = `${filtered.length} paper${filtered.length !== 1 ? 's' : ''}`;
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<p style="color: var(--text-muted); padding: 40px 0;">No papers match your filters.</p>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(p => {
+    const statusClass = p.status === 'settled' ? 'badge-settled' : p.status === 'contested' ? 'badge-contested' : 'badge-frontier';
+    const streamBadges = p.streams.map(s =>
+      `<span style="font-size:0.68rem;font-weight:600;color:${streamColors[s]};margin-right:8px;">${s}·${streamNames[s]}</span>`
+    ).join('');
+
+    return `<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-lg);margin-bottom:var(--space-md);">
+      <div style="display:flex;align-items:baseline;gap:var(--space-sm);margin-bottom:6px;flex-wrap:wrap;">
+        <span class="${statusClass}" style="font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:2px 8px;border-radius:3px;">${p.status}</span>
+        <span style="font-size:0.82rem;color:var(--text-muted);">${p.year}</span>
+      </div>
+      <div style="font-family:var(--font-heading);font-size:1rem;font-weight:600;margin-bottom:4px;">${p.url ? `<a href="${p.url}" style="color:var(--text);text-decoration:none;">${p.title}</a>` : p.title}</div>
+      <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:var(--space-sm);">${p.authors}</div>
+      <div style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;font-style:italic;margin-bottom:var(--space-sm);">${p.verdict}</div>
+      <div>${streamBadges}</div>
+    </div>`;
+  }).join('');
+}
+
+function filterPapers() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const stream = document.getElementById('filter-stream').value;
+  const status = document.getElementById('filter-status').value;
+
+  const filtered = papers.filter(p => {
+    const matchQ = !q || p.title.toLowerCase().includes(q) || p.authors.toLowerCase().includes(q) || p.verdict.toLowerCase().includes(q);
+    const matchStream = stream === 'all' || p.streams.includes(stream);
+    const matchStatus = status === 'all' || p.status === status;
+    return matchQ && matchStream && matchStatus;
+  });
+
+  renderPapers(filtered);
+}
+
+document.getElementById('search-input').addEventListener('input', filterPapers);
+document.getElementById('filter-stream').addEventListener('change', filterPapers);
+document.getElementById('filter-status').addEventListener('change', filterPapers);
+
+// Initial render
+renderPapers(papers);
+</script>
+
+</body>
+</html>

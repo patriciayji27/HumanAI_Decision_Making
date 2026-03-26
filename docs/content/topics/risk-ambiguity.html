@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Risk, Ambiguity & Controllability — Human-Agent Decision Making</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+    <div class="nav-links">
+      <a href="../../index.html">Home</a>
+      <a href="belief-elicitation.html" class="active">Streams</a>
+      <a href="../../explore.html">Explore</a>
+      <a href="../../build.html">Build</a>
+    </div>
+  </div>
+</nav>
+
+<main class="site-main">
+
+  <div class="stream-hero">
+    <div class="stream-icon">🎲</div>
+    <h1>Risk, Ambiguity & Controllability</h1>
+    <p class="stream-oneliner">Not all uncertainty is the same. People are generally ambiguity-averse — they prefer known risks to unknown ones, even when the known risk is objectively worse. AI systems are almost always sources of ambiguity, not risk, which changes how users process their outputs.</p>
+  </div>
+
+  <div class="xref-row">
+    <a class="xref-chip" href="utility-decision-quality.html">→ Decision Quality</a>
+    <a class="xref-chip" href="belief-elicitation.html">→ Belief Elicitation</a>
+    <a class="xref-chip" href="agents-as-advisors.html">→ AI Agents</a>
+  </div>
+
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--settled);"></span> What the field is confident about</h2>
+    <div class="claims-list">
+      <div class="claim-card settled">
+        <strong>Ambiguity aversion is robust — people pay a premium to avoid unknown probabilities.</strong>
+        <p>The Ellsberg paradox (1961) demonstrated that people prefer a known 50/50 bet to an unknown-probability bet, even when the unknown bet could be 50/50 or better. This has been replicated extensively. The standard explanation: people are uncomfortable not knowing the probability distribution, and they treat ambiguity as worse than equivalent risk.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Source preference: people prefer uncertainty from familiar, competent sources.</strong>
+        <p>Fox & Tversky (1995) showed that people's willingness to bet depends not just on the probability but on their perceived competence relative to the uncertainty source. A doctor is more willing to bet on a medical outcome than on a financial outcome at the same probability. This has direct implications for AI: trust in AI predictions depends partly on whether the user perceives the AI as a "competent" source for the domain.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Perceived control modulates risk-taking — even when control is illusory.</strong>
+        <p>Langer (1975) demonstrated "illusion of control": people behave as if they can influence random outcomes when given choice, familiarity, or involvement cues. This is relevant to AI-assisted decisions: giving users the ability to adjust AI parameters (even superficially) may increase their comfort with the uncertainty — which could be beneficial (reduces anxiety) or harmful (creates false confidence).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--contested);"></span> Where the field is still confused</h2>
+    <div class="claims-list">
+      <div class="claim-card contested">
+        <strong>Whether ambiguity attitudes are stable across contexts or domain-specific.</strong>
+        <p>A person who is ambiguity-averse for financial bets may be ambiguity-seeking in medical contexts (where the unknown might be better). Ambiguity attitudes also shift with probability level: people tend to be ambiguity-averse for likely gains but ambiguity-seeking for unlikely gains. This pattern is predicted by some models but not consistently observed.</p>
+      </div>
+      <div class="claim-card contested">
+        <strong>Whether AI opacity triggers ambiguity aversion or a distinct "AI uncertainty" response.</strong>
+        <p>AI systems are typically ambiguous in the Knightian sense — users don't know the probability distribution over AI errors. But it's unclear whether users process this as standard ambiguity (and show standard ambiguity aversion) or as something different — a "black box" reaction that has its own dynamics, possibly related to process trust rather than probability assessment.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-section">
+    <h2>Models of Ambiguity</h2>
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Model</th><th>Core Idea</th><th>Strength</th><th>Weakness</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Maxmin Expected Utility (Gilboa & Schmeidler, 1989)</td><td>Evaluate by the worst-case prior in a set of plausible priors</td><td>Captures extreme ambiguity aversion; axiomatically clean</td><td>Too conservative for moderate ambiguity</td></tr>
+          <tr><td>Smooth Ambiguity (Klibanoff, Marinacci & Mukerji, 2005)</td><td>Second-order expected utility over a distribution of priors</td><td>Allows varying degrees of ambiguity aversion</td><td>Requires specifying a second-order distribution, which is itself often ambiguous</td></tr>
+          <tr><td>Source Preference (Fox & Tversky, 1995)</td><td>Willingness to bet depends on competence relative to the source</td><td>Captures domain-specific ambiguity attitudes</td><td>Hard to parameterize; more descriptive than predictive</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="topic-section">
+    <h2>Best Papers to Start With</h2>
+    <ul class="papers-short-list">
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Ellsberg (1961)</span> <span class="p-note">The paradox — still the definitive demonstration of ambiguity aversion</span></li>
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Fox & Tversky (1995)</span> <span class="p-note">Source preference — domain-specific ambiguity attitudes</span></li>
+      <li><span class="p-era badge-settled">Settled</span> <span class="p-ref">Gilboa & Schmeidler (1989)</span> <span class="p-note">Maxmin EU — the normative response to ambiguity</span></li>
+      <li><span class="p-era badge-contested">Contested</span> <span class="p-ref">Klibanoff, Marinacci & Mukerji (2005)</span> <span class="p-note">Smooth ambiguity — flexible but hard to identify empirically</span></li>
+    </ul>
+  </div>
+
+  <div class="topic-section">
+    <h2>What This Means for Human-AI Systems</h2>
+    <p><strong>AI is almost always a source of ambiguity, not risk.</strong> Users don't know the probability distribution over AI errors. This means ambiguity aversion — not risk aversion — is the relevant psychological mechanism for understanding AI adoption resistance. Strategies that reduce perceived ambiguity (transparent error rates, domain-specific track records, familiar analogies) may be more effective than strategies that reduce actual error rates.</p>
+    <p><strong>Perceived control matters — even if the control is cosmetic.</strong> Letting users adjust a threshold, choose between AI strategies, or set their own risk tolerance may increase comfort with AI-mediated decisions, even if the adjustment has minimal impact on outcomes. But this must be balanced against the risk of illusory control creating false confidence.</p>
+  </div>
+
+  <div class="my-take">
+    <div class="my-take-label">My Take</div>
+    <p>The risk-ambiguity distinction is underused in AI design. Most AI systems present a single confidence score, which implicitly treats the uncertainty as risk (known probability). But the user doesn't know whether that confidence score is well-calibrated — making it ambiguous in the Ellsberg sense. Acknowledging this openly ("this system is right about 80% of the time on similar cases, but we're less sure about atypical cases") converts some ambiguity into risk, which should reduce ambiguity aversion and improve appropriate reliance. The field has the theory. It needs the implementation.</p>
+  </div>
+
+</main>
+
+<footer class="site-footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
+</body>
+</html>

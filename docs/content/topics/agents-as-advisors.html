@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agents as Decision Partners — Human-Agent Decision Making</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+    <div class="nav-links">
+      <a href="../../index.html">Home</a>
+      <a href="belief-elicitation.html" class="active">Streams</a>
+      <a href="../../explore.html">Explore</a>
+      <a href="../../build.html">Build</a>
+    </div>
+  </div>
+</nav>
+
+<main class="site-main">
+
+  <!-- HEADER -->
+  <div class="stream-hero">
+    <div class="stream-icon">🤖</div>
+    <h1>AI Agents as Decision Partners</h1>
+    <p class="stream-oneliner">The frontier is no longer "are LLMs calibrated?" — it's "when does uncertainty communication from AI actually improve human decisions, and through what mechanism?"</p>
+  </div>
+
+  <!-- CROSS-REFS: compact chips -->
+  <div class="xref-row">
+    <a class="xref-chip" href="belief-elicitation.html">→ Belief Elicitation</a>
+    <a class="xref-chip" href="uncertainty-communication.html">→ Uncertainty Communication</a>
+    <a class="xref-chip" href="utility-decision-quality.html">→ Decision Quality</a>
+    <a class="xref-chip" href="attention-memory-salience.html">→ Attention & Salience</a>
+    <a class="xref-chip" href="risk-ambiguity.html">→ Risk & Ambiguity</a>
+  </div>
+
+  <!-- SETTLED / CONTESTED / FRONTIER -->
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--settled);"></span> What the field is confident about</h2>
+    <div class="claims-list">
+      <div class="claim-card settled">
+        <strong>Algorithm aversion and algorithm appreciation are both real — context determines which dominates.</strong>
+        <p>People abandon algorithms after seeing them err (Dietvorst et al., 2015), but also over-rely on algorithmic advice for tasks perceived as objective (Logg et al., 2019). The direction depends on perceived task subjectivity, whether the user has skin in the game, and whether they've seen the algorithm fail. This is not a single bias — it's a context-sensitive trust calibration.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>Human-AI complementarity is aspirational, not default.</strong>
+        <p>The hope that human-AI teams outperform either alone is rarely achieved in practice. Bansal et al. (2021) showed complementarity requires the human to correctly identify when the AI is wrong — which is precisely the task humans are worst at, because confident AI outputs suppress the skepticism needed to catch errors. Most current systems produce "automation bias" more often than complementarity.</p>
+      </div>
+      <div class="claim-card settled">
+        <strong>AI confidence expressions change human trust independently of AI accuracy.</strong>
+        <p>This is the finding that makes the rest of Stream 8 urgent. An AI that sounds confident is trusted more — even when that confidence is unearned. An AI that hedges appropriately may be trusted less — even when the hedging is informative. Trust responds to the signal's style, not just its content. This means calibrating AI outputs is necessary but insufficient for good human-AI decisions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="claims-section">
+    <h2><span class="status-dot" style="background: var(--contested);"></span> Where the field is still confused</h2>
+    <div class="claims-list">
+      <div class="claim-card contested">
+        <strong>Whether AI explanations help or hurt depends on conditions we can't yet specify in advance.</strong>
+        <p>Correct explanations improve decisions in some studies. But misleading explanations hurt performance more than correct explanations help it — the effect is asymmetric. And "explanation" encompasses everything from feature importance to natural-language rationales to confidence scores. The field hasn't converged on which explanation types improve which decisions for which users.</p>
+      </div>
+      <div class="claim-card contested">
+        <strong>The optimal level of AI-expressed uncertainty may be "medium," not "calibrated."</strong>
+        <p>Emerging evidence suggests medium-verbalized uncertainty can outperform both high and low uncertainty expressions in user trust and decision performance. If confirmed, this complicates the entire calibration program — the goal wouldn't be truthful uncertainty expression but rather uncertainty expression tuned to produce the best human response. That's a much harder (and ethically murkier) target.</p>
+      </div>
+      <div class="claim-card contested">
+        <strong>We don't know how to measure human-AI team decision quality.</strong>
+        <p>Is the team "good" when it makes the decision the human would make with full information? When it matches expected-utility-maximizing behavior? When the human reports satisfaction? These diverge. A team that overrides the human's biased intuition produces better outcomes but lower satisfaction. A team that defers to the human produces worse outcomes but preserves autonomy. There is no consensus metric.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBSTREAM 1: Confidence Communication & Calibration Gaps -->
+  <div class="topic-section">
+    <h2>Substream A: Confidence Communication & Calibration Gaps</h2>
+    <p><strong>Core question:</strong> When an AI system expresses confidence, does the expressed level match its actual accuracy — and does the match even matter for human decisions?</p>
+
+    <p>LLMs are notoriously miscalibrated. They produce fluent, confident-sounding text for claims they have no reliable basis for, and they hedge on claims they're quite accurate about. The miscalibration doesn't map neatly onto human overconfidence patterns (which are at least predictable via the hard-easy effect). LLM confidence is shaped by training data distributions, RLHF reward signals, and prompt structure — none of which have a principled relationship to accuracy.</p>
+
+    <p>But the deeper problem is that <strong>even perfect calibration might not produce good human decisions</strong>. If a user can't distinguish between "75% confident (well-calibrated)" and "75% confident (miscalibrated)," the calibration is doing work only for the researcher, not for the user. The question that matters for design is: does the user's downstream behavior improve when the AI's confidence expressions are more truthful? The evidence so far is mixed and depends heavily on the decision context, the user's numeracy, and the format of the confidence expression.</p>
+
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Confidence Format</th><th>What Users Get Right</th><th>Main Failure Mode</th><th>Best Evidence</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Numeric probability</td><td>Rank-ordering of options by confidence</td><td>Users treat 73% vs 78% as meaningful when the difference is noise</td><td>Joslyn et al. (2009): false precision increases trust</td></tr>
+          <tr><td>Verbal hedging</td><td>Coarse gist ("sure" vs "unsure")</td><td>Enormous variability in numeric interpretation; "fairly confident" means 60% to 90%</td><td>Wallsten et al. (1986); Budescu & Wallsten (1995)</td></tr>
+          <tr><td>Calibrated score + explanation</td><td>Trust calibration in lab settings</td><td>Users anchor on the explanation's plausibility, not the score</td><td>Bansal et al. (2021)</td></tr>
+          <tr><td>Confidence interval</td><td>Awareness that uncertainty exists</td><td>Width is chronically underestimated; "90% CI" is treated as ~60%</td><td>Lichtenstein & Fischhoff (1982)</td></tr>
+          <tr><td>Silence (no confidence info)</td><td>Nothing — users import their own assumptions</td><td>Assumed confidence tracks output fluency, which is unrelated to accuracy</td><td>Multiple LLM trust studies, 2023–25</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SUBSTREAM 2: Trust, Reliance & Overreliance -->
+  <div class="topic-section">
+    <h2>Substream B: Trust, Reliance & Overreliance</h2>
+    <p><strong>Core question:</strong> What determines whether a human appropriately weighs AI input — not too much (automation bias), not too little (algorithm aversion)?</p>
+
+    <p>Trust in AI advice is not a single dial. It has at least three separable components: <strong>competence trust</strong> (does the AI know what it's doing?), <strong>process trust</strong> (do I understand how it reached its conclusion?), and <strong>value alignment trust</strong> (is it trying to help me, or optimizing something else?). Most research measures aggregate trust with a single Likert scale, which obscures the mechanism.</p>
+
+    <p>The empirical picture as of 2025:</p>
+
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Finding</th><th>Status</th><th>Key Caveat</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Users over-rely on AI when the task feels objective and the output is fluent</td><td><span class="p-era badge-settled" style="padding: 2px 8px; border-radius: 3px;">Settled</span></td><td>Effect weakens when users have domain expertise</td></tr>
+          <tr><td>Seeing the AI fail reduces reliance — but only temporarily and only for similar-seeming tasks</td><td><span class="p-era badge-settled" style="padding: 2px 8px; border-radius: 3px;">Settled</span></td><td>Transfer to new domains is weak</td></tr>
+          <tr><td>Giving users the option to modify AI output (rather than accept/reject) improves appropriate reliance</td><td><span class="p-era badge-contested" style="padding: 2px 8px; border-radius: 3px;">Contested</span></td><td>Some evidence this just makes users feel better without improving decisions</td></tr>
+          <tr><td>Explanation style changes trust independently of explanation accuracy</td><td><span class="p-era badge-settled" style="padding: 2px 8px; border-radius: 3px;">Settled</span></td><td>The direction of the effect depends on explanation type</td></tr>
+          <tr><td>Misleading AI explanations hurt decision quality more than correct explanations help</td><td><span class="p-era badge-frontier" style="padding: 2px 8px; border-radius: 3px;">Frontier</span></td><td>Shown in high-stakes simulations; unclear if it replicates in low-stakes domains</td></tr>
+          <tr><td>Medium-expressed uncertainty outperforms both high and low expressions</td><td><span class="p-era badge-frontier" style="padding: 2px 8px; border-radius: 3px;">Frontier</span></td><td>Small number of studies; mechanism unclear (optimal trust? reduced cognitive load?)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="my-take">
+      <div class="my-take-label">My Take</div>
+      <p>The trust literature is heading toward a dead end if it keeps measuring "trust" as a single construct and "explanation" as a binary treatment. The productive questions are about <em>which</em> trust component is affected by <em>which</em> explanation feature in <em>which</em> decision context. The finding that misleading explanations hurt more than correct ones help is the most important result in this space — it means the risk-reward calculation for AI explanations is asymmetric, and "more explanation" is not always better.</p>
+    </div>
+  </div>
+
+  <!-- SUBSTREAM 3: Elicitation Through Dialogue -->
+  <div class="topic-section">
+    <h2>Substream C: Elicitation Through Dialogue</h2>
+    <p><strong>Core question:</strong> Can conversational AI agents help people articulate their beliefs, preferences, and values better than static forms — or do they introduce new distortions?</p>
+
+    <p>This is the substream with the most theoretical promise and the least empirical evidence. The idea: instead of asking users to fill out probability estimates on a form, an AI agent engages them in structured dialogue — decomposing complex judgments, probing for inconsistencies, and adapting the questioning to the person's responses. The SHELF protocol for expert elicitation already does something like this with a human facilitator; the question is whether an AI facilitator can replicate or improve the process.</p>
+
+    <p><strong>What could go right:</strong> Dialogue-based elicitation could reduce format artifacts (because the AI picks the best format per sub-question), reduce cognitive load (by decomposing the task), and surface inconsistencies the person wouldn't notice on a static form.</p>
+
+    <p><strong>What could go wrong:</strong> The AI's question framing anchors the person's response. Conversational flow creates pressure for coherence — the person may commit to early answers and adjust insufficiently, producing false consistency. Social dynamics of human-AI dialogue are poorly understood: do people treat the AI as a neutral tool or as a social interlocutor whose approval they seek? If the latter, elicited "beliefs" are partly social performances, not genuine uncertainty reports.</p>
+
+    <p><strong>Current state:</strong> Theoretical arguments are strong. Empirical studies are nearly absent. This is a gap that can be filled with relatively straightforward experiments — comparing dialogue-based elicitation to static interfaces on calibration, resolution, and user satisfaction — and the results would have immediate design implications.</p>
+  </div>
+
+  <!-- SUBSTREAM 4: Explanation Style, Verbosity & False Fluency -->
+  <div class="topic-section">
+    <h2>Substream D: Explanation Style, Verbosity & False Fluency</h2>
+    <p><strong>Core question:</strong> When an AI explains its reasoning, does the explanation's linguistic quality contaminate the user's assessment of the reasoning's logical quality?</p>
+
+    <p>This is the problem that makes LLM-based decision support fundamentally different from earlier algorithmic decision aids. Traditional ML systems output a number (a predicted probability, a risk score) and maybe a feature importance chart. LLMs output natural language — and natural language carries persuasive force that is independent of content quality. A fluent, well-structured paragraph claiming X feels more credible than a choppy, hedging paragraph claiming X, even when the evidence is identical.</p>
+
+    <p><strong>False fluency</strong> is the term for this phenomenon: the user attributes epistemic qualities (accuracy, reliability, depth of reasoning) to surface-level linguistic qualities (fluency, coherence, detail). This is a specific, testable version of the broader "explanation effect" on trust. It matters because LLMs are optimized during training (especially RLHF) to produce fluent, confident, detailed outputs — exactly the properties that trigger false fluency.</p>
+
+    <p>The design implications are uncomfortable: making the AI sound better at explaining may actively harm decision quality by suppressing appropriate skepticism. But making the AI deliberately less fluent feels adversarial to the user experience. The resolution probably requires <strong>decoupling confidence signals from fluency</strong> — explicit uncertainty markers that the user can process independently of the explanation's rhetorical quality.</p>
+
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Explanation Feature</th><th>Effect on Trust</th><th>Effect on Decision Quality</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Length / detail</td><td>Increases trust</td><td>Mixed — can improve or overwhelm</td><td><span class="p-era badge-contested" style="padding: 2px 8px; border-radius: 3px;">Contested</span></td></tr>
+          <tr><td>Linguistic fluency</td><td>Increases trust independent of accuracy</td><td>No improvement; may worsen via false confidence</td><td><span class="p-era badge-settled" style="padding: 2px 8px; border-radius: 3px;">Settled</span></td></tr>
+          <tr><td>Feature attribution (SHAP, etc.)</td><td>Increases perceived transparency</td><td>Minimal improvement for non-experts</td><td><span class="p-era badge-contested" style="padding: 2px 8px; border-radius: 3px;">Contested</span></td></tr>
+          <tr><td>Counterfactual ("if X were different...")</td><td>Increases process trust</td><td>Promising for actionable decisions</td><td><span class="p-era badge-frontier" style="padding: 2px 8px; border-radius: 3px;">Frontier</span></td></tr>
+          <tr><td>Explicit confidence + reasoning</td><td>Moderate trust; can reduce overreliance</td><td>Best available approach, but effect is small</td><td><span class="p-era badge-frontier" style="padding: 2px 8px; border-radius: 3px;">Frontier</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SUBSTREAM 5: Human-AI Complementarity & Decision Protocols -->
+  <div class="topic-section">
+    <h2>Substream E: Human-AI Complementarity & Decision Protocols</h2>
+    <p><strong>Core question:</strong> Under what conditions does a human-AI team actually outperform either alone, and what decision protocol achieves this?</p>
+
+    <p>Complementarity — the aspiration that 1+1>2 — requires a specific and demanding condition: the team must combine the strengths of both members while avoiding their respective weaknesses. For human-AI teams, this means the human should override the AI when the AI is wrong, defer to the AI when the human's intuition is unreliable, and both should recognize which regime they're in.</p>
+
+    <p>Steyvers et al. (2022) proposed a Bayesian model of human-AI integration, predicting when combined judgment beats either source. The model works when the human and AI have uncorrelated error patterns and the human has some ability to assess AI reliability. In practice, these conditions are rarely met: AI errors and human errors are often correlated (both struggle with the same hard cases), and humans are poor judges of when the AI is likely to be wrong.</p>
+
+    <p><strong>Decision protocols that have been tested:</strong></p>
+
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Protocol</th><th>How It Works</th><th>When It Helps</th><th>When It Fails</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>AI recommends, human accepts/rejects</td><td>Binary override decision</td><td>When human has strong domain knowledge and AI errors are detectable</td><td>Automation bias: humans rarely override; the accept rate is ~80%+ even when AI is wrong</td></tr>
+          <tr><td>Human decides first, AI provides second opinion</td><td>Sequential, human anchored</td><td>Preserves human agency; AI can flag disagreements</td><td>Anchoring: human rarely changes initial judgment enough even when AI disagrees</td></tr>
+          <tr><td>AI provides information, human decides without explicit AI recommendation</td><td>AI as informant, not advisor</td><td>Reduces automation bias; preserves deliberation</td><td>Users may be unable to extract the useful signal from raw AI information</td></tr>
+          <tr><td>Structured disagreement protocol</td><td>When human and AI disagree, force explicit reasoning for override</td><td>Increases deliberation quality; makes overrides more thoughtful</td><td>Cognitive cost is high; only feasible for high-stakes, low-frequency decisions</td></tr>
+          <tr><td>Adaptive delegation</td><td>Route easy cases to AI, hard/ambiguous cases to human</td><td>Efficient use of human attention; AI handles routine</td><td>Requires accurate difficulty estimation — which is itself an unsolved problem</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="my-take">
+      <div class="my-take-label">My Take</div>
+      <p>The complementarity literature is the weakest part of human-AI decision making research, because almost all studies use tasks where the "right answer" is known to the researcher. Real-world decisions under genuine uncertainty — where nobody knows the right answer ex ante — are structurally different. In those settings, the complementarity question isn't "does the team get the right answer more often?" but "does the team's decision process produce better uncertainty management?" That requires entirely different experimental designs and metrics, and almost nobody is running those experiments yet.</p>
+    </div>
+  </div>
+
+  <!-- BEST PAPERS -->
+  <div class="topic-section">
+    <h2>Best Papers to Start With</h2>
+    <ul class="papers-short-list">
+      <li>
+        <span class="p-era badge-settled">Settled</span>
+        <span class="p-ref">Dietvorst, Simmons & Massey (2015)</span>
+        <span class="p-note">Algorithm aversion — the foundational demonstration</span>
+      </li>
+      <li>
+        <span class="p-era badge-settled">Settled</span>
+        <span class="p-ref">Bansal et al. (2021)</span>
+        <span class="p-note">When human-AI teams outperform — conditions for complementarity</span>
+      </li>
+      <li>
+        <span class="p-era badge-contested">Contested</span>
+        <span class="p-ref">Steyvers et al. (2022)</span>
+        <span class="p-note">Bayesian model of human-AI integration — elegant but strong assumptions</span>
+      </li>
+      <li>
+        <span class="p-era badge-contested">Contested</span>
+        <span class="p-ref">Logg, Minson & Moore (2019)</span>
+        <span class="p-note">Algorithm appreciation — the flip side of aversion</span>
+      </li>
+      <li>
+        <span class="p-era badge-frontier">Frontier</span>
+        <span class="p-ref">Green & Chen (2019)</span>
+        <span class="p-note">AI recommendations introduce new biases while reducing old ones</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- DESIGN IMPLICATIONS -->
+  <div class="topic-section">
+    <h2>What This Means for Human-AI System Design</h2>
+    <p><strong>Don't optimize for trust — optimize for appropriate reliance.</strong> Many systems are designed to increase user trust in AI. But trust is already too high in most settings. The goal should be calibrated reliance: users who defer to the AI when it's reliable and override when it's not. This requires the interface to communicate AI uncertainty in ways the user can actually decode (see Substream A) and to make overriding the AI cognitively easy (see Substream E).</p>
+
+    <p><strong>Explanation design is risk management, not just UX.</strong> The asymmetry in Substream B — misleading explanations hurt more than correct ones help — means every AI explanation is a bet. Before adding an explanation feature, ask: "What happens when this explanation is wrong?" If the answer is "users will be more confidently wrong," the feature may not be worth shipping.</p>
+
+    <p><strong>The decision protocol matters more than the AI's accuracy.</strong> A mediocre AI embedded in a good decision protocol (structured disagreement, adaptive delegation) can outperform an excellent AI embedded in a bad protocol (accept/reject with no friction). System designers should invest as much in the protocol as in the model.</p>
+  </div>
+
+  <!-- OPEN EXPERIMENTS -->
+  <div class="topic-section">
+    <h2>Open Experiment Ideas</h2>
+    <ul class="experiments-list">
+      <li>
+        <strong>Dialogue vs. form elicitation, head-to-head</strong>
+        Compare beliefs elicited via AI dialogue vs. static probability form on calibration, resolution, and user satisfaction. Vary the AI's questioning strategy (Socratic, directive, neutral) and measure anchoring effects.
+      </li>
+      <li>
+        <strong>The false fluency experiment</strong>
+        Hold AI accuracy constant. Vary linguistic fluency (polished vs. choppy output) and explicit confidence level (high/medium/low). Measure trust, decision quality, and willingness to override. This disentangles fluency effects from accuracy effects.
+      </li>
+      <li>
+        <strong>Asymmetric explanation impact</strong>
+        Systematically vary explanation correctness (correct, partially wrong, fully wrong) and measure whether the damage from wrong explanations exceeds the benefit from correct ones. Test across domains (medical, financial, trivia) to check generality.
+      </li>
+      <li>
+        <strong>Complementarity under genuine uncertainty</strong>
+        Use forecasting tasks where the right answer isn't known at decision time. Measure whether human-AI teams produce better-calibrated probability assessments than either alone, using proper scoring rules. This tests complementarity in its ecologically valid form.
+      </li>
+      <li>
+        <strong>Medium uncertainty expression as a design strategy</strong>
+        Test whether AI systems that express moderate uncertainty (regardless of actual calibration) produce better user decisions than systems with truthful but variable uncertainty expressions. This is ethically fraught but empirically important.
+      </li>
+    </ul>
+  </div>
+
+  <!-- MY TAKE: Overall -->
+  <div class="my-take">
+    <div class="my-take-label">My Take on This Stream</div>
+    <p>Stream 8 is where cognitive science should be doing its most useful work for AI design — and it's currently underdelivering. Most human-AI decision making research uses tasks that are too simple (binary classification with known ground truth), measures that are too coarse (single trust scales, accept/reject rates), and protocols that are too artificial (one-shot interactions with no feedback). The field needs to move toward ecologically valid decision tasks under genuine uncertainty, longitudinal studies of trust dynamics, and experimental designs that can distinguish between attention mechanisms (Substream D), calibration mechanisms (Substream A), and protocol mechanisms (Substream E). The most impactful finding in the next five years will probably come from the false fluency / explanation asymmetry space — because that's where the largest gap between current practice (ship more explanations) and the evidence (more explanations might hurt) is widest.</p>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Human-Agent Decision Making — A personal research archive</p>
+</footer>
+
+</body>
+</html>
