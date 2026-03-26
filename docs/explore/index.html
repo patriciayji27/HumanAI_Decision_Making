@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore — Human-Agent Decision Making</title>
+  <meta name="description" content="A topic-organized research archive at the intersection of cognitive science and AI agents — focused on how humans represent, elicit, communicate, and act on uncertainty.
+">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">◈</span>
+        <span class="brand-text">HADM</span>
+      </a>
+      <div class="nav-links">
+        
+        <a href="/topics/">Topics</a>
+        
+        <a href="/explore/">Explore</a>
+        
+        <a href="/about/">About</a>
+        
+        <a href="">GitHub</a>
+        
+      </div>
+    </div>
+  </nav>
+
+  <main class="site-main">
+    
+<section class="page-header">
+  <h1>Explore Papers</h1>
+  <p class="page-subtitle">Search and filter across all paper digests.</p>
+</section>
+
+<section class="explore-controls">
+  <div class="search-box">
+    <input type="text" id="search-input" placeholder="Search titles, authors, tags..." autocomplete="off">
+  </div>
+  <div class="filter-row">
+    <div class="filter-group">
+      <label>Stream</label>
+      <select id="filter-stream">
+        <option value="">All streams</option>
+        
+        <option value="belief-elicitation">🎯 Belief Elicitation</option>
+        
+        <option value="uncertainty-communication">📊 Uncertainty Communication</option>
+        
+        <option value="utility-decision-quality">⚖️ Utility & Decision Quality</option>
+        
+        <option value="attention-memory-salience">🧠 Attention & Salience</option>
+        
+        <option value="risk-ambiguity">🎲 Risk & Ambiguity</option>
+        
+        <option value="temporal-dynamics">⏳ Temporal Dynamics</option>
+        
+        <option value="sampling-representation">📈 Sampling & Representation</option>
+        
+        <option value="agents-as-advisors">🤖 Agents as Advisors</option>
+        
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Era</label>
+      <select id="filter-era">
+        <option value="">All eras</option>
+        <option value="foundational">Foundational</option>
+        <option value="key-development">Key Development</option>
+        <option value="frontier">Frontier</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<section class="explore-results">
+  <div class="results-count"><span id="results-count">1</span> papers</div>
+  <div class="paper-list" id="paper-list">
+    
+    <div class="paper-row"
+         data-title="prospect theory: an analysis of decision under risk"
+         data-authors="daniel kahneman amos tversky"
+         data-tags="prospect-theory value-function probability-weighting loss-aversion certainty-effect reflection-effect isolation-effect reference-dependence editing-phase decision-weights subcertainty subproportionality"
+         data-streams="utility-decision-quality risk-ambiguity sampling-representation belief-elicitation"
+         data-era="foundational"
+         data-year="1979">
+      <span class="paper-year">1979</span>
+      <div class="paper-info">
+        <a href="/papers/kahneman-tversky-1979/" class="paper-title-link">
+          Prospect Theory: An Analysis of Decision Under Risk
+        </a>
+        <span class="paper-authors">Daniel Kahneman, Amos Tversky</span>
+      </div>
+      <div class="paper-tags">
+        <span class="era-badge era-foundational">foundational</span>
+        
+        
+        <span class="stream-badge" style="--badge-color: #E8833A">
+          ⚖️
+        </span>
+        
+        
+        
+        <span class="stream-badge" style="--badge-color: #DC4C64">
+          🎲
+        </span>
+        
+        
+        
+        <span class="stream-badge" style="--badge-color: #9B59B6">
+          📈
+        </span>
+        
+        
+        
+        <span class="stream-badge" style="--badge-color: #4A90D9">
+          🎯
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Human-Agent Decision Making — Research Digest & Concept Archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+  
+<script>
+(function() {
+  const searchInput = document.getElementById('search-input');
+  const filterStream = document.getElementById('filter-stream');
+  const filterEra = document.getElementById('filter-era');
+  const paperList = document.getElementById('paper-list');
+  const resultsCount = document.getElementById('results-count');
+  const rows = paperList.querySelectorAll('.paper-row');
+
+  function applyFilters() {
+    const query = searchInput.value.toLowerCase().trim();
+    const stream = filterStream.value;
+    const era = filterEra.value;
+    let count = 0;
+
+    rows.forEach(row => {
+      const title = row.dataset.title || '';
+      const authors = row.dataset.authors || '';
+      const tags = row.dataset.tags || '';
+      const rowStreams = row.dataset.streams || '';
+      const rowEra = row.dataset.era || '';
+
+      const matchesSearch = !query ||
+        title.includes(query) ||
+        authors.includes(query) ||
+        tags.includes(query);
+      const matchesStream = !stream || rowStreams.includes(stream);
+      const matchesEra = !era || rowEra === era;
+
+      if (matchesSearch && matchesStream && matchesEra) {
+        row.style.display = '';
+        count++;
+      } else {
+        row.style.display = 'none';
+      }
+    });
+
+    resultsCount.textContent = count;
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  filterStream.addEventListener('change', applyFilters);
+  filterEra.addEventListener('change', applyFilters);
+})();
+</script>
+
+</body>
+</html>

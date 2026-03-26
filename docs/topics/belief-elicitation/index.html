@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belief Elicitation — Human-Agent Decision Making</title>
+  <meta name="description" content="A topic-organized research archive at the intersection of cognitive science and AI agents — focused on how humans represent, elicit, communicate, and act on uncertainty.
+">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">◈</span>
+        <span class="brand-text">HADM</span>
+      </a>
+      <div class="nav-links">
+        
+        <a href="/topics/">Topics</a>
+        
+        <a href="/explore/">Explore</a>
+        
+        <a href="/about/">About</a>
+        
+        <a href="">GitHub</a>
+        
+      </div>
+    </div>
+  </nav>
+
+  <main class="site-main">
+    
+<section class="page-header" style="--stream-color: #4A90D9">
+  <a href="/topics/" class="breadcrumb">← All Topics</a>
+  <div class="stream-header">
+    <span class="stream-icon-large">🎯</span>
+    <h1>Belief Elicitation & Calibration</h1>
+  </div>
+  <p class="page-subtitle">How do we extract what people actually believe under uncertainty, and how well-calibrated are those beliefs?</p>
+</section>
+
+
+<section class="topic-content">
+  <h1 id="belief-elicitation-calibration">Belief Elicitation &amp; Calibration</h1>
+<blockquote>
+<p>How do we extract what people actually believe under uncertainty, and how well-calibrated are those beliefs?</p>
+</blockquote>
+<h2 id="concept-overview">Concept Overview</h2>
+<p>Decision-making under uncertainty begins with beliefs. Before a physician can choose a treatment, they hold some belief about the patient's diagnosis. Before an investor acts, they hold beliefs about future returns. Before a user trusts an AI recommendation, they form a belief about how reliable that recommendation is. The quality of the eventual decision depends, in large part, on the quality of those beliefs — and on whether the beliefs that inform the decision are actually the beliefs the person holds, or some artifact of how they were asked.</p>
+<p>Belief elicitation is the problem of getting beliefs <em>out</em> of a person's head and into a form that can be used — by the person themselves, by a decision support system, or by a researcher studying judgment. This turns out to be far harder than it sounds, for three reasons.</p>
+<p>First, beliefs are not discrete objects sitting in memory waiting to be retrieved. When asked "What is the probability that this patient has condition X?", a clinician doesn't look up a stored number. They construct an answer on the fly, drawing on training, recent experience, cue recognition, and the specific framing of the question. The elicitation process is partly <em>generative</em> — the method shapes the belief it appears to merely measure.</p>
+<p>Second, the mathematical requirements for "good" elicitation (incentive compatibility, proper scoring) are in tension with the cognitive requirements for usable interfaces. A strictly proper scoring rule like the logarithmic score is elegant: it uniquely incentivizes honest probability reporting under expected utility maximization. But most people do not maximize expected utility (see: <a href="../utility-decision-quality">Utility &amp; Decision Quality</a>), cannot compute logarithmic scores in their heads, and may not even understand what it means to report a probability. The theory assumes a rational agent; the practice must accommodate a bounded one.</p>
+<p>Third, there is a deep question about what the "true belief" even is. If a person reports 0.70 when asked with a numerical probability scale, 0.60 when asked with a visual probability wheel, and "fairly likely" when asked verbally — which is their real belief? The answer may be that there is no single ground-truth internal probability, and that different elicitation methods access different aspects of the person's uncertainty representation. This has major implications for interpreting elicited data and for designing elicitation interfaces.</p>
+<h3 id="what-gets-elicited-granularity-and-format">What Gets Elicited: Granularity and Format</h3>
+<p>Beliefs can be elicited at several levels of granularity, each with different information content and cognitive cost:</p>
+<p><strong>Point probabilities</strong> are the most common format: "What is the probability of X?" This yields a single number between 0 and 1. It is the easiest to elicit and the easiest to use in downstream calculations, but it discards information about the person's <em>uncertainty about their own uncertainty</em> (second-order uncertainty). A clinician who says "0.70" might be very confident in that 0.70, or might mean "somewhere between 0.50 and 0.90, and 0.70 is my best guess." The point estimate doesn't distinguish these.</p>
+<p><strong>Confidence intervals</strong> add a layer: "Give a range such that you are 90% sure the true value falls inside." This is the workhorse of calibration research. The canonical finding is that people's 90% intervals contain the truth only about 50% of the time — massive overconfidence. But the interval format introduces its own artifacts: people anchor on a central estimate and adjust outward insufficiently (anchoring-and-adjustment), and they may interpret the confidence level differently than intended.</p>
+<p><strong>Quantile estimates</strong> ask for specific percentiles: "Give a value such that there is a 10% chance the true answer is below it" (the P10), then the P50, P90, etc. Stitching quantiles together yields a coarse approximation of the person's full subjective distribution. This is the basis of the SHELF (Sheffield Elicitation Framework) protocol widely used in expert elicitation for risk analysis and Bayesian prior specification.</p>
+<p><strong>Full distribution builders</strong> provide interactive interfaces where the person constructs their entire belief distribution — assigning probability mass across bins, or shaping a density curve by dragging control points. Goldstein and Rothschild (2014) showed that people can meaningfully construct distributions when given appropriate graphical tools, and that these distributions capture information lost by point or interval methods. But the cognitive load is substantial, and the constructed distribution depends heavily on the number and placement of bins, the default starting shape, and whether the interface uses density or cumulative formats.</p>
+<p><strong>Verbal probability expressions</strong> are the most natural ("likely," "unlikely," "almost certain") but the most ambiguous. Decades of research (Wallsten, Budescu, Rapoport &amp; Zwick, 1986; Budescu &amp; Wallsten, 1995) document enormous between-person variability in the numeric probabilities assigned to verbal expressions. "Likely" can mean anything from 0.55 to 0.90 depending on the person, the domain, and the context. Yet verbal expressions remain ubiquitous in medical communication, intelligence analysis, and everyday speech — and they are the native output format of LLMs.</p>
+<h3 id="proper-scoring-rules-the-theoretical-backbone">Proper Scoring Rules: The Theoretical Backbone</h3>
+<p>The mathematical theory of <em>proper scoring rules</em> is the theoretical backbone of belief elicitation. A scoring rule assigns a reward (or penalty) to a probability forecast based on the outcome that actually materializes. A scoring rule is <em>proper</em> if, under expected utility maximization, the forecaster maximizes their expected score by reporting their true beliefs. It is <em>strictly proper</em> if truthful reporting is the unique optimum.</p>
+<p>The two most important strictly proper scoring rules are:</p>
+<p><strong>The Brier (quadratic) score</strong> (Brier, 1950): S(p, o) = −(p − o)², where p is the reported probability and o ∈ {0, 1} is the outcome. Penalizes the squared distance between the forecast and the realization. Intuitive, bounded, and decomposable into calibration, resolution, and uncertainty components (Murphy, 1973).</p>
+<p><strong>The logarithmic score</strong> (Good, 1952): S(p, o) = log(p) if o = 1, log(1 − p) if o = 0. Unbounded (assigns −∞ to a probability of 0 for an event that occurs), but has uniquely attractive theoretical properties: it is the only proper scoring rule that is <em>local</em> (the score depends only on the probability assigned to the outcome that occurred) and it corresponds to maximizing expected information gain.</p>
+<p>The theory extends to full distributions: Gneiting and Raftery (2007) provided a comprehensive framework for proper scoring rules for probabilistic forecasts, including the Continuous Ranked Probability Score (CRPS) for distributional forecasts.</p>
+<p><strong>Why this matters in practice:</strong> Proper scoring rules provide the <em>incentive structure</em> for honest reporting. If you pay forecasters according to a proper scoring rule, they have no reason to strategically misreport. This is the foundation of prediction markets, forecasting tournaments (Tetlock, 2015), and incentive-compatible experiments in behavioral research. However, properness assumes expected utility maximization. Under prospect theory, where probabilities are weighted nonlinearly, a "proper" scoring rule may not incentivize truthful reporting — the forecaster's optimal report under probability weighting differs from their true belief (see: <a href="../sampling-representation">Sampling &amp; Representation</a>). This is a fundamental tension between the elicitation theory and the descriptive models of how people actually process probabilities.</p>
+<h3 id="calibration-what-it-means-and-what-goes-wrong">Calibration: What It Means and What Goes Wrong</h3>
+<p>Calibration is the correspondence between stated probabilities and observed frequencies. A forecaster is well-calibrated if, among all events they assign probability 0.70, approximately 70% actually occur. Calibration is a <em>reliability</em> property — it measures whether the probability scale is used correctly — but it is not a <em>sharpness</em> property. A forecaster who always says "0.50" for everything is perfectly calibrated if the base rate is 50%, but completely uninformative.</p>
+<p>The decomposition of forecast quality into <strong>calibration</strong> (reliability), <strong>resolution</strong> (the ability to discriminate between events that do and don't occur), and <strong>uncertainty</strong> (the inherent unpredictability of the base rate) was formalized by Murphy (1973) for the Brier score. Good forecasting requires both calibration and resolution — you need to assign different probabilities to different events, and those probabilities need to match the actual frequencies.</p>
+<p>The robust empirical finding is that people are <em>overconfident</em> in the calibration sense: their subjective probabilities are too extreme. The classic result from Lichtenstein, Fischhoff, and Phillips (1982) is that confidence intervals are too narrow — the 90% interval contains the truth about 50% of the time. This has been replicated across domains (general knowledge, medical diagnosis, legal judgment, financial forecasting) and across populations (experts and novices alike, though the magnitude varies).</p>
+<p>However, overconfidence is not monolithic. Several important distinctions have emerged:</p>
+<p><strong>The hard-easy effect</strong> (Lichtenstein &amp; Fischhoff, 1977): People are overconfident on hard items (where accuracy is low) but can be underconfident on easy items (where accuracy is high). This suggests that confidence judgments are insufficiently regressive toward the base rate of accuracy.</p>
+<p><strong>Overconfidence in interval estimation vs. frequency estimation</strong>: The massive overconfidence in 90% confidence intervals does not replicate as strongly when people estimate frequencies ("Out of the next 100 questions, how many will you get right?"). Gigerenzer, Hoffrage, and Kleinbölting (1991) argued that overconfidence is partly an artifact of the single-item confidence format, and that frequency judgments activate different cognitive processes. This connects to the broader "ecological rationality" program (see: <a href="../uncertainty-communication">Uncertainty Communication</a> on frequency vs. probability framing).</p>
+<p><strong>The distinction between calibration of probabilities and calibration of confidence intervals</strong>: These are psychologically different tasks. Assigning a probability to a binary event ("Will it rain tomorrow?") and setting a confidence interval for a continuous quantity ("What is the GDP of Indonesia?") recruit different cognitive operations and produce different error patterns.</p>
+<p><strong>Soll and Klayman (2004)</strong> showed that much of the overconfidence in interval estimation can be attributed to people producing intervals that are centered well but far too narrow — they are anchoring on their best guess and failing to adjust outward enough. This is a judgment <em>process</em> explanation, not a motivational or perceptual one.</p>
+<h3 id="incentive-compatibility-in-practice">Incentive Compatibility in Practice</h3>
+<p>The gap between theoretical incentive compatibility and actual behavior is one of the most important practical issues in this stream. Several mechanisms attempt to bridge it:</p>
+<p><strong>Binary lottery procedures</strong> (Holt, 1986; Karni, 2009): Instead of paying forecasters based on a scoring rule directly (which requires them to compute expected scores), the forecaster's reported probability is used to determine the odds in a lottery. Under expected utility, truthful reporting is optimal. But under prospect theory (nonlinear probability weighting, loss aversion), the optimal report deviates from the true belief in systematic ways. Empirical tests show that binary lottery procedures do not fully eliminate strategic distortion.</p>
+<p><strong>Matching probabilities</strong> (Dyer &amp; Miles, 1998): The person reports the probability p at which they would be indifferent between a bet on the uncertain event and a lottery with known probability p. This directly links the elicited probability to a behavioral choice, but requires the person to introspect on indifference — a cognitively demanding task that is sensitive to the format of the lottery and to ambiguity aversion (see: <a href="../risk-ambiguity">Risk &amp; Ambiguity</a>).</p>
+<p><strong>Prediction markets</strong> (Wolfers &amp; Zitzewitz, 2004): Markets aggregate beliefs through trading. Market prices can be interpreted as probability estimates, and the market mechanism incentivizes truthful revelation through the profit motive. Prediction markets have shown impressive accuracy in domains like election forecasting, but they measure the <em>market's</em> belief, not any individual's, and they require sufficient liquidity and trader diversity to function well.</p>
+<p><strong>Forecasting tournaments</strong> (Tetlock, 2015): The Good Judgment Project and related efforts evaluate forecasters on their Brier scores over hundreds of questions across years. The key finding is that a small subset of "superforecasters" are consistently well-calibrated and well-resolved, and that their methods — breaking questions into sub-components, updating incrementally, using base rates, actively seeking disconfirming evidence — can be taught. This connects belief elicitation to the broader question of whether calibration is a trainable skill.</p>
+<h2 id="evolution-timeline">Evolution Timeline</h2>
+<p><strong>Foundations (1950s–1980s):</strong> The field began with the mathematics. Brier (1950) proposed the quadratic scoring rule for evaluating weather probability forecasts — the first formal metric for probabilistic forecast quality. Good (1952) introduced the logarithmic score. De Finetti (1962) and Savage (1971) established the theoretical framework connecting proper scoring rules to the subjective probability tradition: if you accept that beliefs are quantifiable as probabilities, then proper scoring rules are the right way to incentivize truthful reports. On the empirical side, the calibration literature launched with the systematic studies of overconfidence by Lichtenstein and Fischhoff (1977) and the comprehensive review by Lichtenstein, Fischhoff, and Phillips (1982), which established overconfidence as one of the most robust findings in the judgment literature. Murphy (1973) provided the Brier score decomposition into calibration, resolution, and uncertainty, giving researchers a formal vocabulary for forecast quality. Spetzler and Staël von Holstein (1975) developed practical elicitation protocols including the probability wheel — a physical device for expressing uncertainty — establishing that the format of elicitation is a design variable, not merely a delivery mechanism.</p>
+<p><strong>Format sensitivity and ecological critiques (1985–2005):</strong> Research in this era grappled with two unsettling discoveries. First, elicited beliefs depend heavily on <em>how</em> you ask. Wallsten, Budescu, Rapoport, and Zwick (1986) and Budescu and Wallsten (1995) systematically documented the variability of verbal probability expressions, showing that "probable" means different things to different people and in different domains. Different numerical response scales (0–100 vs. 0–1 vs. frequency), different anchoring points, and different question framings all produce measurably different elicited probabilities from the same person for the same event. Second, the ecological rationality camp challenged the universality of overconfidence. Gigerenzer, Hoffrage, and Kleinbölting (1991) argued that apparent miscalibration partly reflects a mismatch between the sampling of test questions (selected to be difficult and unrepresentative) and the ecological structure of the person's natural environment. Klayman, Soll, González-Vallejo, and Barlas (1999) showed that the hard-easy effect has a substantial statistical component. Soll and Klayman (2004) identified insufficient anchoring-and-adjustment as the mechanism behind overly narrow confidence intervals. This era collectively made clear that "overconfidence" is not a single bias but a family of phenomena with distinct cognitive roots, distinct domain-specificities, and distinct sensitivities to the elicitation instrument.</p>
+<p><strong>Distribution elicitation and expert judgment (2005–2018):</strong> The focus widened from single probabilities and intervals to full distributional elicitation. O'Hagan and colleagues developed the SHELF protocol for structured expert elicitation of prior distributions in Bayesian analysis — a multi-step process involving training, individual elicitation, group discussion, and reconciliation. Goldstein and Rothschild (2014) introduced graphical distribution builders allowing non-expert users to construct full subjective distributions through interactive bin-filling interfaces, showing that these distributions contain meaningful information beyond point estimates. Hossain and Okui (2013) analyzed elicitation mechanism design, considering which theoretical properties (properness, robustness to risk aversion) can be simultaneously achieved. Gneiting and Raftery (2007) unified the theory of proper scoring rules for probabilistic forecasts of continuous variables, providing the CRPS and related tools. In parallel, the forecasting tournament movement achieved its signature results: Tetlock's Good Judgment Project (Mellers, Stone, Atanasov et al., 2015) demonstrated that calibration and resolution are measurable and improvable, that superforecasters exist as a replicable phenomenon, and that specific cognitive strategies (extremizing based on information diversity, granular updating, explicit consideration of base rates) characterize the best performers. This era established the practical frontier: full distributions are elicitable from motivated individuals with the right tools, and calibration is a skill that improves with the right training and feedback.</p>
+<p><strong>Current frontier (2018–present):</strong> Three threads dominate. First, <strong>AI-mediated elicitation</strong>: as LLMs become conversational interfaces for decision support, the question arises whether dialogue-based elicitation — where an AI agent asks follow-up questions, probes for inconsistencies, decomposes complex judgments — can outperform traditional static interfaces. The theoretical promise is that conversational elicitation could adapt to the person's cognitive state in real time, reducing format artifacts. But empirical evidence is nearly absent, and new risks emerge: the AI's framing may anchor the person's response, conversational flow may create false coherence, and social dynamics of human-AI dialogue may distort reporting. Second, <strong>eliciting beliefs about AI systems</strong>: when a user interacts with an AI prediction, they form a meta-belief about that prediction's reliability. How this meta-belief forms, how it should be elicited, and how it interacts with the user's domain knowledge is a new elicitation problem that doesn't map neatly onto classical frameworks designed for first-order uncertainty about world states. Third, <strong>calibration of and with AI</strong>: if AI advisors are poorly calibrated (LLMs often express confidence that doesn't match their accuracy), then human-AI teams face a compound calibration problem — the human must calibrate not only their own beliefs but also their assessment of the AI's calibration, and ideally integrate both. How people perform this "calibration of calibration" and whether interfaces can support it is largely open.</p>
+<h2 id="key-distinctions">Key Distinctions</h2>
+<p><strong>Calibration vs. resolution vs. discrimination</strong>: A forecaster needs all three. Calibration means probabilities match frequencies. Resolution means probabilities vary appropriately across events — the forecaster assigns higher probabilities to events that occur and lower to those that don't. Discrimination (or sharpness) means the forecaster's probabilities are spread widely rather than clustered near the base rate. A well-calibrated but unresolved forecaster is useless; a well-resolved but miscalibrated forecaster can often be "recalibrated" post-hoc by applying a monotone transformation.</p>
+<p><strong>Elicitation as measurement vs. elicitation as construction</strong>: The measurement view assumes a pre-existing belief that the method reveals; the construction view holds that the belief is partly formed during the elicitation process itself. The empirical evidence strongly supports the construction view — responses depend on the scale, the format, the anchors, and the sequence. This means "measuring" beliefs without influencing them is not fully achievable, and elicitation design is an exercise in minimizing distortion rather than achieving neutrality.</p>
+<p><strong>Incentive compatibility under EU vs. under prospect theory</strong>: A proper scoring rule incentivizes truthful reporting under expected utility theory. Under prospect theory, where probabilities are weighted nonlinearly, the optimal report under a "proper" scoring rule may not be the true belief. This means that all incentivized elicitation data collected from human subjects should be interpreted with caution if subjects weight probabilities nonlinearly — which the prospect theory literature suggests they almost certainly do.</p>
+<p><strong>First-order vs. second-order uncertainty</strong>: "The probability of rain is 0.70" is a first-order belief. "I'm fairly confident that the probability of rain is between 0.60 and 0.80" expresses second-order uncertainty — uncertainty about one's own uncertainty. Most elicitation methods capture only first-order beliefs. When people say "0.70," they may be very sure or very unsure of that number, and downstream decisions should treat these cases differently. Full distribution elicitation can capture some second-order information, but at high cognitive cost.</p>
+<p><strong>Internal calibration vs. external calibration</strong>: Internal (or ecological) calibration assesses whether a person's confidence tracks their accuracy within their natural environment and question sample. External calibration assesses performance on an experimenter-selected set of questions that may not match the person's typical inferential ecology. The distinction matters because many overconfidence findings use externally selected (often deliberately difficult) items, and the degree of miscalibration is reduced when items are sampled representatively from the person's domain.</p>
+<h2 id="cross-references">Cross-References</h2>
+<ul>
+<li><strong><a href="../utility-decision-quality">Utility &amp; Decision Quality</a></strong>: Prospect theory's probability weighting function directly complicates the interpretation of elicited probabilities. The editing and evaluation phases of prospect theory apply to how people process the elicitation task itself.</li>
+<li><strong><a href="../uncertainty-communication">Uncertainty Communication</a></strong>: The output of elicitation must eventually be communicated back — to the person, to a team, or to an AI system. Format effects in communication mirror format effects in elicitation, and the two interact when elicitation and communication happen in the same interface.</li>
+<li><strong><a href="../attention-memory-salience">Attention, Memory &amp; Salience</a></strong>: Elicitation instruments impose cognitive load. More complex formats (distribution builders) may produce richer information but exceed the person's attention budget, especially in time-pressured or multi-task settings.</li>
+<li><strong><a href="../sampling-representation">Sampling &amp; Representation</a></strong>: The description-experience gap is fundamentally about how the <em>source</em> of probability information (described vs. sampled) shapes beliefs. Elicitation methods that ask for beliefs based on experience may yield systematically different responses than those based on described information.</li>
+<li><strong><a href="../agents-as-advisors">Agents as Advisors</a></strong>: AI-mediated elicitation is a new frontier — conversational agents that help people articulate and refine beliefs through dialogue rather than form-filling. Also relevant: how to elicit user beliefs about the AI itself.</li>
+</ul>
+<h2 id="open-questions">Open Questions</h2>
+<ol>
+<li>
+<p><strong>Does conversational elicitation actually work?</strong> The theoretical appeal is clear — an AI agent could decompose complex judgments, probe for inconsistencies, and adapt in real time. But empirical evidence is almost entirely absent. Does conversational elicitation produce more calibrated, more resolved, or more useful beliefs than traditional methods? Or does it introduce new biases (anchoring to the agent's framing, social desirability effects, conversational coherence pressure)?</p>
+</li>
+<li>
+<p><strong>How should we elicit beliefs about AI reliability?</strong> When a user sees an AI prediction, they need to form a meta-belief about how much to trust it. This is a novel elicitation target — the object of belief is another system's output. Do existing frameworks (scoring rules, calibration training, distribution builders) transfer to this setting? How does the user's direct experience with the AI system interact with their priors about AI in general?</p>
+</li>
+<li>
+<p><strong>Can full-distribution elicitation be made cognitively cheap enough for routine use?</strong> Distribution builders work in controlled settings but are too heavy for most decision contexts. Is there a middle path — richer than a point estimate but cheaper than a full distribution — that captures the most decision-relevant information? Quantile elicitation (P10, P50, P90) is one candidate, but even three numbers strain many users.</p>
+</li>
+<li>
+<p><strong>What does probability weighting do to incentivized elicitation?</strong> If people weight probabilities nonlinearly, their optimal report under a proper scoring rule diverges from their true belief. How large is this distortion in practice? Can scoring rules be designed that are proper under prospect theory's weighting function rather than under expected utility? Theoretical proposals exist (Offerman, Sonnemans, van de Kuilen &amp; Wakker, 2009; Schlag, Tremewan &amp; van der Weele, 2015) but empirical implementations are limited.</p>
+</li>
+<li>
+<p><strong>Is calibration a stable individual trait or a context-dependent state?</strong> Superforecaster research suggests it is partly a trainable skill with stable individual differences. But calibration also varies across domains (weather forecasters are well-calibrated; physicians typically are not) and across elicitation formats (the same person can be well-calibrated with frequency estimates and poorly calibrated with confidence intervals). Understanding the trait-state decomposition matters for whether calibration interventions should target the person (training) or the interface (design).</p>
+</li>
+</ol>
+</section>
+
+
+
+<section class="cross-references">
+  <h2>Related Streams</h2>
+  <div class="related-grid">
+    
+    
+    <a href="/topics/uncertainty-communication/" class="related-card" style="--stream-color: #7B68EE">
+      <span>📊</span>
+      <span>Uncertainty Communication</span>
+    </a>
+    
+    
+    
+    <a href="/topics/utility-decision-quality/" class="related-card" style="--stream-color: #E8833A">
+      <span>⚖️</span>
+      <span>Utility & Decision Quality</span>
+    </a>
+    
+    
+    
+    <a href="/topics/agents-as-advisors/" class="related-card" style="--stream-color: #2ECC71">
+      <span>🤖</span>
+      <span>Agents as Advisors</span>
+    </a>
+    
+    
+  </div>
+</section>
+
+
+
+<section class="stream-papers">
+  <h2>Papers in This Stream</h2>
+
+  
+  
+  <div class="era-section">
+    <h3 class="era-heading">Foundational</h3>
+    
+    <div class="paper-row">
+      <span class="paper-year">1979</span>
+      <div class="paper-info">
+        
+        <a href="/papers/kahneman-tversky-1979/" class="paper-title-link">
+          Prospect Theory: An Analysis of Decision Under Risk
+        </a>
+        
+        <span class="paper-authors">Daniel Kahneman, Amos Tversky</span>
+        <span class="paper-venue">Econometrica</span>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</section>
+
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Human-Agent Decision Making — Research Digest & Concept Archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+  
+</body>
+</html>

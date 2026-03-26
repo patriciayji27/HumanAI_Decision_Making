@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PaperDigest",
+  "description": "Schema for a paper digest entry in data/papers.yaml",
+  "type": "object",
+  "required": ["id", "title", "authors", "year", "venue", "streams", "era", "tags"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Unique slug identifier (lowercase, hyphens only)"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authors": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 1900,
+      "maximum": 2100
+    },
+    "venue": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "pdf_url": {
+      "type": "string"
+    },
+    "streams": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "belief-elicitation",
+          "uncertainty-communication",
+          "utility-decision-quality",
+          "attention-memory-salience",
+          "risk-ambiguity",
+          "temporal-dynamics",
+          "sampling-representation",
+          "agents-as-advisors"
+        ]
+      },
+      "minItems": 1
+    },
+    "era": {
+      "type": "string",
+      "enum": ["foundational", "key-development", "frontier"]
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
