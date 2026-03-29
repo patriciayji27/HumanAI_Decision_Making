@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kay (2016) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-mixed">Mixed</span> <span class="badge st-debated">Debated</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Quantile Dotplots for Visualizing Uncertainty</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Kay, Kola, Hullman & Munson · , 2016</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/uncertainty-communication.html">Uncertainty Communication</a>
+<a class="xref-chip" href="../topics/sampling-experience.html">Sampling & Experience</a></div>
+<div class="ts">
+<p>Introduced <strong>quantile dotplots</strong>: displays of 20-100 dots, each positioned at a quantile of the predictive distribution. Each dot represents an equally likely outcome, making the distributional shape visible through discrete samples while preserving the "countable" property that supports frequency-based reasoning. For example, a 20-dot quantile dotplot of bus arrival time shows 20 dots spaced along a timeline — 3 dots before your planned departure time means "roughly 15% chance the bus comes early."</p>
+<p>Tested in a transit decision task: participants saw predictions of bus arrival time with uncertainty and decided whether to leave for the bus stop. Quantile dotplots produced <strong>better decisions</strong> (higher expected utility from their leave/wait choices) compared to density plots, prediction intervals, and text descriptions of the same uncertainty information. The advantage was consistent across numeracy levels after approximately 30 seconds of initial explanation of the format.</p>
+<p>The mechanism: dots are countable, leveraging the cognitive advantage of frequency-based reasoning documented by Gigerenzer & Hoffrage (1995). Unlike icon arrays (which work for single binary outcomes), dotplots represent continuous distributions — each dot's position carries information about the distributional shape, not just the proportion. Unlike density plots, they don't require understanding density-as-area, which is a non-trivial interpretation that many non-experts fail at.</p>
+<p>The format remains relatively niche in practice despite strong lab evidence, partly because it requires onboarding (the user needs to understand what the dots represent) and partly because it is unfamiliar — users initially express confusion before quickly adapting.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

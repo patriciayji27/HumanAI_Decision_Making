@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tversky (1979) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Prospect Theory: An Analysis of Decision under Risk</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Kahneman & Tversky · , 1979</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/decision-quality.html">Decision Quality</a>
+<a class="xref-chip" href="../topics/belief-elicitation.html">Belief Elicitation</a>
+<a class="xref-chip" href="../topics/risk-ambiguity.html">Risk & Ambiguity</a></div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>Unified four disconnected anomalies into a single model with three components:</p>
+<div class="etw"><table class="et">
+<thead><tr><th>Component</th><th>What it does</th><th>The number</th></tr></thead>
+<tbody>
+<tr><td>Reference dependence</td><td>Outcomes coded as gains/losses, not final wealth</td><td>The same $500 is treated differently starting from $0 vs $1000</td></tr>
+<tr><td>S-shaped value function</td><td>Concave for gains, convex for losses, steeper for losses</td><td>v(x) = x<sup>0.88</sup> for gains; v(x) = −2.25·(−x)<sup>0.88</sup> for losses</td></tr>
+<tr><td>Probability weighting</td><td>Overweights small p, underweights moderate-to-high p</td><td>π(0.01)≈0.06 (1% treated as ~6%); π(0.99)≈0.91 (99% treated as ~91%)</td></tr>
+</tbody></table></div>
+<p>The original data: 80% of subjects preferred a sure 3,000 over 80%×4,000 (EV=3,200), but 65% reversed when certainty was removed from both — violating the independence axiom. The reflection effect appeared in all 13 tested pairs.</p>
+</div>
+<div class="ts">
+<h2>The loss aversion debate (2024-2025)</h2>
+<div class="etw"><table class="et">
+<thead><tr><th>Study</th><th>Method</th><th>N</th><th>λ estimate</th></tr></thead>
+<tbody>
+<tr><td>Brown et al. (2024)</td><td>Compiled published estimates</td><td>607</td><td>1.96 [1.82, 2.10]</td></tr>
+<tr><td>Walasek et al. (2024)</td><td>Re-fitted to individual raw data</td><td>17 studies</td><td>1.31 [1.10, 1.53]</td></tr>
+<tr><td>Yechiam et al. (2025)</td><td>Re-meta-analysis, controlling artifacts</td><td>163</td><td>~1.07 (n.s.)</td></tr>
+</tbody></table></div>
+<p>Chapman et al. (2025): 47-57% of a representative sample is loss-tolerant (λ≤1). The qualitative direction survives; the precise coefficient is contested.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peters (2025) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-mixed">Mixed</span> <span class="badge st-emerging">Emerging</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Metacognition and Uncertainty Communication in Humans and LLMs</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Steyvers & Peters · , 2025</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/ai-agents.html">AI Agents</a>
+<a class="xref-chip" href="../topics/uncertainty-communication.html">Uncertainty Communication</a></div>
+<div class="ts">
+<p>Review paper comparing <strong>metacognition</strong> — the ability to monitor and evaluate one's own cognitive processes — in humans and LLMs. Two key facets: <strong>metacognitive calibration</strong> (does expressed confidence match actual accuracy?) and <strong>metacognitive sensitivity</strong> (can the system distinguish correct from incorrect outputs?).</p>
+<p>The key observation about LLMs: they appear reluctant to express uncertainty, likely because <strong>RLHF fine-tuning penalizes hedged responses</strong> — human raters in RLHF prefer confident-sounding output. This creates a systematic mismatch between LLM confidence (high, regardless of actual accuracy) and LLM reliability (variable). The result: users who take verbal confidence at face value systematically overestimate LLM reliability.</p>
+<p>The problem compounds for <strong>non-expert users</strong>. Experts in a domain can partially assess AI output quality through domain knowledge. Non-experts cannot — they rely on surface cues (fluency, detail, confidence) that are uncorrelated with accuracy in LLMs. The paper draws an analogy to human metacognition: humans use response time as a cue to confidence (faster = more confident), but this cue is unavailable or misleading in LLM interactions.</p>
+<p>The paper distinguishes metacognitive calibration (how well confidence tracks accuracy — poor in current LLMs) from metacognitive sensitivity (whether the system can discriminate correct from incorrect outputs — moderate in current frontier models). Some LLMs show the ability to flag uncertainty when probed, but their default output behavior suppresses uncertainty expression. This suggests that the metacognitive capacity may exist within the model but is suppressed by the training objective.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

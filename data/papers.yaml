@@ -1,90 +1,738 @@
-# Master Paper Registry
-# Each entry corresponds to a digest file in content/papers/{id}.md
-# This file is the single source of truth for paper metadata used by the build script.
-
-papers:
-
-  # --- Stream 3: Utility / Decision Quality (primary) ---
-  - id: kahneman-tversky-1979
-    title: "Prospect Theory: An Analysis of Decision Under Risk"
-    authors: [Daniel Kahneman, Amos Tversky]
-    year: 1979
-    venue: Econometrica
-    url: "https://doi.org/10.2307/1914185"
-    streams: [utility-decision-quality, risk-ambiguity, sampling-representation, belief-elicitation]
-    era: foundational
-    tags: [prospect-theory, value-function, probability-weighting, loss-aversion,
-           certainty-effect, reflection-effect, isolation-effect, reference-dependence]
-
-  # --- Placeholder entries for future digests ---
-  # Uncomment and create the corresponding content/papers/{id}.md file when ready.
-
-  # - id: tversky-kahneman-1992
-  #   title: "Advances in Prospect Theory: Cumulative Representation of Uncertainty"
-  #   authors: [Amos Tversky, Daniel Kahneman]
-  #   year: 1992
-  #   venue: "Journal of Risk and Uncertainty"
-  #   url: "https://doi.org/10.1007/BF00122574"
-  #   streams: [utility-decision-quality, sampling-representation]
-  #   era: foundational
-  #   tags: [cumulative-prospect-theory, probability-weighting, rank-dependence]
-
-  # - id: ellsberg-1961
-  #   title: "Risk, Ambiguity, and the Savage Axioms"
-  #   authors: [Daniel Ellsberg]
-  #   year: 1961
-  #   venue: "Quarterly Journal of Economics"
-  #   url: "https://doi.org/10.2307/1884324"
-  #   streams: [risk-ambiguity, utility-decision-quality]
-  #   era: foundational
-  #   tags: [ambiguity-aversion, ellsberg-paradox, knightian-uncertainty]
-
-  # - id: hertwig-et-al-2004
-  #   title: "Decisions from Experience and the Effect of Rare Events in Risky Choice"
-  #   authors: [Ralph Hertwig, Greg Barron, Elke U. Weber, Ido Erev]
-  #   year: 2004
-  #   venue: "Psychological Science"
-  #   url: "https://doi.org/10.1111/j.0956-7976.2004.00715.x"
-  #   streams: [sampling-representation, temporal-dynamics]
-  #   era: foundational
-  #   tags: [description-experience-gap, sampling, rare-events, probability-weighting]
-
-  # - id: dietvorst-et-al-2015
-  #   title: "Algorithm Aversion: People Erroneously Avoid Algorithms After Seeing Them Err"
-  #   authors: [Berkeley J. Dietvorst, Joseph P. Simmons, Cade Massey]
-  #   year: 2015
-  #   venue: "Journal of Experimental Psychology: General"
-  #   url: "https://doi.org/10.1037/xge0000033"
-  #   streams: [agents-as-advisors, attention-memory-salience]
-  #   era: foundational
-  #   tags: [algorithm-aversion, trust, human-AI, judgment]
-
-  # - id: gigerenzer-hoffrage-1995
-  #   title: "How to Improve Bayesian Reasoning Without Instruction: Frequency Formats"
-  #   authors: [Gerd Gigerenzer, Ulrich Hoffrage]
-  #   year: 1995
-  #   venue: "Psychological Review"
-  #   url: "https://doi.org/10.1037/0033-295X.102.4.684"
-  #   streams: [uncertainty-communication, belief-elicitation]
-  #   era: foundational
-  #   tags: [natural-frequencies, bayesian-reasoning, base-rate, risk-communication]
-
-  # - id: bordalo-et-al-2012
-  #   title: "Salience Theory of Choice Under Risk"
-  #   authors: [Pedro Bordalo, Nicola Gennaioli, Andrei Shleifer]
-  #   year: 2012
-  #   venue: "Quarterly Journal of Economics"
-  #   url: "https://doi.org/10.1093/qje/qjs018"
-  #   streams: [attention-memory-salience, utility-decision-quality]
-  #   era: key-development
-  #   tags: [salience, attention, choice-under-risk, context-dependence]
-
-  # - id: benartzi-thaler-1995
-  #   title: "Myopic Loss Aversion and the Equity Premium Puzzle"
-  #   authors: [Shlomo Benartzi, Richard H. Thaler]
-  #   year: 1995
-  #   venue: "Quarterly Journal of Economics"
-  #   url: "https://doi.org/10.2307/2118511"
-  #   streams: [temporal-dynamics, utility-decision-quality]
-  #   era: foundational
-  #   tags: [myopic-loss-aversion, evaluation-frequency, equity-premium, prospect-theory]
+- id: kahneman-tversky-1979
+  title: 'Prospect Theory: An Analysis of Decision under Risk'
+  authors: Kahneman & Tversky
+  year: 1979
+  streams:
+  - decision-quality
+  - belief-elicitation
+  - risk-ambiguity
+  evidence: strong
+  status: canonical
+  verdict: Dominant descriptive model of risky choice. Reference dependence, S-shaped
+    value function, and probability weighting remain the framework most applied work
+    builds on.
+  qualification: The λ≈2.25 loss aversion estimate shows more heterogeneity than textbooks
+    suggest. Salience theory offers a competing mechanism for several core phenomena.
+- id: tversky-1992
+  title: Cumulative Prospect Theory
+  authors: Tversky & Kahneman
+  year: 1992
+  streams:
+  - decision-quality
+  evidence: strong
+  status: canonical
+  verdict: Parametric extension to multi-outcome prospects. Provides the functional
+    forms used in most quantitative applications.
+  qualification: Parameter estimates vary considerably across studies.
+- id: walasek-2024
+  title: A meta-analysis of loss aversion in risky contexts
+  authors: Walasek, Mullett & Stewart
+  year: 2024
+  streams:
+  - decision-quality
+  evidence: mixed
+  status: debated
+  verdict: Meta-analysis of CPT λ from individual-level data. Median λ=1.31 [1.10,
+    1.53] — lower than the canonical 2.25.
+  qualification: Only 17 studies with available raw data. A separate meta-analysis
+    (Brown et al., 2024) found λ≈1.96 across 607 estimates.
+- id: brown-2024
+  title: Meta-analysis of Empirical Estimates of Loss Aversion
+  authors: Brown, Imai, Vieider & Camerer
+  year: 2024
+  streams:
+  - decision-quality
+  evidence: strong
+  status: debated
+  verdict: 'Largest meta-analysis of loss aversion: 607 estimates, mean λ≈1.96 [1.82,
+    2.10]. Substantial heterogeneity across domains and methods.'
+  qualification: A re-meta-analysis (Yechiam et al., 2025) found λ drops to ~1.07
+    when stimulus asymmetry and ordering are controlled.
+- id: yechiam-2025
+  title: 'Loss aversion is not robust: A re-meta-analysis'
+  authors: Yechiam, Zeif & Ashby
+  year: 2025
+  streams:
+  - decision-quality
+  evidence: mixed
+  status: emerging
+  verdict: When stimulus asymmetry and ordering effects are controlled, loss aversion
+    nearly vanishes (λ≈1.07).
+  qualification: Uses a subset of the Brown et al. data. The moderators may themselves
+    be debatable methodological choices.
+- id: chapman-2025
+  title: Looming Large or Seeming Small? Loss Attitudes in a Representative Sample
+  authors: Chapman, Snowberg, Wang & Camerer
+  year: 2025
+  streams:
+  - decision-quality
+  evidence: mixed
+  status: emerging
+  verdict: Representative-sample study finding 47-57% of participants are loss-tolerant
+    (λ≤1). Challenges the universality of loss aversion.
+  qualification: Novel elicitation method (DOSE) may produce different estimates than
+    standard approaches.
+- id: bordalo-2012
+  title: Salience Theory of Choice Under Risk
+  authors: Bordalo, Gennaioli & Shleifer
+  year: 2012
+  streams:
+  - decision-quality
+  - attention-salience
+  evidence: mixed
+  status: debated
+  verdict: Attention-based alternative to probability weighting. If correct, display
+    redesign can reduce choice anomalies without retraining.
+  qualification: Empirical track record shorter than prospect theory. Divergent predictions
+    are difficult to test with natural data.
+- id: enke-2023
+  title: Cognitive Uncertainty
+  authors: Enke & Graeber
+  year: 2023
+  streams:
+  - decision-quality
+  - attention-salience
+  evidence: weak
+  status: emerging
+  verdict: People are uncertain about their own valuations and compress toward defaults.
+    Potentially unifies many anomalies as noise rather than stable biases.
+  qualification: Tested in a limited set of domains. Needs broader replication.
+- id: kszegi-2006
+  title: Reference-Dependent Preferences and the Observed Violations of Expected Utility
+  authors: Kőszegi & Rabin
+  year: 2006
+  streams:
+  - decision-quality
+  evidence: strong
+  status: canonical
+  verdict: Endogenized the reference point using rational expectations, connecting
+    prospect theory to equilibrium economics.
+  qualification: Assumes rational expectations within a bounded-rationality model
+    — a conceptual tension.
+- id: loomes-1982
+  title: Regret Theory
+  authors: Loomes & Sugden
+  year: 1982
+  streams:
+  - decision-quality
+  evidence: mixed
+  status: debated
+  verdict: Anticipated regret explains independence violations without reference-dependent
+    value functions.
+  qualification: Applies only when the unchosen option's outcome is visible.
+- id: lichtenstein-1982
+  title: 'Calibration of Probabilities: The State of the Art to 1980'
+  authors: Lichtenstein, Fischhoff & Phillips
+  year: 1982
+  streams:
+  - belief-elicitation
+  evidence: strong
+  status: canonical
+  verdict: 'Established overconfidence as robust: 90% CIs contain truth ~50% of the
+    time. Replicated across domains.'
+  qualification: Ecological rationality critique qualified the severity. Item selection
+    effects explain part of the pattern.
+- id: soll-2004
+  title: Overconfidence in interval estimates
+  authors: Soll & Klayman
+  year: 2004
+  streams:
+  - belief-elicitation
+  evidence: strong
+  status: canonical
+  verdict: Identified anchoring-and-adjustment as the mechanism for narrow confidence
+    intervals.
+  qualification: Explains the process failure but not all overconfidence patterns.
+- id: gigerenzer-1991
+  title: 'Probabilistic mental models: A Brunswikian theory of confidence'
+  authors: Gigerenzer, Hoffrage & Kleinbölting
+  year: 1991
+  streams:
+  - belief-elicitation
+  evidence: strong
+  status: debated
+  verdict: 'Ecological challenge: apparent miscalibration partly reflects experimenters
+    selecting hard, unrepresentative questions.'
+  qualification: Does not eliminate overconfidence entirely. Real-world miscalibration
+    persists in many professional domains.
+- id: tetlock-2015
+  title: Superforecasting
+  authors: Tetlock & Gardner
+  year: 2015
+  streams:
+  - belief-elicitation
+  evidence: strong
+  status: canonical
+  verdict: Calibration is trainable. A subset of forecasters are consistently well-calibrated,
+    and their methods can be taught.
+  qualification: Selection effects may partly explain superforecaster performance.
+    Domain transfer is weak.
+- id: mellers-2015
+  title: 'Prediction and Judgment: Why Superforecasting Works'
+  authors: Mellers, Stone, Atanasov et al.
+  year: 2015
+  streams:
+  - belief-elicitation
+  evidence: strong
+  status: canonical
+  verdict: Formal analysis of the Good Judgment Project. Decomposition, base-rate
+    thinking, and granular updating characterize the best performers.
+  qualification: Tournament structure may not generalize to real-world forecasting.
+- id: goldstein-2014
+  title: Graphical Distribution Builders for Non-Expert Elicitation
+  authors: Goldstein & Rothschild
+  year: 2014
+  streams:
+  - belief-elicitation
+  evidence: mixed
+  status: debated
+  verdict: Non-experts can construct full subjective distributions using interactive
+    graphical tools.
+  qualification: Lab-confined. Cognitive load is substantial. Sensitive to design
+    parameters.
+- id: wallsten-1986
+  title: 'Linguistic Probabilities: Variability in Verbal Probability Expressions'
+  authors: Wallsten, Budescu, Rapoport & Zwick
+  year: 1986
+  streams:
+  - belief-elicitation
+  - uncertainty-communication
+  evidence: strong
+  status: canonical
+  verdict: '''Likely'' means 0.55 to 0.90 depending on the person. Foundational documentation
+    of verbal probability variability.'
+  qualification: Well-documented but unsolved. Hybrid verbal-numeric formats are the
+    best available mitigation.
+- id: gneiting-2007
+  title: Strictly Proper Scoring Rules, Prediction, and Estimation
+  authors: Gneiting & Raftery
+  year: 2007
+  streams:
+  - belief-elicitation
+  evidence: strong
+  status: canonical
+  verdict: Unified the theory of proper scoring rules for probabilistic forecasts.
+    Introduced the CRPS. Essential mathematical reference.
+  qualification: Properness assumes expected utility, undermined by prospect theory's
+    probability weighting.
+- id: gigerenzer-hoffrage-1995
+  title: 'How to Improve Bayesian Reasoning Without Instruction: Frequency Formats'
+  authors: Gigerenzer & Hoffrage
+  year: 1995
+  streams:
+  - uncertainty-communication
+  - belief-elicitation
+  evidence: strong
+  status: canonical
+  verdict: Natural frequencies raise correct Bayesian inference from ~15% to ~50%.
+    Format causally affects reasoning.
+  qualification: Benefit strongest for multi-step Bayesian problems. The evolved-processor
+    interpretation is debated.
+- id: budescu-2009
+  title: Interpreting IPCC Probabilistic Statements Around the World
+  authors: Budescu, Broomell & Por
+  year: 2009
+  streams:
+  - uncertainty-communication
+  evidence: strong
+  status: canonical
+  verdict: Even standardized verbal probability scales are misinterpreted ~40% of
+    the time by readers.
+  qualification: Adding numeric ranges significantly improves interpretation (Budescu
+    et al., 2014).
+- id: budescu-2014
+  title: Effective Communication of Uncertainty in the IPCC Reports
+  authors: Budescu, Por, Broomell & Smithson
+  year: 2014
+  streams:
+  - uncertainty-communication
+  evidence: strong
+  status: canonical
+  verdict: Hybrid verbal-numeric formats outperform verbal-only or numeric-only for
+    interpretation accuracy.
+  qualification: Tested primarily in climate communication. Generalization to other
+    domains assumed.
+- id: padilla-2022
+  title: 'Uncertainty Visualization: A Cognitive Framework'
+  authors: Padilla, Kay & Hullman
+  year: 2022
+  streams:
+  - uncertainty-communication
+  evidence: mixed
+  status: emerging
+  verdict: Connects uncertainty display design to perceptual and cognitive mechanisms.
+  qualification: Framework, not a set of tested interventions.
+- id: hullman-2015
+  title: Hypothetical Outcome Plots
+  authors: Hullman, Resnick & Adar
+  year: 2015
+  streams:
+  - uncertainty-communication
+  - sampling-experience
+  evidence: mixed
+  status: debated
+  verdict: Animated uncertainty displays converting statistical reading into frequency
+    estimation.
+  qualification: Lab evidence is positive for comparison tasks. Sensitive to animation
+    parameters.
+- id: kay-2016
+  title: Quantile Dotplots for Visualizing Uncertainty
+  authors: Kay, Kola, Hullman & Munson
+  year: 2016
+  streams:
+  - uncertainty-communication
+  - sampling-experience
+  evidence: mixed
+  status: debated
+  verdict: Bridges frequency-based reasoning with distributional display. Improved
+    decision quality vs. density plots.
+  qualification: Requires brief onboarding for unfamiliar users.
+- id: hofman-2020
+  title: Prediction, Judgment, and Complexity
+  authors: Hofman, Goldstein & Hullman
+  year: 2020
+  streams:
+  - uncertainty-communication
+  - decision-quality
+  evidence: mixed
+  status: debated
+  verdict: 'Demonstrated the comprehension-use gap: display rankings by comprehension
+    and decision quality can diverge.'
+  qualification: Evidence base thinner than the frequency literature. May be task-specific.
+- id: garcia-retamero-2013
+  title: Visual Aids and Medical Risk Communication
+  authors: Garcia-Retamero & Cokely
+  year: 2013
+  streams:
+  - uncertainty-communication
+  evidence: strong
+  status: canonical
+  verdict: Icon arrays substantially improve risk understanding across numeracy levels,
+    especially for low-numeracy users.
+  qualification: Primarily medical risk. Less established for non-binary distributional
+    uncertainty.
+- id: gigerenzer-2005
+  title: How People Interpret Probabilistic Weather Forecasts
+  authors: Gigerenzer, Hertwig et al.
+  year: 2005
+  streams:
+  - uncertainty-communication
+  evidence: strong
+  status: canonical
+  verdict: 'Public misinterprets ''probability of precipitation'' depending on implicit
+    reference class: time, area, or forecaster agreement.'
+  qualification: Demonstrates chronic misunderstanding of even the most commonly communicated
+    probability.
+- id: peters-2006
+  title: Numeracy and Decision Making
+  authors: Peters, Västfjäll, Slovic et al.
+  year: 2006
+  streams:
+  - uncertainty-communication
+  evidence: strong
+  status: canonical
+  verdict: Numeracy changes the nature of processing, not just comprehension. High-numeracy
+    individuals extract more affective meaning from numbers.
+  qualification: Measured with short scales that may miss domain-specific numerical
+    facility.
+- id: hoekstra-2014
+  title: How Well Do Researchers Understand Confidence Intervals?
+  authors: Hoekstra, Morey, Rouder & Wagenmakers
+  year: 2014
+  streams:
+  - uncertainty-communication
+  evidence: strong
+  status: canonical
+  verdict: Majority of researchers endorse incorrect CI interpretations.
+  qualification: Functional impact may be smaller if users treat CIs as rough uncertainty
+    signals.
+- id: belia-2005
+  title: Error Bar Misinterpretation
+  authors: Belia, Fidler, Williams & Cumming
+  year: 2005
+  streams:
+  - uncertainty-communication
+  evidence: strong
+  status: canonical
+  verdict: Many published scientists cannot correctly determine whether overlapping
+    error bars indicate significance.
+  qualification: Explicit labeling and education may help, but the format remains
+    inherently misleading for non-experts.
+- id: joslyn-2012
+  title: Uncertainty Forecasts Improve Decisions
+  authors: Joslyn & LeClerc
+  year: 2012
+  streams:
+  - uncertainty-communication
+  evidence: strong
+  status: canonical
+  verdict: Providing forecast uncertainty ranges improved protective action decisions
+    compared to point forecasts.
+  qualification: Weather domain. Generalization to AI uncertainty assumed.
+- id: gabaix-2014
+  title: A Sparsity-Based Model of Bounded Rationality
+  authors: Gabaix
+  year: 2014
+  streams:
+  - attention-salience
+  evidence: strong
+  status: canonical
+  verdict: Agents optimally allocate limited attention by attending to a sparse set
+    of factors.
+  qualification: Empirical applications still emerging. Predictions hard to test in
+    naturalistic settings.
+- id: thaler-2008
+  title: Nudge
+  authors: Thaler & Sunstein
+  year: 2008
+  streams:
+  - attention-salience
+  evidence: strong
+  status: canonical
+  verdict: Synthesized the choice architecture literature. Default effects, salience,
+    and framing reliably shift behavior.
+  qualification: Nudge effects are typically modest. Default effects are the most
+    reliable.
+- id: ellsberg-1961
+  title: Risk, Ambiguity, and the Savage Axioms
+  authors: Ellsberg
+  year: 1961
+  streams:
+  - risk-ambiguity
+  evidence: strong
+  status: canonical
+  verdict: People prefer known risks to unknown ones, even when the unknown could
+    be better. Foundational demonstration of ambiguity aversion.
+  qualification: Ambiguity attitudes vary by domain, probability level, and individual.
+- id: fox-1995
+  title: Ambiguity and Comparative Ignorance
+  authors: Fox & Tversky
+  year: 1995
+  streams:
+  - risk-ambiguity
+  evidence: strong
+  status: canonical
+  verdict: Willingness to bet depends on perceived competence relative to the uncertainty
+    source.
+  qualification: Hard to parameterize. More descriptive than predictive.
+- id: gilboa-1989
+  title: Maxmin Expected Utility with Non-Unique Prior
+  authors: Gilboa & Schmeidler
+  year: 1989
+  streams:
+  - risk-ambiguity
+  evidence: strong
+  status: canonical
+  verdict: Evaluate prospects by the worst-case prior. Axiomatically clean model of
+    extreme ambiguity aversion.
+  qualification: Too conservative for moderate ambiguity.
+- id: loewenstein-2001
+  title: Risk as Feelings
+  authors: Loewenstein, Weber, Hsee & Welch
+  year: 2001
+  streams:
+  - risk-ambiguity
+  - uncertainty-communication
+  evidence: strong
+  status: canonical
+  verdict: Emotional reactions to risk diverge from cognitive assessments and often
+    dominate decisions.
+  qualification: Integration with formal decision models remains incomplete.
+- id: benartzi-thaler-1995
+  title: Myopic Loss Aversion and the Equity Premium Puzzle
+  authors: Benartzi & Thaler
+  year: 1995
+  streams:
+  - temporal-dynamics
+  - decision-quality
+  evidence: strong
+  status: canonical
+  verdict: Evaluation frequency × loss aversion explains the equity premium puzzle.
+    Cleanest design implication in this archive.
+  qualification: Most evidence is from financial contexts. Generalization to non-financial
+    settings assumed.
+- id: gneezy-1997
+  title: An Experiment on Risk Taking and Evaluation Periods
+  authors: Gneezy & Potters
+  year: 1997
+  streams:
+  - temporal-dynamics
+  evidence: strong
+  status: canonical
+  verdict: 'Experimental confirmation: subjects seeing outcomes every period invested
+    ~40% less in risky options.'
+  qualification: Lab experiment with simple gambles.
+- id: haigh-2005
+  title: Myopic Loss Aversion Among Professional Traders
+  authors: Haigh & List
+  year: 2005
+  streams:
+  - temporal-dynamics
+  evidence: mixed
+  status: debated
+  verdict: Professional traders also show myopic loss aversion. Expertise does not
+    eliminate the effect.
+  qualification: Small sample. Needs broader replication with professional populations.
+- id: hertwig-2004
+  title: Decisions From Experience and the Effect of Rare Events
+  authors: Hertwig, Barron, Weber & Erev
+  year: 2004
+  streams:
+  - sampling-experience
+  - uncertainty-communication
+  evidence: strong
+  status: canonical
+  verdict: Described and experienced probabilities produce opposite rare-event biases.
+  qualification: Fox & Hadar (2006) showed much of the gap is sampling error. A residual
+    gap persists but is smaller.
+- id: hertwig-2009
+  title: The Description-Experience Gap in Risky Choice
+  authors: Hertwig & Erev
+  year: 2009
+  streams:
+  - sampling-experience
+  evidence: strong
+  status: canonical
+  verdict: Comprehensive review establishing the description-experience gap as a robust
+    research program.
+  qualification: The mechanism debate (sampling error vs. processing mode) remained
+    unresolved.
+- id: fox-2006
+  title: Decisions from Experience Without Feedback
+  authors: Fox & Hadar
+  year: 2006
+  streams:
+  - sampling-experience
+  evidence: mixed
+  status: debated
+  verdict: Much of the description-experience gap disappears when controlling for
+    information actually received.
+  qualification: Camilleri & Newell (2011) found a residual gap even after controlling
+    for sample information.
+- id: goldstein-2008
+  title: Distribution Display Changes Investment Behavior
+  authors: Goldstein, Johnson & Sharpe
+  year: 2008
+  streams:
+  - sampling-experience
+  - uncertainty-communication
+  evidence: strong
+  status: canonical
+  verdict: Showing full retirement outcome distributions changed investor behavior,
+    making people more conservative.
+  qualification: More granular displays are more informative but more cognitively
+    demanding.
+- id: dietvorst-2015
+  title: Algorithm Aversion
+  authors: Dietvorst, Simmons & Massey
+  year: 2015
+  streams:
+  - ai-agents
+  evidence: strong
+  status: canonical
+  verdict: Seeing an algorithm fail reduces reliance below rational levels, even when
+    the algorithm outperforms humans on average.
+  qualification: The aversion framing oversimplifies. Recent work treats this as context-sensitive
+    trust calibration.
+- id: logg-2019
+  title: Algorithm Appreciation
+  authors: Logg, Minson & Moore
+  year: 2019
+  streams:
+  - ai-agents
+  evidence: mixed
+  status: debated
+  verdict: People over-rely on algorithms for objective-seeming tasks. Direction depends
+    on perceived task subjectivity.
+  qualification: The appreciation-aversion direction is context-dependent, not a stable
+    individual trait.
+- id: bansal-2021
+  title: Human-AI Complementarity in AI-Advised Decision Making
+  authors: Bansal, Wu, Zhou et al.
+  year: 2021
+  streams:
+  - ai-agents
+  - attention-salience
+  evidence: strong
+  status: canonical
+  verdict: Complementarity requires humans to identify when the AI is wrong — the
+    task humans are worst at in most studied contexts.
+  qualification: Most studies use classification with known ground truth. Generalization
+    to genuine uncertainty is less clear.
+- id: steyvers-2022
+  title: Bayesian Models of Human-AI Integration
+  authors: Steyvers, Tejeda, Kerrigan & Smyth
+  year: 2022
+  streams:
+  - ai-agents
+  evidence: mixed
+  status: debated
+  verdict: Bayesian model predicting when combined judgment beats either source.
+  qualification: Assumes uncorrelated errors and calibrated confidence — rarely met
+    in practice.
+- id: green-2019
+  title: The Principles and Limits of Algorithm-in-the-Loop Decision Making
+  authors: Green & Chen
+  year: 2019
+  streams:
+  - ai-agents
+  evidence: mixed
+  status: debated
+  verdict: AI recommendations improve decisions on average but introduce new biases.
+    Users anchor on AI advice.
+  qualification: Tested in pretrial risk assessment — a domain with ethical complications.
+- id: bucinca-2021
+  title: 'To Trust or to Think: Cognitive Forcing Functions Reduce Overreliance'
+  authors: Buçinca, Malaya & Gajos
+  year: 2021
+  streams:
+  - ai-agents
+  - attention-salience
+  evidence: mixed
+  status: debated
+  verdict: Requiring users to commit to a judgment before seeing AI advice reduces
+    overreliance. Protocol design matters.
+  qualification: Cognitively costly. Feasible for high-stakes decisions but impractical
+    for routine tasks.
+- id: vasconcelos-2023
+  title: Explanations Can Reduce Overreliance on AI Systems
+  authors: Vasconcelos, Jörke et al.
+  year: 2023
+  streams:
+  - ai-agents
+  evidence: mixed
+  status: debated
+  verdict: Explanations reduce overreliance when cognitive effort of engagement is
+    low relative to stakes. A cost-benefit framework for XAI.
+  qualification: Five studies. Specific thresholds are likely task-dependent.
+- id: fok-2023
+  title: 'In Search of Verifiability: Explanations Rarely Enable Complementarity'
+  authors: Fok & Weld
+  year: 2023
+  streams:
+  - ai-agents
+  evidence: mixed
+  status: debated
+  verdict: Explanations rarely produce complementary performance. Verifiable explanations
+    are the exception.
+  qualification: May reflect current explanation designs rather than a fundamental
+    limitation.
+- id: schemmer-2025
+  title: The Misinformation Effect of Explanations in Human-AI Collaboration
+  authors: Schemmer, Hemmer, Kuehl & Vössing
+  year: 2025
+  streams:
+  - ai-agents
+  evidence: mixed
+  status: emerging
+  verdict: Incorrect AI explanations hurt decision quality more than correct explanations
+    help. The damage is asymmetric.
+  qualification: Tested in limited domains. Magnitude and boundary conditions need
+    broader replication.
+- id: steyvers-2025
+  title: Metacognition and Uncertainty Communication in Humans and LLMs
+  authors: Steyvers & Peters
+  year: 2025
+  streams:
+  - ai-agents
+  - uncertainty-communication
+  evidence: mixed
+  status: emerging
+  verdict: LLMs are reluctant to express uncertainty, likely due to RLHF. Non-experts
+    are especially susceptible to fluent, unhedged output.
+  qualification: Review and theoretical framework. Empirical predictions laid out
+    but not yet tested.
+- id: vaccaro-2024
+  title: When Combinations of Humans and AI Are Useful
+  authors: Vaccaro, Almaatouq & Malone
+  year: 2024
+  streams:
+  - ai-agents
+  evidence: strong
+  status: emerging
+  verdict: 'Meta-analysis: complementarity achieved in a minority of studied conditions.
+    Task difficulty and AI accuracy are the main moderators.'
+  qualification: Publication bias may understate failure rate.
+- id: collins-et-al-2025
+  title: Measuring and Mitigating Overreliance on LLMs
+  authors: Collins et al.
+  year: 2025
+  streams:
+  - ai-agents
+  evidence: mixed
+  status: emerging
+  verdict: 'Maps consequences of overreliance from immediate errors to long-term harms:
+    deskilling, erosion of critical thinking.'
+  qualification: Position paper. Long-term harm claims are theoretically motivated
+    but empirically untested.
+- id: lee-et-al-2025
+  title: Uncertainty-Aware Task Delegation for Human-AI Decision-Making
+  authors: Lee et al.
+  year: 2025
+  streams:
+  - ai-agents
+  - uncertainty-communication
+  evidence: weak
+  status: emerging
+  verdict: Distance-based uncertainty scores outperformed probability-based scores
+    for task delegation, yielding 8.2% higher correct decisions.
+  qualification: Small sample (N=29), single domain (stroke rehabilitation).
+- id: collins-2023
+  title: Human Uncertainty in Concept-Based AI Systems
+  authors: Collins, Barber, Callaway et al.
+  year: 2023
+  streams:
+  - ai-agents
+  - belief-elicitation
+  evidence: mixed
+  status: emerging
+  verdict: Accounting for human uncertainty in concept interventions improves AI system
+    performance. Most models wrongly assume humans are perfect oracles.
+  qualification: Limited ecological validity. Promising framework, untested at scale.
+- id: prabhudesai-et-al-2023
+  title: Using AI Uncertainty Quantification to Improve Human Decision-Making
+  authors: Prabhudesai et al.
+  year: 2023
+  streams:
+  - ai-agents
+  - uncertainty-communication
+  evidence: mixed
+  status: emerging
+  verdict: Visual AI uncertainty quantification improves human accuracy and confidence
+    calibration compared to prediction alone.
+  qualification: Lab image classification. Real-world generalization not yet tested.
+- id: guo-2024
+  title: A Decision Theoretic Framework for Measuring AI Reliance
+  authors: Guo, Wu, Hartline & Hullman
+  year: 2024
+  streams:
+  - ai-agents
+  - decision-quality
+  evidence: mixed
+  status: emerging
+  verdict: Formal framework connecting reliance behavior to decision-theoretic concepts.
+    Distinguishes rational from irrational reliance.
+  qualification: Theoretical. Empirical validation limited to controlled experiments.
+- id: horowitz-2024
+  title: Bending the Automation Bias Curve
+  authors: Horowitz & Kahn
+  year: 2024
+  streams:
+  - ai-agents
+  evidence: mixed
+  status: emerging
+  verdict: 'In a 9-country experiment (N=9000), AI background knowledge shows a Dunning-Kruger
+    pattern: low knowledge → aversion, medium → overreliance, high → calibrated.'
+  qualification: Task identification paradigm. Generalization to complex decision-making
+    assumed.
+- id: steyvers-2024
+  title: Three Challenges for AI-Assisted Decision-Making
+  authors: Steyvers & Kumar
+  year: 2024
+  streams:
+  - ai-agents
+  evidence: mixed
+  status: emerging
+  verdict: 'Identifies three core challenges: appropriate reliance, complementary
+    performance, and uncertainty communication.'
+  qualification: Review paper synthesizing the field. No new empirical results.

@@ -3,224 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Human-Agent Decision Making — Research Archive</title>
+  <title>Home — Human-Agent Decision Making</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
-<nav class="site-nav">
+<nav class="nav">
   <div class="nav-inner">
     <a class="nav-brand" href="index.html">Human-Agent Decision Making</a>
-    <div class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="content/topics/belief-elicitation.html">Streams</a>
-      <a href="explore.html">Explore</a>
-      <a href="build.html">Build</a>
-    </div>
+    <div class="nav-links"><a href="index.html" class="active">Home</a> <a href="content/topics/agents-as-advisors.html">Streams</a> <a href="explore.html">Explore</a> <a href="build.html">Build</a></div>
   </div>
 </nav>
+<main class="main">
 
-<main class="site-main">
+<section class="hero">
+  <div class="hero-label">Research Archive</div>
+  <h1 class="hero-thesis">Human-Agent Decision Making Under Uncertainty</h1>
+  <p class="hero-sub">A research archive at the intersection of cognitive science and AI agents, organized by research direction. Covers belief elicitation, uncertainty communication, decision quality benchmarks, attention and salience, risk and ambiguity, temporal dynamics, sampling and experience, and AI-human collaboration.</p>
+</section>
 
-  <!-- HERO: Thesis first, not meta-explanation -->
-  <section class="hero">
-    <div class="hero-label">Research Archive</div>
-    <h1 class="hero-thesis">When humans and AI agents make decisions together under uncertainty, what actually determines whether the outcome is better or worse than either alone?</h1>
-    <p class="hero-sub">This archive maps what cognitive science and AI research have established, where the real disagreements are, and what follows for designing systems where humans and agents collaborate on uncertain decisions. Organized by research direction, not by date.</p>
-  </section>
+<section>
+  <div class="sec-label">Research streams</div>
+  <div class="streams-grid">
 
-  <!-- FRONTIER QUESTIONS: What you can learn here -->
-  <section>
-    <div class="section-label">Questions driving this archive</div>
-    <div class="questions-grid">
+    <a class="sc" href="content/topics/agents-as-advisors.html" style="border-left-color: var(--s8);">
+      <div class="sc-label" style="color: var(--s8);">AI Agents as Decision Partners</div>
+      <div class="sc-tension">Calibrated AI confidence does not reliably improve human decisions — explanation style, fluency, and decision protocol matter at least as much.</div>
+    </a>
 
-      <a class="q-card" href="content/topics/agents-as-advisors.html">
-        <div class="q-card-stream" style="color: var(--stream8);">Stream 8 · AI Agents</div>
-        <div class="q-card-title">When does AI uncertainty communication actually improve human decisions?</div>
-        <div class="q-card-desc">The field has shifted from "are LLMs calibrated?" to "does expressing calibration help the user?" The answer depends on explanation style, trust dynamics, and decision protocol — not just accuracy.</div>
-      </a>
+    <a class="sc" href="content/topics/utility-decision-quality.html" style="border-left-color: var(--s3);">
+      <div class="sc-label" style="color: var(--s3);">Decision Quality & Normative Benchmarks</div>
+      <div class="sc-tension">Whether the mechanism behind choice anomalies is probability weighting or salience-driven attention determines whether display redesign can fix the problem.</div>
+    </a>
 
-      <a class="q-card" href="content/topics/belief-elicitation.html">
-        <div class="q-card-stream" style="color: var(--stream1);">Stream 1 · Belief Elicitation</div>
-        <div class="q-card-title">Can conversational AI elicit beliefs better than forms?</div>
-        <div class="q-card-desc">Dialogue-based elicitation could adapt to the person's cognitive state in real time. But it might also anchor responses, create false coherence, or introduce social dynamics that distort reporting. Empirical evidence is almost absent.</div>
-      </a>
+    <a class="sc" href="content/topics/uncertainty-communication.html" style="border-left-color: var(--s2);">
+      <div class="sc-label" style="color: var(--s2);">Uncertainty Communication</div>
+      <div class="sc-tension">Displays that improve comprehension sometimes worsen decisions — and most research measures comprehension while most applications need decision quality.</div>
+    </a>
 
-      <a class="q-card" href="content/topics/utility-decision-quality.html">
-        <div class="q-card-stream" style="color: var(--stream3);">Stream 3 · Decision Quality</div>
-        <div class="q-card-title">What should "better" mean when an AI helps you decide?</div>
-        <div class="q-card-desc">If the benchmark is expected utility, the AI imposes a model the person may not endorse. If the benchmark is revealed preference, the data is contaminated by framing effects. Every AI advisor embeds assumptions about what you should want.</div>
-      </a>
+    <a class="sc" href="content/topics/belief-elicitation.html" style="border-left-color: var(--s1);">
+      <div class="sc-label" style="color: var(--s1);">Belief Elicitation & Calibration</div>
+      <div class="sc-tension">Elicitation is partly generative. The method shapes the belief it claims to measure, and there may be no single ground-truth internal probability to recover.</div>
+    </a>
 
-      <a class="q-card" href="content/topics/uncertainty-communication.html">
-        <div class="q-card-stream" style="color: var(--stream2);">Stream 2 · Uncertainty Communication</div>
-        <div class="q-card-title">Why do displays that improve comprehension sometimes worsen decisions?</div>
-        <div class="q-card-desc">Understanding a probability distribution and acting well on it are different cognitive tasks. Optimizing for one can degrade the other. The field hasn't solved which to target — and the answer depends on context.</div>
-      </a>
+    <a class="sc" href="content/topics/attention-memory-salience.html" style="border-left-color: var(--s4);">
+      <div class="sc-label" style="color: var(--s4);">Attention, Memory & Salience</div>
+      <div class="sc-tension">Salience theory offers an attention-based account of choice anomalies — and if correct, the intervention (interface redesign) is cheaper than debiasing training.</div>
+    </a>
 
-      <a class="q-card" href="content/topics/attention-memory-salience.html">
-        <div class="q-card-stream" style="color: var(--stream4);">Stream 4 · Attention & Salience</div>
-        <div class="q-card-title">Is the AI explanation problem actually an attention problem?</div>
-        <div class="q-card-desc">Salience theory suggests many "irrational" choices are really attention failures. If so, fixing the interface — not retraining the person — is the right intervention. But distinguishing attentional effects from probability weighting is hard.</div>
-      </a>
+    <a class="sc" href="content/topics/risk-ambiguity.html" style="border-left-color: var(--s5);">
+      <div class="sc-label" style="color: var(--s5);">Risk, Ambiguity & Controllability</div>
+      <div class="sc-tension">AI is a source of ambiguity (unknown error distribution), not risk (known probability). Ambiguity aversion — not risk aversion — drives adoption resistance.</div>
+    </a>
 
-      <a class="q-card" href="content/topics/sampling-representation.html">
-        <div class="q-card-stream" style="color: var(--stream7);">Stream 7 · Sampling & Experience</div>
-        <div class="q-card-title">Does experiencing uncertainty (sampling) produce better decisions than reading about it?</div>
-        <div class="q-card-desc">The description-experience gap is one of the most robust findings: people treat described probabilities very differently from experienced ones. But the experience format underweights rare events — which can be catastrophic.</div>
-      </a>
+    <a class="sc" href="content/topics/temporal-dynamics.html" style="border-left-color: var(--s6);">
+      <div class="sc-label" style="color: var(--s6);">Temporal Dynamics</div>
+      <div class="sc-tension">Evaluation frequency is a design variable with causal effects on risk-taking. Myopic loss aversion has the cleanest design implications in this archive.</div>
+    </a>
 
+    <a class="sc" href="content/topics/sampling-representation.html" style="border-left-color: var(--s7);">
+      <div class="sc-label" style="color: var(--s7);">Sampling, Granularity & Experience</div>
+      <div class="sc-tension">Described and experienced probabilities produce opposite rare-event biases. Most AI systems are pure description — and hybrid formats remain underused.</div>
+    </a>
+
+  </div>
+</section>
+
+<section>
+  <div class="sec-label">Frontier tensions</div>
+  <div class="debates">
+    <div class="debate">
+      <div class="debate-side"><p><strong>Probability weighting</strong> (prospect theory) explains choice anomalies as stable cognitive distortions.</p></div>
+      <div class="debate-vs">vs</div>
+      <div class="debate-side"><p><strong>Salience-driven attention</strong> (Bordalo et al.) explains the same anomalies as context-dependent overweighting of prominent payoffs.</p></div>
     </div>
-  </section>
-
-  <!-- FRONTIER DEBATES: What search can't give you -->
-  <section>
-    <div class="section-label">Frontier debates the field hasn't settled</div>
-    <div class="debates-strip">
-
-      <div class="debate-row">
-        <div class="debate-side">
-          <div class="debate-side-label" style="color: var(--settled);">Position A</div>
-          <p><strong>Probability weighting</strong> explains choice anomalies — people systematically distort probabilities, and this distortion is a stable cognitive feature.</p>
-        </div>
-        <div class="debate-vs">vs</div>
-        <div class="debate-side">
-          <div class="debate-side-label" style="color: var(--contested);">Position B</div>
-          <p><strong>Salience and attention</strong> explain the same anomalies — people overweight whichever payoffs grab attention, and the "distortion" is context-dependent, not stable.</p>
-        </div>
-      </div>
-
-      <div class="debate-row">
-        <div class="debate-side">
-          <div class="debate-side-label" style="color: var(--settled);">Position A</div>
-          <p><strong>Comprehension-first design</strong>: make the user understand the uncertainty deeply, and good decisions will follow.</p>
-        </div>
-        <div class="debate-vs">vs</div>
-        <div class="debate-side">
-          <div class="debate-side-label" style="color: var(--contested);">Position B</div>
-          <p><strong>Action-first design</strong>: optimize the display for decision quality directly — full understanding isn't needed and sometimes hurts.</p>
-        </div>
-      </div>
-
-      <div class="debate-row">
-        <div class="debate-side">
-          <div class="debate-side-label" style="color: var(--settled);">Position A</div>
-          <p><strong>AI explanations help</strong>: showing confidence, reasoning, and feature importance improves human-AI team performance.</p>
-        </div>
-        <div class="debate-vs">vs</div>
-        <div class="debate-side">
-          <div class="debate-side-label" style="color: var(--contested);">Position B</div>
-          <p><strong>AI explanations mislead</strong>: fluent explanations increase trust independently of accuracy, and wrong explanations hurt more than right ones help.</p>
-        </div>
-      </div>
-
+    <div class="debate">
+      <div class="debate-side"><p><strong>Comprehension-first design</strong>: help users understand uncertainty deeply and good decisions follow.</p></div>
+      <div class="debate-vs">vs</div>
+      <div class="debate-side"><p><strong>Action-first design</strong>: optimize for decision quality directly — full understanding is unnecessary and sometimes counterproductive.</p></div>
     </div>
-  </section>
-
-  <!-- START HERE: Reading path for newcomers -->
-  <section>
-    <div class="start-path">
-      <h3>Start here</h3>
-      <ol class="start-steps">
-        <li><a href="content/topics/utility-decision-quality.html">Decision Quality & Normative Benchmarks</a> — what "rational" means and why real choices deviate</li>
-        <li><a href="content/topics/belief-elicitation.html">Belief Elicitation</a> — why extracting beliefs is harder than it seems</li>
-        <li><a href="content/topics/uncertainty-communication.html">Uncertainty Communication</a> — why format is never neutral</li>
-        <li><a href="content/topics/agents-as-advisors.html">AI Agents as Decision Partners</a> — the frontier where all streams converge</li>
-      </ol>
+    <div class="debate">
+      <div class="debate-side"><p><strong>AI explanations reduce overreliance</strong> by helping users assess AI reliability and override errors.</p></div>
+      <div class="debate-vs">vs</div>
+      <div class="debate-side"><p><strong>Incorrect AI explanations hurt more than correct ones help</strong> — the expected value of explanation features is negative when accuracy is imperfect.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- BEST PAPERS: Verdict-forward -->
-  <section class="best-papers-strip">
-    <div class="section-label">Papers that shaped the field</div>
-    <div class="paper-card-row">
+<section>
+  <div class="start-path">
+    <h3>Reading path</h3>
+    <ol class="start-steps">
+      <li><a href="content/topics/utility-decision-quality.html">Decision Quality</a> — normative benchmarks and where real choices deviate</li>
+      <li><a href="content/topics/belief-elicitation.html">Belief Elicitation</a> — why extracting beliefs is harder than it appears</li>
+      <li><a href="content/topics/uncertainty-communication.html">Uncertainty Communication</a> — why format causally affects decisions</li>
+      <li><a href="content/topics/agents-as-advisors.html">AI Agents</a> — where all streams converge</li>
+    </ol>
+  </div>
+</section>
 
-      <div class="paper-mini-card">
-        <div class="paper-era badge-settled">Settled</div>
-        <div class="paper-title">Prospect Theory: An Analysis of Decision under Risk</div>
-        <div class="paper-cite">Kahneman & Tversky, 1979</div>
-        <div class="paper-verdict">Still the dominant descriptive model. Loss aversion, reference dependence, and probability weighting remain the framework most applied work builds on — even as salience theory and cognitive uncertainty offer alternative mechanisms.</div>
-      </div>
-
-      <div class="paper-mini-card">
-        <div class="paper-era badge-settled">Settled</div>
-        <div class="paper-title">How to Solve the Base-Rate Problem Using Natural Frequencies</div>
-        <div class="paper-cite">Gigerenzer & Hoffrage, 1995</div>
-        <div class="paper-verdict">Established that format causally affects reasoning, not just comprehension. Natural frequencies improve Bayesian inference from ~15% to ~50% correct. The mechanism is debated but the effect is rock-solid.</div>
-      </div>
-
-      <div class="paper-mini-card">
-        <div class="paper-era badge-frontier">Frontier</div>
-        <div class="paper-title">Cognitive Uncertainty</div>
-        <div class="paper-cite">Enke & Graeber, 2023</div>
-        <div class="paper-verdict">Introduced a measurable construct linking attention limits to choice quality. Potentially unifies many behavioral anomalies as "noise from uncertainty about your own preferences" rather than stable biases. Too early to know if it holds broadly.</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ALL STREAMS: Compact grid -->
-  <section>
-    <div class="section-label">All research streams</div>
-    <div class="streams-grid">
-
-      <a class="stream-card" href="content/topics/belief-elicitation.html" style="border-left-color: var(--stream1);">
-        <div class="sc-num">Stream 1</div>
-        <div class="sc-name">Belief Elicitation & Calibration</div>
-        <div class="sc-q">How do we extract what people actually believe, and how well-calibrated are those beliefs?</div>
-      </a>
-
-      <a class="stream-card" href="content/topics/uncertainty-communication.html" style="border-left-color: var(--stream2);">
-        <div class="sc-num">Stream 2</div>
-        <div class="sc-name">Uncertainty Communication</div>
-        <div class="sc-q">How should uncertainty be presented so people understand and act on it?</div>
-      </a>
-
-      <a class="stream-card" href="content/topics/utility-decision-quality.html" style="border-left-color: var(--stream3);">
-        <div class="sc-num">Stream 3</div>
-        <div class="sc-name">Decision Quality & Normative Benchmarks</div>
-        <div class="sc-q">What counts as a "good" decision, and by whose standards?</div>
-      </a>
-
-      <a class="stream-card" href="content/topics/attention-memory-salience.html" style="border-left-color: var(--stream4);">
-        <div class="sc-num">Stream 4</div>
-        <div class="sc-name">Attention, Memory & Salience</div>
-        <div class="sc-q">How do interfaces shape what people notice, remember, and weigh?</div>
-      </a>
-
-      <a class="stream-card" href="content/topics/risk-ambiguity.html" style="border-left-color: var(--stream5);">
-        <div class="sc-num">Stream 5</div>
-        <div class="sc-name">Risk, Ambiguity & Controllability</div>
-        <div class="sc-q">How do people process different types and sources of uncertainty?</div>
-      </a>
-
-      <a class="stream-card" href="content/topics/temporal-dynamics.html" style="border-left-color: var(--stream6);">
-        <div class="sc-num">Stream 6</div>
-        <div class="sc-name">Temporal Dynamics</div>
-        <div class="sc-q">How does feedback timing, evaluation frequency, and planning horizon shape risk-taking?</div>
-      </a>
-
-      <a class="stream-card" href="content/topics/sampling-representation.html" style="border-left-color: var(--stream7);">
-        <div class="sc-num">Stream 7</div>
-        <div class="sc-name">Sampling, Granularity & Experience</div>
-        <div class="sc-q">How do people learn about distributions from experience, and how does format affect judgment?</div>
-      </a>
-
-      <a class="stream-card" href="content/topics/agents-as-advisors.html" style="border-left-color: var(--stream8);">
-        <div class="sc-num">Stream 8</div>
-        <div class="sc-name">AI Agents as Decision Partners</div>
-        <div class="sc-q">When does human-AI collaboration actually improve decisions, and when does it make them worse?</div>
-      </a>
-
-    </div>
-  </section>
+<section>
+  <div class="sec-label">Papers that shaped the field</div>
+  <div class="paper-grid">
+    <a class="pc" href="content/papers/kahneman-tversky-1979.html">
+      <div class="pc-badges"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+      <div class="pc-title">Prospect Theory: An Analysis of Decision under Risk</div>
+      <div class="pc-cite">Kahneman & Tversky, 1979</div>
+      <div class="pc-verdict">Dominant descriptive model. Reference dependence, loss aversion, and probability weighting remain the framework most applied work builds on.</div>
+      <div class="pc-holds">The qualitative effects are robust. The λ≈2.25 estimate shows more heterogeneity than textbooks suggest — recent meta-analyses range from 1.31 to 1.96. Salience theory competes on mechanism.</div>
+    </a>
+    <a class="pc" href="explore.html">
+      <div class="pc-badges"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+      <div class="pc-title">Natural Frequencies Improve Bayesian Reasoning</div>
+      <div class="pc-cite">Gigerenzer & Hoffrage, 1995</div>
+      <div class="pc-verdict">Format causally affects reasoning performance. Natural frequencies raise correct Bayesian inference from ~15% to ~50%.</div>
+      <div class="pc-holds">Robust across dozens of replications. Benefit is strongest for multi-step Bayesian problems; smaller for simple judgments. The evolved-processor interpretation is debated.</div>
+    </a>
+    <a class="pc" href="explore.html">
+      <div class="pc-badges"><span class="badge ev-strong">Strong</span> <span class="badge st-emerging">Emerging</span></div>
+      <div class="pc-title">When Combinations of Humans and AI Are Useful</div>
+      <div class="pc-cite">Vaccaro, Almaatouq & Malone, 2024</div>
+      <div class="pc-verdict">Meta-analysis of human-AI team performance. Complementarity is achieved in a minority of studied conditions. Task difficulty and AI accuracy are the primary moderators.</div>
+      <div class="pc-holds">Publication bias may understate the failure rate. The conditions under which complementarity succeeds are more specific than the field has assumed.</div>
+    </a>
+  </div>
+</section>
 
 </main>
-
-<footer class="site-footer">
-  <p>Human-Agent Decision Making — A personal research archive at the intersection of cognitive science and AI agents</p>
-  <p style="margin-top: 8px;"><a href="build.html">Build & contribute</a></p>
-</footer>
-
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
 </body>
 </html>

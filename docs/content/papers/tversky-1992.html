@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kahneman (1992) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Cumulative Prospect Theory</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Tversky & Kahneman · , 1992</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/decision-quality.html">Decision Quality</a></div>
+<div class="ts">
+<p>Extended prospect theory from simple gambles (two or three outcomes) to prospects with any number of outcomes using <strong>rank-dependent probability weighting</strong>. In the original 1979 version, probability weighting was applied to each outcome's probability independently, which could produce violations of first-order stochastic dominance — a serious theoretical flaw. Cumulative prospect theory (CPT) fixes this by applying the weighting function to cumulative probabilities (the probability of getting at least x), ensuring that a prospect that is better in every state is never rated worse.</p>
+<p>CPT provided the parametric forms used in most quantitative applications of prospect theory: the value function v(x) = x<sup>α</sup> for gains with α ≈ 0.88, and v(x) = −λ(−x)<sup>β</sup> for losses with β ≈ 0.88 and λ ≈ 2.25. The probability weighting function was parameterized as w(p) = p<sup>γ</sup> / (p<sup>γ</sup> + (1−p)<sup>γ</sup>)<sup>1/γ</sup> with γ ≈ 0.61 for gains and γ ≈ 0.69 for losses. These specific numbers — α, β, λ, γ — are what most empirical work uses when fitting prospect theory to choice data, estimating risk preferences, or calibrating behavioral models.</p>
+<p>The estimates were derived from certainty equivalents for 56 gambles, assessed with 25 graduate students. The parameter estimates vary considerably across subsequent studies: see Brown et al. (2024) and Walasek et al. (2024) for the range of λ estimates, and Stott (2006) for comparisons of alternative functional forms.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

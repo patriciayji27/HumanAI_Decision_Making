@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guo (2024) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-mixed">Mixed</span> <span class="badge st-emerging">Emerging</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">A Decision Theoretic Framework for Measuring AI Reliance</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Guo, Wu, Hartline & Hullman · , 2024</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/ai-agents.html">AI Agents</a>
+<a class="xref-chip" href="../topics/decision-quality.html">Decision Quality</a></div>
+<div class="ts">
+<p>Proposed a <strong>decision-theoretic framework</strong> for measuring AI reliance. The core contribution: a formal definition of what <strong>optimal reliance</strong> would look like, allowing researchers to measure how far observed reliance deviates from the rational benchmark.</p>
+<p>The framework defines: <strong>Rational reliance</strong> = defer to the AI when it is more likely to be correct, override when the human is more likely to be correct. <strong>Overreliance</strong> = deferring when the human would have been more accurate. <strong>Underreliance</strong> = overriding when the AI would have been more accurate. Previous studies measured reliance levels (e.g., accept rate) without a principled way to determine whether the observed level was too high or too low — because "too high" and "too low" require a benchmark.</p>
+<p>The framework connects AI reliance to <strong>decision theory</strong>: the optimal reliance strategy depends on the relative accuracy of human and AI, the costs of different error types, and the decision-maker's information about these quantities. This allows computing an optimal reliance level for any given task and measuring the gap between observed and optimal behavior — decomposing the gap into overreliance, underreliance, and calibration components.</p>
+<p>The framework was validated in controlled experiments where the true optimal reliance could be computed. In practice, the challenge is that the true relative accuracy of human and AI on the specific case at hand is usually unknown — which is precisely why achieving optimal reliance is difficult.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

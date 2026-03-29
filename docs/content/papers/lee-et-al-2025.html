@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>al. (2025) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-weak">Weak</span> <span class="badge st-emerging">Emerging</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Uncertainty-Aware Task Delegation for Human-AI Decision-Making</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Lee et al. · , 2025</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/ai-agents.html">AI Agents</a>
+<a class="xref-chip" href="../topics/uncertainty-communication.html">Uncertainty Communication</a></div>
+<div class="ts">
+<p>Tested two types of uncertainty scores for deciding whether to <strong>delegate a decision to the AI or keep it with the human</strong>: probability-based scores (traditional softmax confidence) and distance-based scores (how far the input is from the training distribution in embedding space).</p>
+<p>In a stroke rehabilitation assessment task with 19 health professionals and 10 students (N=29), participants who used distance-based uncertainty scores achieved <strong>8.2% higher correct decisions</strong>, 7.1% higher rate of beneficial decision changes, and 7.1% lower rate of harmful changes compared to those using probability-based scores (p < 0.01).</p>
+<p>The mechanism: probability-based scores (softmax confidence) can be high even for inputs far from the training distribution — the model can be confidently wrong on out-of-distribution cases. Distance-based scores directly measure <strong>how similar the current case is to cases the model was trained on</strong>, which is more directly informative about whether the model's prediction is likely to be reliable. When presented as an embedding visualization, participants could see whether the current case "looked like" cases the model had seen before.</p>
+<p>The sample is small and the domain is narrow (upper-limb stroke rehabilitation assessment). The finding is suggestive rather than definitive, but it points to an underexplored design dimension: how uncertainty is <strong>computed</strong> — not just how it is displayed — affects human delegation decisions.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

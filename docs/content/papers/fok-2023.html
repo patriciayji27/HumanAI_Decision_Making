@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weld (2023) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-mixed">Mixed</span> <span class="badge st-debated">Debated</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">In Search of Verifiability: Explanations Rarely Enable Complementarity</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Fok & Weld · , 2023</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/ai-agents.html">AI Agents</a></div>
+<div class="ts">
+<p>Surveyed the XAI (explainable AI) literature and assessed whether providing AI explanations actually produces <strong>complementary performance</strong> — human-AI teams outperforming both human alone and AI alone. The conclusion: explanations <strong>rarely achieve this</strong>.</p>
+<p>The paper identified one exception: <strong>verifiable explanations</strong> — explanations where the user can independently check whether the reasoning is correct. Feature importance highlights (e.g., LIME, SHAP) are typically <strong>unverifiable</strong>: the user can see which features the model weighted heavily, but cannot check whether those weights actually drove the model's prediction or whether the highlighted features are causally relevant. Counterfactual explanations ("if the income were $10,000 higher, the prediction would change") are more verifiable because the user can mentally simulate the change and assess its plausibility.</p>
+<p>The paper argues that the relevant design dimension for XAI is not explanation complexity, detail, or format — it is <strong>verifiability</strong>. An explanation that the user cannot check may increase trust without increasing appropriate trust, producing the overreliance pattern documented by Bansal et al. (2021). An explanation that the user <em>can</em> check allows them to selectively trust correct explanations and discount incorrect ones, which is the mechanism needed for complementarity.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

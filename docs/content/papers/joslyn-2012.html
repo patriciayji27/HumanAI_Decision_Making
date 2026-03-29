@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeClerc (2012) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Uncertainty Forecasts Improve Decisions</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Joslyn & LeClerc · , 2012</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/uncertainty-communication.html">Uncertainty Communication</a></div>
+<div class="ts">
+<p>Compared protective action decisions when participants received <strong>point forecasts</strong> ("the temperature will be 31°F") versus <strong>range forecasts</strong> ("the temperature will be between 28°F and 35°F") in a winter weather scenario where the decision was whether to protect vulnerable plants from frost.</p>
+<p>Participants who received range forecasts made <strong>better decisions</strong>: they were more likely to take protective action when the forecast range included dangerous temperatures (below 32°F), even when the point forecast (the central estimate) was above freezing. The range forecast made the possibility of dangerous cold explicitly visible, while the point forecast suppressed this information.</p>
+<p>This is a case where <strong>communicating uncertainty is itself the intervention</strong>. A point forecast of 31°F gives the user one number to react to. A range forecast of 28°F to 35°F gives the user the information that freezing temperatures are within the forecast's uncertainty range — triggering appropriate protective action. The uncertain forecast outperformed the precise-but-possibly-wrong point estimate because it preserved decision-relevant information about tail risk that the point estimate discarded.</p>
+<p>The finding extends to AI systems: presenting a single AI prediction ("the model says 73% chance of X") discards uncertainty information that may be critical for the user's decision. Presenting a range or distribution preserves it. Whether this translates from weather contexts to AI-assisted decisions has not been directly tested but the mechanism (making tail risk visible) is general.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

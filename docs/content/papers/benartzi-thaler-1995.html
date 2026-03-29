@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thaler (1995) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Myopic Loss Aversion and the Equity Premium Puzzle</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Benartzi & Thaler · , 1995</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/temporal-dynamics.html">Temporal Dynamics</a>
+<a class="xref-chip" href="../topics/decision-quality.html">Decision Quality</a></div>
+<div class="ts">
+<h2>The specific insight</h2>
+<p>Stocks lose money in about <strong>40% of months</strong> but only about <strong>30% of years</strong>. That 10-percentage-point gap, combined with 2× loss aversion, accounts for the entire equity premium puzzle — why stocks return ~6% more than bonds annually.</p>
+<svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;margin:var(--lg) 0;">
+  <style>.ax{stroke:#8A8A80;stroke-width:1}.tick{font-size:11px;fill:#8A8A80;font-family:sans-serif}.bar{fill:#DC4C64;opacity:0.8}.label{font-size:12px;fill:#1A1A18;font-family:sans-serif;font-weight:600}.note{font-size:10px;fill:#8A8A80;font-family:sans-serif}</style>
+  <line x1="80" y1="20" x2="80" y2="220" class="ax"/><line x1="80" y1="220" x2="600" y2="220" class="ax"/>
+  <text x="75" y="225" text-anchor="end" class="tick">0%</text><text x="75" y="125" text-anchor="end" class="tick">40%</text><text x="75" y="75" text-anchor="end" class="tick">50%</text>
+  <line x1="78" y1="125" x2="600" y2="125" stroke="#EEEBE5" stroke-width="0.5"/>
+  <rect x="100" y="80" width="80" height="140" class="bar" rx="3"/><text x="140" y="240" text-anchor="middle" class="tick">Daily</text><text x="140" y="73" text-anchor="middle" class="label">47%</text>
+  <rect x="220" y="100" width="80" height="120" class="bar" rx="3"/><text x="260" y="240" text-anchor="middle" class="tick">Monthly</text><text x="260" y="93" text-anchor="middle" class="label">40%</text>
+  <rect x="340" y="140" width="80" height="80" class="bar" rx="3"/><text x="380" y="240" text-anchor="middle" class="tick">Annually</text><text x="380" y="133" text-anchor="middle" class="label">30%</text>
+  <rect x="460" y="180" width="80" height="40" class="bar" rx="3"/><text x="500" y="240" text-anchor="middle" class="tick">5-year</text><text x="500" y="173" text-anchor="middle" class="label">~15%</text>
+  <text x="340" y="258" text-anchor="middle" class="note">Fraction of periods with negative stock returns (historical U.S. data)</text>
+</svg>
+<p>A loss-averse investor (λ≈2) evaluating monthly sees near-coin-flip odds of loss, demanding a huge premium. The same investor evaluating annually sees losses only 30% of the time — a much more tolerable rate. The evaluation frequency alone changes the optimal portfolio.</p>
+</div>
+<div class="ts">
+<h2>Experimental confirmation</h2>
+<p>Gneezy & Potters (1997, N=72): subjects seeing outcomes every round invested <strong>50.8%</strong>; every 3 rounds invested <strong>67.3%</strong>. Haigh & List (2005): professional CBOT traders showed the same pattern — expertise does not eliminate myopic loss aversion.</p>
+<p>Calibration caveat: with lower λ estimates (Walasek et al. 2024: λ≈1.31), the mechanism still operates but explains less of the premium.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

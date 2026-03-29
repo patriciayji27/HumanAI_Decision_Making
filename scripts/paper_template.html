@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{AUTHORS_SHORT}} ({{YEAR}}) — Human-Agent Decision Making</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+  <div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div>
+</div></nav>
+<main class="main">
+
+<div style="margin-bottom: var(--lg);">
+  <span class="badge {{EV_CLASS}}">{{EV_LABEL}}</span>
+  <span class="badge {{ST_CLASS}}">{{ST_LABEL}}</span>
+</div>
+
+<h1 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; margin-bottom: var(--xs);">{{TITLE}}</h1>
+<p style="font-size: 0.92rem; color: var(--text-3); margin-bottom: var(--sm);">{{AUTHORS_FULL}} · {{VENUE}}, {{YEAR}}</p>
+<p style="font-size: 0.82rem; margin-bottom: var(--lg);"><a href="{{DOI_URL}}" style="color: var(--accent);">{{DOI_URL}}</a></p>
+
+<div style="display: flex; gap: var(--sm); flex-wrap: wrap; margin-bottom: var(--xl);">
+  {{STREAM_CHIPS}}
+</div>
+
+<!-- WHAT THE PAPER DID: specific design, sample, manipulation, DV -->
+<div class="ts">
+  <h2>Design and method</h2>
+  {{DESIGN_HTML}}
+</div>
+
+<!-- SPECIFIC FINDINGS: effect sizes, confidence intervals, key numbers -->
+<div class="ts">
+  <h2>Key findings</h2>
+  {{FINDINGS_HTML}}
+</div>
+
+<!-- WHAT DEPENDS ON THIS: downstream papers, applied systems, design practices -->
+<div class="ts">
+  <h2>Downstream dependence</h2>
+  {{DEPENDENCE_HTML}}
+</div>
+
+<!-- WHAT WEAKENED IT: replications, competing explanations, boundary conditions -->
+<div class="ts">
+  <h2>Subsequent qualifications</h2>
+  {{QUALIFICATIONS_HTML}}
+</div>
+
+<!-- VERDICT: one paragraph, no questions, no platitudes -->
+<div class="ts">
+  <h2>Verdict</h2>
+  {{VERDICT_HTML}}
+</div>
+
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>al. (2023) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-mixed">Mixed</span> <span class="badge st-emerging">Emerging</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Using AI Uncertainty Quantification to Improve Human Decision-Making</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Prabhudesai et al. · , 2023</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/ai-agents.html">AI Agents</a>
+<a class="xref-chip" href="../topics/uncertainty-communication.html">Uncertainty Communication</a></div>
+<div class="ts">
+<p>Tested whether providing visual <strong>AI uncertainty quantification (UQ)</strong> — showing the user how the AI's prediction would change under small perturbations to the input — improves human decision-making in an image classification task.</p>
+<p>The UQ method: for a given input image, generate multiple slightly perturbed versions and observe how the AI's prediction changes across perturbations. If predictions are stable (the AI says "cat" for all perturbations), UQ is low. If predictions vary (the AI says "cat" for some perturbations but "dog" for others), UQ is high. This variability is visualized to the user as a spread of predictions.</p>
+<p>The result: providing UQ <strong>improved both human decision accuracy and confidence calibration</strong> compared to showing the AI prediction alone. Participants with UQ were better at distinguishing reliable from unreliable AI predictions, and their confidence in their decisions better tracked their actual accuracy. The UQ was scored using the Continuous Ranked Probability Score (CRPS, Gneiting & Raftery, 2007) against true labels to verify its quality.</p>
+<p>The finding suggests that showing users <em>how uncertain</em> the AI is — not just what the AI predicts — is informative and usable. However, the test used a simple image classification task. Whether the same UQ approach scales to more complex decisions (where perturbation-based UQ may be less interpretable) and whether users maintain appropriate use of UQ information over time are open questions.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

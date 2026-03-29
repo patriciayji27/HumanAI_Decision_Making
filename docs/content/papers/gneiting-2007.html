@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raftery (2007) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Strictly Proper Scoring Rules, Prediction, and Estimation</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Gneiting & Raftery · , 2007</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/belief-elicitation.html">Belief Elicitation</a></div>
+<div class="ts">
+<p>Provided a unified mathematical framework for <strong>proper scoring rules</strong> — functions that evaluate the quality of probabilistic forecasts by assigning a score based on the forecast distribution and the observed outcome. A scoring rule is "proper" if the forecaster maximizes their expected score by reporting their true belief; "strictly proper" if truthful reporting is the unique optimum.</p>
+<p>The paper's main contributions: (1) A comprehensive classification of strictly proper scoring rules for both discrete and continuous outcomes, including the Brier score (quadratic), the logarithmic score, and the <strong>Continuous Ranked Probability Score (CRPS)</strong> — which extends the Brier score to continuous distributions. (2) A formal analysis of the relationship between <strong>calibration</strong> (do stated probabilities match observed frequencies?) and <strong>sharpness</strong> (are forecasts concentrated, or spread out?) The key result: among calibrated forecasts, the sharpest forecast is optimal. This "sharpness subject to calibration" principle provides a principled ordering for evaluating probabilistic forecasts.</p>
+<p>The theoretical importance is foundational: proper scoring rules are the mathematical backbone of incentive-compatible elicitation, prediction markets, forecasting tournaments, and Bayesian model evaluation. The practical caveat: properness assumes the forecaster maximizes expected utility. Under prospect theory — where probabilities are weighted nonlinearly — the optimal report under a "proper" scoring rule may diverge from the forecaster's true belief. This means that all incentivized elicitation using proper scoring rules is technically compromised when applied to human subjects who weight probabilities nonlinearly.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

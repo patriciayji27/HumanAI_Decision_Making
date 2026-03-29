@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schemmer (2025) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-mixed">Mixed</span> <span class="badge st-emerging">Emerging</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">The Misinformation Effect of Explanations in Human-AI Collaboration</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Schemmer, Hemmer, Kuehl & Vössing · , 2025</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/ai-agents.html">AI Agents</a></div>
+<div class="ts">
+<h2>The specific finding</h2>
+<p>Damage from wrong explanations is <strong>~3× the benefit</strong> from correct ones:</p>
+<div class="etw"><table class="et">
+<thead><tr><th>AI prediction</th><th>Explanation</th><th>Effect on accuracy</th></tr></thead>
+<tbody>
+<tr><td>Correct</td><td>Correct</td><td>+5 pp</td></tr>
+<tr><td>Incorrect</td><td>Incorrect</td><td>−15 pp</td></tr>
+<tr><td>Incorrect</td><td>Correct</td><td>Partial recovery</td></tr>
+</tbody></table></div>
+<p>N=370 + N=384, architectural style classification. Wrong explanations didn't just mislead — they made participants <strong>more confident</strong> in wrong answers.</p>
+<p>If the 3:1 ratio holds, explanation features have negative expected value when accuracy < ~75%. Explanation accuracy — not just model accuracy — should be a shipping criterion. Tested in one domain; needs replication.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

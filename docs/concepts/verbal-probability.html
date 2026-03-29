@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verbal Probability Problem — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner">
+<a class="nav-brand" href="../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../index.html">Home</a> <a href="../content/topics/agents-as-advisors.html">Streams</a> <a href="../explore.html">Explore</a> <a href="../build.html">Build</a></div>
+</div></nav>
+<main class="main">
+<div class="stream-hero">
+<h1>The Verbal Probability Problem</h1>
+<p class="stream-oneliner">When people say "likely," they mean anywhere from 55% to 90%. This variability is enormous, well-documented, and directly relevant to AI systems that communicate uncertainty in natural language.</p>
+</div>
+<p style="font-size:0.85rem;color:var(--text-3);margin-bottom:var(--xl);">Referenced from: <a href="../content/topics/belief-elicitation.html">Belief Elicitation</a> · <a href="../content/topics/uncertainty-communication.html">Uncertainty Communication</a> · <a href="../content/topics/agents-as-advisors.html">AI Agents</a></p>
+<div class="ts"><h2>The finding</h2>
+<p>Wallsten, Budescu, Rapoport & Zwick (1986) elicited numeric equivalents for verbal probability terms and found enormous between-person variability. "Probable" ranged from about 0.50 to 0.90. Budescu & Wallsten (1995) showed context, base rates, and outcome severity all shift interpretation of the same word.</p>
+<p>The IPCC adopted a standardized verbal scale ("very likely" = >90%), but Budescu, Broomell & Por (2009) found readers misinterpreted the intended probability ~40% of the time even with explicit definitions. Adding numeric ranges alongside verbal terms significantly improved interpretation (Budescu et al., 2014).</p></div>
+<div class="ts"><h2>Relevance to AI systems</h2>
+<p>LLMs communicate uncertainty almost exclusively through verbal hedging. The problems compound: different users assign different probabilities to the same hedge word; LLM verbal confidence does not track accuracy; and unlike the IPCC or intelligence community, LLMs follow no standardized verbal-numeric mapping.</p>
+<p><strong>Hybrid verbal-numeric expressions</strong> ("very likely [>90%]") are the most evidence-supported intervention. This is implementable in any LLM system and does not require model changes — only output formatting changes.</p></div>
+<div class="ts"><h2>Key references</h2>
+<ul class="psl">
+<li><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span> <span class="p-ref">Wallsten, Budescu, Rapoport & Zwick (1986)</span> <span class="p-note">Established the variability</span></li>
+<li><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span> <span class="p-ref">Budescu, Broomell & Por (2009)</span> <span class="p-note">Even standardized scales are misread ~40%</span></li>
+<li><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span> <span class="p-ref">Budescu, Por, Broomell & Smithson (2014)</span> <span class="p-note">Hybrid formats improve interpretation</span></li>
+</ul></div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
+</body></html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sugden (1982) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-mixed">Mixed</span> <span class="badge st-debated">Debated</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Regret Theory</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Loomes & Sugden · , 1982</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/decision-quality.html">Decision Quality</a></div>
+<div class="ts">
+<p>Proposed an alternative to expected utility theory (and to prospect theory) based on <strong>anticipated regret</strong>. The core idea: when choosing between options, people anticipate the regret they would feel if they later learned the unchosen option would have been better. This anticipated regret is factored into the decision at the time of choice, not experienced after the fact.</p>
+<p>Formally, the modified utility of choosing act A over act B in state s is: u(A,s) + R(u(A,s) − u(B,s)), where R is an increasing function (more regret for larger utility differences). When u(A,s) > u(B,s), R is positive (rejoicing). When u(A,s) < u(B,s), R is negative (regret). If R is convex, the model produces risk-averse behavior and can explain Allais-type violations of the independence axiom.</p>
+<p>The model's distinctive prediction: choice should depend on the <strong>correlation structure</strong> between options — specifically, on what would happen under the unchosen alternative in each state of the world. This prediction differs from prospect theory, which evaluates each option independently. Regret theory applies most naturally when the outcome of the unchosen alternative is <strong>observable or inferable</strong> — for example, when you can see what the stock you didn't buy did, or when a medical treatment's outcome is compared to the known natural history of the disease.</p>
+<p>The limitation: in many decision settings (and in most AI-assisted decisions), the counterfactual — what would have happened without the AI, or with a different AI — is unknown. This limits regret theory's direct applicability to human-AI collaboration, though it may apply to settings where counterfactual outcomes are presented (e.g., decision support systems that show "what would have happened if you had followed the AI's recommendation").</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

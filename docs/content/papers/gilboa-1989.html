@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schmeidler (1989) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Maxmin Expected Utility with Non-Unique Prior</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Gilboa & Schmeidler · , 1989</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/risk-ambiguity.html">Risk & Ambiguity</a></div>
+<div class="ts">
+<p>Axiomatized <strong>maxmin expected utility (MEU)</strong> — a decision criterion for situations where the decision-maker faces ambiguity (doesn't know which probability distribution governs the outcomes). The model: the agent has a <em>set</em> of possible probability distributions (priors) rather than a single prior, and evaluates each act by the <strong>minimum expected utility</strong> across all priors in the set.</p>
+<p>Formally: the utility of act f is min<sub>p∈C</sub> E<sub>p</sub>[u(f)], where C is the set of priors the agent considers possible. This means the agent always evaluates actions by their <strong>worst-case scenario</strong> — the prior distribution that makes the action look worst.</p>
+<p>The model is axiomatically derived from a weakening of Savage's axioms: it replaces Savage's sure-thing principle (P2) with <strong>uncertainty aversion</strong> (if you're indifferent between f and g, you weakly prefer any mixture αf + (1−α)g over either alone — diversification is good when you're unsure of the probabilities). This axiom directly captures the Ellsberg intuition: when you don't know the probabilities, you prefer to hedge.</p>
+<p>MEU predicts <strong>extreme conservatism</strong>: any ambiguous option is evaluated by its worst possible interpretation. This matches behavior in Ellsberg-type experiments but predicts more aversion than is typically observed in moderate-ambiguity settings. Extensions like smooth ambiguity preferences (Klibanoff et al., 2005) allow for varying degrees of ambiguity aversion rather than the binary worst-case evaluation of MEU.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

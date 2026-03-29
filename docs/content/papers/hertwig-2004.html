@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hertwig (2004) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Decisions From Experience and the Effect of Rare Events</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Hertwig, Barron, Weber & Erev · , 2004</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/sampling-experience.html">Sampling & Experience</a>
+<a class="xref-chip" href="../topics/uncertainty-communication.html">Uncertainty Communication</a></div>
+<div class="ts">
+<h2>The specific finding</h2>
+<p>Described probabilities and experienced probabilities produce <strong>opposite</strong> rare-event behavior:</p>
+<div class="etw"><table class="et">
+<thead><tr><th>Source</th><th>Rare events</th><th>Behavior</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Description ("10% chance")</td><td>Overweighted</td><td>Buy lottery tickets, buy insurance</td><td>π(0.10)≈0.18 per PT</td></tr>
+<tr><td>Experience (sampling)</td><td>Underweighted</td><td>Ignore tail risks</td><td>With 15 samples, 21% chance of never seeing a 10% event</td></tr>
+</tbody></table></div>
+<p>The gap reversed the modal choice in 4 of 6 problems. Median sample size was 15 draws per option. Fox & Hadar (2006) showed much of the gap is sampling error (people didn't encounter the event), but a residual gap persists after controlling for sample information (Camilleri & Newell, 2011).</p>
+<p>For AI: a user who has used an AI 20 times without a catastrophic failure has a ~36% chance of never having encountered a 5% failure rate. Their trust is rationally calibrated to their experience — but their experience undersamples the tail.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoekstra (2014) — Human-Agent Decision Making</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">How Well Do Researchers Understand Confidence Intervals?</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Hoekstra, Morey, Rouder & Wagenmakers · , 2014</p>
+
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);"><a class="xref-chip" href="../topics/uncertainty-communication.html">Uncertainty Communication</a></div>
+<div class="ts">
+<p>Presented six statements about <strong>95% confidence intervals</strong> to 120 researchers and 442 students and asked which statements were correct. All six statements were actually <strong>incorrect</strong> — they described common misinterpretations of CIs.</p>
+<p>The most prevalent error: treating a 95% CI as "there is a <strong>95% probability the true parameter is in this interval</strong>." Under frequentist inference, this is incorrect — a 95% CI means that if you repeated the experiment many times and computed a CI each time, 95% of those CIs would contain the true parameter. Any specific CI either contains the true parameter or it doesn't; there is no probability involved. The Bayesian interpretation (credible interval) does assign a probability, but a frequentist CI is not a credible interval.</p>
+<p>The majority of both researchers and students endorsed at least one incorrect statement. Researchers — people who use CIs professionally in published papers — were not significantly better than students at interpreting them. The errors were not random; they reflected systematic <strong>Bayesian intuitions</strong> about what a CI should mean, applied to a frequentist construct that doesn't support those intuitions.</p>
+<p>The practical implication: if trained researchers cannot correctly interpret confidence intervals, designing CI-based displays for non-expert users (patients, policy-makers, AI system users) is not justified by the evidence on how people actually process them. Alternative formats (icon arrays, quantile dotplots, natural frequencies) that don't require understanding the frequentist interpretation are likely to produce more accurate comprehension.</p>
+</div>
+</main>
+<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer></body></html>
