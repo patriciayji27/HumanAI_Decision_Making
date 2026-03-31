@@ -3,36 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Decision Quality & Normative Benchmarks — Human-Agent Decision Making</title>
+  <title>Decision Quality & Normative Benchmarks — Judgment Under Uncertainty</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .eval-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:var(--sm); margin:var(--lg) 0; }
+    .eval-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:var(--md); }
+    .eval-card .ec-name { font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--accent); margin-bottom:var(--xs); }
+    .eval-card .ec-def { font-size:0.82rem; color:var(--text-2); line-height:1.5; margin-bottom:var(--xs); }
+    .eval-card .ec-note { font-size:0.75rem; color:var(--text-3); font-style:italic; }
+    .ai-box { background:var(--bg-surface); border-left:3px solid var(--s3); border-radius:0 var(--radius) var(--radius) 0; padding:var(--md) var(--lg); margin:var(--lg) 0; }
+    .ai-box .ab-label { font-size:0.66rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--s3); margin-bottom:var(--sm); }
+  </style>
 </head>
 <body>
 <nav class="nav"><div class="nav-inner">
-  <a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+  <a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
   <div class="nav-links"><a href="../../index.html">Home</a> <a href="agents-as-advisors.html" class="active">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div>
 </div></nav>
 <main class="main">
 <div class="stream-hero">
   <h1>Decision Quality & Normative Benchmarks</h1>
-  <p class="stream-oneliner">Every AI advisor embeds assumptions about what 'better' means. Expected utility theory provides the benchmark most systems implicitly adopt. Prospect theory shows why real choices deviate. The gap between them is where design problems live.</p>
+  <p class="stream-oneliner">Every AI advisor embeds assumptions about what "better" means. This stream maps those benchmarks — and what breaks when the wrong one is applied.</p>
 </div>
+
 <div class="verdict-block">
-  <div class="vb-label">Assessment</div>
+  <div class="vb-label">What the evidence shows</div>
   <p>The qualitative violations of expected utility — certainty effect, reflection effect, framing effects — are among the most replicated findings in behavioral science. Prospect theory (Kahneman & Tversky, 1979) accounts for these through reference dependence, an S-shaped value function, and nonlinear probability weighting. But the specific parametric values are contested: two 2024 meta-analyses of the loss aversion coefficient λ produced estimates of 1.96 (Brown et al., 607 estimates) and 1.31 (Walasek et al., individual-level refitting). A 2025 re-meta-analysis (Yechiam et al.) found λ≈1.07 when stimulus design artifacts are controlled.</p>
-  <p>Salience theory (Bordalo, Gennaioli & Shleifer, 2012) explains many of the same anomalies through attention allocation rather than probability distortion: people overweight the states where options differ most, not the states with extreme probabilities. The two models make the same predictions for most standard experiments but diverge in constructed scenarios. Which mechanism is correct has practical implications: if it is attentional, display redesign can reduce anomalies; if it is probability weighting, the distortion persists regardless of display.</p>
+  <p>Salience theory (Bordalo, Gennaioli & Shleifer, 2012) explains many of the same anomalies through attention allocation rather than probability distortion. The two models make the same predictions for most standard experiments but diverge in constructed scenarios. <strong>Which mechanism is correct has a direct design consequence:</strong> if it is attentional, display redesign can reduce anomalies; if it is probability weighting, the distortion persists regardless of display.</p>
 </div>
+
+<!-- What this changes for AI systems -->
+<div class="ts">
+  <h2>What this changes for AI systems</h2>
+  <div class="ai-box">
+    <div class="ab-label">The core design fork</div>
+    <p style="font-size:0.9rem;line-height:1.65;color:var(--text-2);margin-bottom:var(--md)">If salience is the mechanism behind choice anomalies, <strong style="color:var(--text)">display redesign can fix the problem</strong> — making previously non-salient outcome states more visually prominent should shift choices toward expected-utility predictions. If probability weighting is the mechanism, <strong style="color:var(--text)">display redesign will not help</strong> — the distortion is internal to the decision maker and cannot be corrected by changing what they see.</p>
+    <p style="font-size:0.9rem;line-height:1.65;color:var(--text-2);margin:0">This is not a subtle academic disagreement. It is a direct decision point for AI system design. Before investing in uncertainty display interventions, the mechanism needs to be tested in your specific domain.</p>
+  </div>
+  <p>Beyond the salience-weighting question, most AI decision aids implicitly adopt expected utility as the normative standard — optimizing for expected outcome and treating deviations as errors to correct. This is only one of several legitimate evaluation targets. Which one an AI system uses shapes every recommendation it makes.</p>
+</div>
+
+<!-- Five evaluation targets -->
+<div class="ts">
+  <h2>Five targets for evaluating decision quality</h2>
+  <p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--md)">"Decision quality" is underspecified without saying which target you're evaluating against. These five targets are not interchangeable — they can rank decisions differently.</p>
+  <div class="eval-grid">
+    <div class="eval-card">
+      <div class="ec-name">Objective accuracy</div>
+      <div class="ec-def">Did the decision lead to the correct outcome, relative to a ground truth?</div>
+      <div class="ec-note">Only applicable when ground truth is available. Most AI decision support implicitly optimizes this.</div>
+    </div>
+    <div class="eval-card">
+      <div class="ec-name">Expected utility / welfare</div>
+      <div class="ec-def">Did the decision maximize expected value, given the decision maker's own preferences and probabilities?</div>
+      <div class="ec-note">The standard economic benchmark. Assumes preferences are stable and well-defined — both are contested.</div>
+    </div>
+    <div class="eval-card">
+      <div class="ec-name">Regret minimization</div>
+      <div class="ec-def">Does the decision minimize anticipated regret across possible outcomes?</div>
+      <div class="ec-note">Loomes & Sugden (1982). Applies when the unchosen outcome is visible. Explains certain preference reversals EU cannot.</div>
+    </div>
+    <div class="eval-card">
+      <div class="ec-name">Calibration</div>
+      <div class="ec-def">Are probability assessments well-matched to outcomes over time?</div>
+      <div class="ec-note">A process target, not an outcome target. Can be good even when individual decisions are wrong. The forecasting literature's primary metric.</div>
+    </div>
+    <div class="eval-card">
+      <div class="ec-name">Process / autonomy quality</div>
+      <div class="ec-def">Did the decision maker engage in a cognitively sound process? Were their values respected?</div>
+      <div class="ec-note">Rarely operationalized but increasingly relevant for AI advisory systems that could override or bypass deliberation.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Key claims -->
 <div class="ts"><h2>Key claims</h2>
 <div class="claim-block">
     <div class="cb-claim"><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> People systematically violate expected utility — and the violations are structured.</div>
-    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Allais paradox, reflection effect, isolation effect, framing effects. Robust, replicable, cross-cultural.</div></div>
-    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Violations are strongest in lab gambles. In naturalistic environments with feedback, some attenuate. Multiple competing theories explain the same patterns.</div></div>
-    <div class="cb-verdict"><strong>Verdict:</strong> The qualitative finding is among the most established in behavioral science. Whether any specific model correctly identifies the mechanism is a separate, still-open question.</div>
+    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Allais paradox, reflection effect, isolation effect, framing effects. Robust, replicable, cross-cultural. Kahneman & Tversky (1979) laid out the core patterns; Tversky & Kahneman (1992) extended them to cumulative form.</div></div>
+    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Violations are strongest in lab gambles. In naturalistic environments with feedback, some attenuate. Multiple competing theories explain the same patterns; mechanism remains contested.</div></div>
+    <div class="cb-verdict"><strong>Verdict:</strong> The qualitative finding is among the most established in behavioral science. Which specific model correctly identifies the mechanism is a separate, still-open question — and the mechanism question is what matters for AI design.</div>
   </div>
 <div class="claim-block">
-    <div class="cb-claim"><span class="badge ev-strong">strong</span> <span class="badge st-debated">debated</span> Loss aversion is real but its magnitude is more variable than the canonical ratio suggests.</div>
-    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">The qualitative pattern is robust across dozens of studies. Chapman et al. (2025) found 47-57% of a representative sample is loss-tolerant (λ≤1).</div></div>
-    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Meta-analyses disagree: Brown et al. (2024) find λ≈1.96; Walasek et al. (2024) find λ≈1.31; Yechiam et al. (2025) find λ≈1.07 under controlled conditions. Heterogeneity across domains, stakes, and measurement methods is substantial.</div></div>
-    <div class="cb-verdict"><strong>Verdict:</strong> Losses loom larger than gains as a population tendency. The precise ratio is contested and context-dependent. For design, assume loss aversion exists but test with your specific population.</div>
+    <div class="cb-claim"><span class="badge ev-strong">strong</span> <span class="badge st-debated">debated</span> Loss aversion is real but its magnitude is substantially more variable than canonical estimates suggest.</div>
+    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Brown et al. (2024): λ≈1.96 [1.82, 2.10] across 607 estimates. Walasek et al. (2024): λ≈1.31 [1.10, 1.53] from individual-level refitting. Chapman et al. (2025): 47–57% of a representative sample had λ≤1 (loss-tolerant).</div></div>
+    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Yechiam et al. (2025) found λ≈1.07 when stimulus asymmetry and ordering effects are controlled — near-zero. Heterogeneity across domains, stakes, and methods is substantial. The canonical 2.25 figure is not a reliable design input.</div></div>
+    <div class="cb-verdict"><strong>Verdict:</strong> Loss framing shifts behavior as a population tendency. The specific ratio cannot be assumed from any published coefficient — test with your population and domain.</div>
+  </div>
+<div class="claim-block">
+    <div class="cb-claim"><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> Salience-based attention, not probability distortion, may drive most choice anomalies.</div>
+    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Bordalo, Gennaioli & Shleifer (2012). The model accounts for most standard violations without invoking nonlinear probability weighting. Divergent predictions from prospect theory exist in constructed scenarios.</div></div>
+    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Empirical track record substantially shorter than prospect theory. Natural data rarely allows a clean test between the two mechanisms.</div></div>
+    <div class="cb-verdict"><strong>Verdict:</strong> Important precisely because it changes what interventions are worth trying. If correct, the field has been solving the wrong problem — debiasing when it should have been redesigning displays.</div>
   </div>
 </div>
 
@@ -41,27 +103,33 @@
 <li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Kahneman & Tversky (1979)</span> <span class="p-note">Prospect theory — dominant descriptive model</span></li>
 <li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Tversky & Kahneman (1992)</span> <span class="p-note">Cumulative prospect theory — parametric forms</span></li>
 <li><span class="badge ev-strong">strong</span> <span class="badge st-debated">debated</span> <span class="p-ref">Brown, Imai, Vieider & Camerer (2024)</span> <span class="p-note">Largest loss aversion meta-analysis: λ≈1.96</span></li>
-<li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Walasek, Mullett & Stewart (2024)</span> <span class="p-note">Alternative meta-analysis: λ≈1.31</span></li>
-<li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Bordalo, Gennaioli & Shleifer (2012)</span> <span class="p-note">Salience theory — attention-based alternative</span></li>
+<li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Walasek, Mullett & Stewart (2024)</span> <span class="p-note">Individual-level refitting: λ≈1.31</span></li>
+<li><span class="badge ev-mixed">mixed</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Chapman, Snowberg, Wang & Camerer (2025)</span> <span class="p-note">Representative sample: ~50% are loss-tolerant</span></li>
+<li><span class="badge ev-mixed">mixed</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Yechiam, Zeif & Ashby (2025)</span> <span class="p-note">Re-meta-analysis: λ≈1.07 when artifacts are controlled</span></li>
+<li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Bordalo, Gennaioli & Shleifer (2012)</span> <span class="p-note">Salience theory — attention-based alternative mechanism</span></li>
 <li><span class="badge ev-weak">weak</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Enke & Graeber (2023)</span> <span class="p-note">Cognitive uncertainty — anomalies as noise</span></li>
 </ul>
 </div>
+
 <div class="ts"><h2>Design implications grounded in evidence</h2>
-<p><strong>Loss framing effects are real but the magnitude depends on methodology.</strong> Two 2024 meta-analyses bracket the loss aversion coefficient: Brown et al. found λ≈1.96 [1.82, 2.10] across 607 estimates; Walasek et al. found λ≈1.31 [1.10, 1.53] from individual-level model fitting. For interface design, this means loss framing will shift user behavior — presenting AI failure rates as "18% error rate" vs. "82% accuracy rate" will produce different responses — but the exact magnitude cannot be assumed from any single published coefficient. Test with your population.</p>
-<p><strong>The salience-vs-weighting distinction has a concrete design test.</strong> If salience theory is correct, making a previously non-salient payoff state more visually prominent should change choices. If probability weighting is correct, visual prominence should not matter — the distortion is internal. A controlled experiment varying visual salience of outcome states while holding probability information constant would distinguish the mechanisms and directly inform whether display redesign can reduce anomalies in a specific interface.</p>
-<p><strong>If cognitive uncertainty (Enke & Graeber, 2023) generalizes, AI can reduce preference noise through structured comparison.</strong> The construct predicts that within-person inconsistency is partly driven by uncertainty about one's own valuations. An AI that helps users compare options along explicit dimensions — rather than presenting a single recommendation — may reduce noise without overriding any specific preference. This is testable: compare decision consistency (repeated identical choices) with and without AI-structured comparison aids.</p>
+<p><strong>Test the salience mechanism before investing in debiasing.</strong> A controlled experiment varying visual salience of outcome states while holding probability information constant distinguishes the mechanisms directly. If choices shift toward expected-utility predictions, salience is operative and display redesign is your intervention. If they don't shift, the distortion is internal and debiasing training is a higher-cost, lower-certainty route.</p>
+<p><strong>Loss framing shifts behavior — but the magnitude needs local calibration.</strong> Presenting AI failure rates as "18% error rate" vs. "82% accuracy rate" will produce different responses. The effect size varies enough across studies (λ ranging from 1.07 to 1.96 depending on methodology) that assuming the canonical ratio is a design error. Test your specific population and domain.</p>
+<p><strong>Pick the right evaluation target before measuring "decision quality."</strong> An AI system optimized for expected accuracy will behave differently than one optimized for calibration or regret minimization. For high-stakes irreversible decisions, regret-minimization framing may better reflect user preferences. For repeated decisions with feedback, calibration is the more tractable target. Being explicit about which target is embedded in the system is itself a design choice.</p>
 </div>
+
 <div style="margin-top: var(--2xl); padding-top: var(--xl); border-top: 1px solid var(--border-light);">
   <div class="sec-label">Continue reading</div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--md);"><a class="sc" href="attention-memory-salience.html" style="border-left-color: var(--s4);">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--md);">
+    <a class="sc" href="attention-memory-salience.html" style="border-left-color: var(--s4);">
       <div class="sc-label" style="color: var(--s4);">Attention, Memory & Salience</div>
       <div class="sc-tension">Salience theory's home turf — attention-based accounts of choice anomalies</div>
     </a>
-<a class="sc" href="agents-as-advisors.html" style="border-left-color: var(--s8);">
+    <a class="sc" href="agents-as-advisors.html" style="border-left-color: var(--s8);">
       <div class="sc-label" style="color: var(--s8);">AI Agents as Decision Partners</div>
       <div class="sc-tension">Where the normative benchmark problem meets real users</div>
-    </a></div>
+    </a>
+  </div>
 </div>
 </main>
-<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer>
 </body></html>

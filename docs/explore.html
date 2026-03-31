@@ -3,86 +3,371 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore Papers — Human-Agent Decision Making</title>
+  <title>Explore Papers — Judgment Under Uncertainty</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Archive overview panel */
+    .archive-overview { display:grid; grid-template-columns:1fr 1fr; gap:var(--sm); margin-bottom:var(--xl); }
+    .ao-block { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:var(--md) var(--lg); }
+    .ao-title { font-size:0.68rem; font-weight:600; text-transform:uppercase; letter-spacing:0.09em; color:var(--text-3); margin-bottom:var(--md); }
+    .bar-row { display:flex; align-items:center; gap:var(--sm); margin-bottom:8px; }
+    .bar-label { font-size:0.74rem; color:var(--text-2); width:170px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .bar-track { flex:1; height:6px; background:var(--bg-surface); border-radius:3px; overflow:hidden; }
+    .bar-fill { height:100%; border-radius:3px; transition:width 0.4s; }
+    .bar-count { font-size:0.72rem; color:var(--text-3); width:18px; text-align:right; flex-shrink:0; }
+
+    /* Browse paths */
+    .browse-paths { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sm); margin-bottom:var(--xl); }
+    .bp { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:var(--md) var(--lg); cursor:pointer; transition:border-color 0.15s; }
+    .bp:hover { border-color:var(--accent-light); }
+    .bp.active { border-color:var(--accent); background:var(--accent-bg); }
+    .bp-icon { font-size:1.1rem; margin-bottom:6px; }
+    .bp-name { font-size:0.78rem; font-weight:600; color:var(--text); margin-bottom:3px; }
+    .bp-desc { font-size:0.73rem; color:var(--text-3); line-height:1.4; }
+
+    /* Filters */
+    .filters { display:flex; gap:var(--sm); flex-wrap:wrap; align-items:flex-end; margin-bottom:var(--md); padding:var(--md) var(--lg); background:var(--bg-surface); border-radius:var(--radius); }
+    .filter-group { display:flex; flex-direction:column; gap:3px; }
+    .filter-group label { font-size:0.66rem; font-weight:600; text-transform:uppercase; letter-spacing:0.09em; color:var(--text-3); }
+    .filter-group input, .filter-group select { padding:6px 10px; font-family:var(--font-body); font-size:0.84rem; border:1px solid var(--border); border-radius:var(--radius); background:var(--bg-card); outline:none; min-width:0; }
+    .filter-group input { width:220px; }
+    .filter-group select { width:200px; }
+    .filter-group input:focus, .filter-group select:focus { border-color:var(--accent-light); }
+    .filter-clear { font-size:0.76rem; color:var(--text-3); cursor:pointer; padding:6px 10px; border:1px solid transparent; border-radius:var(--radius); transition:background 0.12s; align-self:flex-end; }
+    .filter-clear:hover { background:var(--bg-card); border-color:var(--border); color:var(--text-2); }
+
+    /* Paper cards */
+    .paper-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:var(--md) var(--lg); margin-bottom:var(--sm); display:flex; gap:var(--lg); transition:border-color 0.12s; }
+    .paper-card:hover { border-color:var(--accent-light); }
+    .pc-left { flex-shrink:0; display:flex; flex-direction:column; gap:var(--xs); align-items:flex-start; min-width:0; }
+    .pc-main { flex:1; min-width:0; }
+    .pc-title-link { font-family:var(--font-heading); font-size:0.97rem; font-weight:600; color:var(--text); line-height:1.3; text-decoration:none; display:block; margin-bottom:2px; }
+    .pc-title-link:hover { color:var(--accent); text-decoration:none; }
+    .pc-meta { font-size:0.78rem; color:var(--text-3); margin-bottom:var(--sm); }
+    .pc-verdict { font-size:0.85rem; color:var(--text-2); line-height:1.55; margin-bottom:var(--xs); }
+    .pc-qual { font-size:0.78rem; color:var(--text-3); line-height:1.5; padding-top:var(--xs); border-top:1px solid var(--border-light); margin-top:var(--xs); }
+    .pc-qual::before { content:"Qualification: "; font-weight:600; color:var(--text-3); }
+    .pc-streams { display:flex; flex-wrap:wrap; gap:4px; margin-top:var(--sm); }
+    .pc-stream-tag { font-size:0.66rem; font-weight:600; padding:2px 8px; border-radius:12px; border:1px solid; }
+    .result-bar { display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--sm); }
+    .result-count { font-size:0.82rem; color:var(--text-3); }
+    .empty-state { padding:var(--2xl) 0; text-align:center; color:var(--text-3); font-size:0.9rem; }
+
+    /* Featured sections */
+    .featured-section { margin-bottom:var(--2xl); }
+    .featured-label { font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-3); margin-bottom:var(--md); padding-bottom:var(--sm); border-bottom:1px solid var(--border-light); display:flex; justify-content:space-between; align-items:center; }
+    .featured-label a { font-weight:400; text-transform:none; letter-spacing:normal; font-size:0.78rem; color:var(--accent); }
+
+    /* Debate cards */
+    .debate-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:var(--md) var(--lg); margin-bottom:var(--sm); }
+    .dc-question { font-family:var(--font-heading); font-size:0.88rem; font-weight:600; color:var(--text); margin-bottom:var(--sm); }
+    .dc-sides { display:flex; gap:var(--sm); }
+    .dc-side { flex:1; }
+    .dc-side-label { font-size:0.66rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:3px; }
+    .dc-side-text { font-size:0.79rem; color:var(--text-2); line-height:1.5; }
+    .dc-papers { font-size:0.73rem; color:var(--text-3); margin-top:4px; }
+
+    @media(max-width:768px) {
+      .archive-overview { grid-template-columns:1fr; }
+      .browse-paths { grid-template-columns:1fr 1fr; }
+      .paper-card { flex-direction:column; gap:var(--sm); }
+      .filters { flex-direction:column; }
+      .filter-group input, .filter-group select { width:100%; }
+    }
+  </style>
 </head>
 <body>
 <nav class="nav">
   <div class="nav-inner">
-    <a class="nav-brand" href="index.html">Human-Agent Decision Making</a>
+    <a class="nav-brand" href="index.html">Judgment Under Uncertainty</a>
     <div class="nav-links"><a href="index.html">Home</a> <a href="content/topics/agents-as-advisors.html">Streams</a> <a href="explore.html" class="active">Explore</a> <a href="build.html">Build</a></div>
   </div>
 </nav>
 <main class="main wide">
 
-<h1 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; margin-bottom: var(--sm);">Explore Papers</h1>
-<p style="font-size: 0.92rem; color: var(--text-2); margin-bottom: var(--xl);">Every paper has an evidence strength rating, field status, and a verdict with qualifications. Filter by stream, evidence tier, or keyword.</p>
+<div style="padding:var(--xl) 0 var(--md)">
+  <h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--sm)">Explore Papers</h1>
+  <p style="font-size:0.9rem;color:var(--text-2);max-width:640px;line-height:1.6">62 curated papers, selected for conceptual importance and methodological quality. Every paper has an evidence strength rating, field status, a one-line verdict, and a qualification. The archive is designed to surface disagreement, not just consensus.</p>
+</div>
 
-<div style="display: flex; gap: var(--md); flex-wrap: wrap; margin-bottom: var(--lg); align-items: flex-end;">
-  <div style="flex: 1; min-width: 220px;">
-    <label style="font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); display: block; margin-bottom: 3px;">Search</label>
-    <input type="text" id="q" placeholder="Author, title, or keyword..." style="width: 100%; padding: 7px 11px; font-family: var(--font-body); font-size: 0.86rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); outline: none;">
+<!-- Archive overview -->
+<div class="archive-overview" id="archive-overview">
+  <div class="ao-block">
+    <div class="ao-title">Papers by stream</div>
+    <div id="stream-bars"></div>
   </div>
-  <div>
-    <label style="font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); display: block; margin-bottom: 3px;">Stream</label>
-    <select id="fs" style="padding: 7px 11px; font-family: var(--font-body); font-size: 0.86rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card);"></select>
-  </div>
-  <div>
-    <label style="font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); display: block; margin-bottom: 3px;">Evidence</label>
-    <select id="fe" style="padding: 7px 11px; font-family: var(--font-body); font-size: 0.86rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card);">
-      <option value="all">All</option><option value="strong">Strong</option><option value="mixed">Mixed</option><option value="weak">Weak</option>
-    </select>
+  <div class="ao-block">
+    <div class="ao-title">Evidence & status distribution</div>
+    <div id="ev-bars"></div>
+    <div style="margin-top:var(--md)" id="st-bars"></div>
   </div>
 </div>
 
-<div id="ct" style="font-size: 0.82rem; color: var(--text-3); margin-bottom: var(--md);"></div>
+<!-- Browse paths -->
+<div style="margin-bottom:var(--sm)"><div class="sec-label">Browse by</div></div>
+<div class="browse-paths" id="browse-paths">
+  <div class="bp active" data-path="all" onclick="setPath(this,'all')">
+    <div class="bp-icon">📚</div>
+    <div class="bp-name">All papers</div>
+    <div class="bp-desc">Full archive, sorted by year (newest first)</div>
+  </div>
+  <div class="bp" data-path="canonical" onclick="setPath(this,'canonical')">
+    <div class="bp-icon">⚓</div>
+    <div class="bp-name">Canonical works</div>
+    <div class="bp-desc">Foundational papers that established the field's core findings</div>
+  </div>
+  <div class="bp" data-path="frontier" onclick="setPath(this,'frontier')">
+    <div class="bp-icon">🔭</div>
+    <div class="bp-name">Frontier (2022–2026)</div>
+    <div class="bp-desc">Recent work that is reshaping or challenging established views</div>
+  </div>
+  <div class="bp" data-path="debated" onclick="setPath(this,'debated')">
+    <div class="bp-icon">⚡</div>
+    <div class="bp-name">Contested findings</div>
+    <div class="bp-desc">Papers where the evidence is live and the field disagrees</div>
+  </div>
+  <div class="bp" data-path="ai-agents" onclick="setPath(this,'ai-agents')">
+    <div class="bp-icon">🤖</div>
+    <div class="bp-name">Human-AI collaboration</div>
+    <div class="bp-desc">All papers in the AI Agents stream</div>
+  </div>
+  <div class="bp" data-path="strong" onclick="setPath(this,'strong')">
+    <div class="bp-icon">🏆</div>
+    <div class="bp-name">Strongest evidence</div>
+    <div class="bp-desc">Papers rated Strong — replication record and methodology</div>
+  </div>
+</div>
+
+<!-- Active debates section -->
+<div class="featured-section" id="debate-section">
+  <div class="featured-label">Active debates in the archive</div>
+  <div id="debate-list"></div>
+</div>
+
+<!-- Filters -->
+<div class="filters">
+  <div class="filter-group">
+    <label>Search</label>
+    <input type="text" id="q" placeholder="Author, title, keyword…">
+  </div>
+  <div class="filter-group">
+    <label>Stream</label>
+    <select id="fs"></select>
+  </div>
+  <div class="filter-group">
+    <label>Evidence</label>
+    <select id="fe">
+      <option value="all">All evidence</option>
+      <option value="strong">Strong</option>
+      <option value="mixed">Mixed</option>
+      <option value="weak">Weak</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>Status</label>
+    <select id="fst">
+      <option value="all">All statuses</option>
+      <option value="canonical">Canonical</option>
+      <option value="debated">Debated</option>
+      <option value="emerging">Emerging</option>
+    </select>
+  </div>
+  <span class="filter-clear" onclick="clearFilters()">✕ Clear</span>
+</div>
+
+<div class="result-bar">
+  <div class="result-count" id="ct"></div>
+</div>
+
 <div id="pl"></div>
+
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer>
 
 <script src="assets/js/papers.js"></script>
 <script>
+// State
+let activePath = 'all';
+let searchQ = '';
+let streamFilter = 'all';
+let evFilter = 'all';
+let stFilter = 'all';
+
 // Populate stream filter
 const sel = document.getElementById("fs");
 sel.innerHTML = '<option value="all">All streams</option>' +
   Object.entries(STREAM_NAMES).map(([k,v]) => '<option value="'+k+'">'+v+'</option>').join("");
 
-function render(f){
-  const c=document.getElementById("pl"),ct=document.getElementById("ct");
-  ct.textContent=f.length+" paper"+(f.length!==1?"s":"");
-  if(!f.length){c.innerHTML='<p style="color:var(--text-3);padding:40px 0;">No papers match.</p>';return;}
-  c.innerHTML=f.map(p=>{
-    const sb=p.s.map(s=>'<span style="font-size:0.66rem;font-weight:600;color:'+STREAM_COLORS[s]+';margin-right:6px;">'+STREAM_NAMES[s]+'</span>').join("");
-    return '<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--md) var(--lg);margin-bottom:var(--sm);">'+
-      '<div style="display:flex;align-items:baseline;gap:var(--sm);flex-wrap:wrap;margin-bottom:4px;">'+
-      '<span class="badge '+EV_CLASS[p.ev]+'">'+p.ev+'</span>'+
-      '<span class="badge '+ST_CLASS[p.st]+'">'+p.st+'</span>'+
-      '<span style="font-size:0.78rem;color:var(--text-3);">'+p.y+'</span></div>'+
-      '<div style="font-family:var(--font-heading);font-size:0.95rem;font-weight:600;margin-bottom:2px;color:var(--text);">'+(p.u?'<a href="'+p.u+'" style="color:var(--text);text-decoration:none;">'+p.t+'</a>':p.t)+'</div>'+
-      '<div style="font-size:0.82rem;color:var(--text-3);margin-bottom:var(--sm);">'+p.a+'</div>'+
-      '<div style="font-size:0.84rem;color:var(--text-2);line-height:1.5;margin-bottom:var(--sm);">'+p.v+'</div>'+
-      '<div style="font-size:0.78rem;color:var(--text-3);padding-top:var(--sm);border-top:1px solid var(--border-light);margin-bottom:var(--xs);">'+p.q+'</div>'+
-      '<div style="margin-top:var(--xs);">'+sb+'</div></div>';
-  }).join("");
+// Archive overview bars
+function renderOverview() {
+  // Stream bars
+  const streamCounts = {};
+  PAPERS.forEach(p => p.s.forEach(s => { streamCounts[s] = (streamCounts[s]||0)+1; }));
+  const maxStream = Math.max(...Object.values(streamCounts));
+  const streamBar = document.getElementById('stream-bars');
+  streamBar.innerHTML = Object.entries(streamCounts)
+    .sort((a,b)=>b[1]-a[1])
+    .map(([k,v]) => `
+      <div class="bar-row">
+        <div class="bar-label" title="${STREAM_NAMES[k]}">${STREAM_NAMES[k]}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(v/maxStream*100).toFixed(0)}%;background:${STREAM_COLORS[k]}"></div></div>
+        <div class="bar-count">${v}</div>
+      </div>`).join('');
+
+  // Evidence bars
+  const evCounts = {strong:0,mixed:0,weak:0};
+  const stCounts = {canonical:0,debated:0,emerging:0};
+  PAPERS.forEach(p => { evCounts[p.ev]=(evCounts[p.ev]||0)+1; stCounts[p.st]=(stCounts[p.st]||0)+1; });
+  const evColors = {strong:'var(--ev-strong)',mixed:'var(--ev-mixed)',weak:'var(--ev-weak)'};
+  const stColors = {canonical:'var(--st-canonical)',debated:'var(--st-debated)',emerging:'var(--st-emerging)'};
+  const maxEv = Math.max(...Object.values(evCounts));
+  const maxSt = Math.max(...Object.values(stCounts));
+  document.getElementById('ev-bars').innerHTML = '<div style="font-size:0.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px">Evidence</div>' +
+    Object.entries(evCounts).map(([k,v]) => `
+      <div class="bar-row">
+        <div class="bar-label">${k.charAt(0).toUpperCase()+k.slice(1)}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(v/maxEv*100).toFixed(0)}%;background:${evColors[k]}"></div></div>
+        <div class="bar-count">${v}</div>
+      </div>`).join('');
+  document.getElementById('st-bars').innerHTML = '<div style="font-size:0.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px">Status</div>' +
+    Object.entries(stCounts).map(([k,v]) => `
+      <div class="bar-row">
+        <div class="bar-label">${k.charAt(0).toUpperCase()+k.slice(1)}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(v/maxSt*100).toFixed(0)}%;background:${stColors[k]}"></div></div>
+        <div class="bar-count">${v}</div>
+      </div>`).join('');
 }
 
-function go(){
-  const q=document.getElementById("q").value.toLowerCase();
-  const s=document.getElementById("fs").value;
-  const e=document.getElementById("fe").value;
-  render(PAPERS.filter(p=>{
-    const mq=!q||p.t.toLowerCase().includes(q)||p.a.toLowerCase().includes(q)||p.v.toLowerCase().includes(q);
-    const ms=s==="all"||p.s.includes(s);
-    const me=e==="all"||p.ev===e;
-    return mq&&ms&&me;
-  }));
+// Debates
+const DEBATES = [
+  {
+    q: "Is loss aversion a robust cognitive bias, or largely a measurement artifact?",
+    sideA: { label:"Real and substantial", text:"Brown et al. (2024): λ≈1.96 across 607 estimates. Decades of behavioral evidence across cultures.", papers:["Brown et al. 2024","Kahneman & Tversky 1979"] },
+    sideB: { label:"Mostly artifact", text:"Yechiam et al. (2025): λ≈1.07 when stimulus design artifacts controlled. Chapman et al. (2025): ~50% of representative sample is loss-tolerant.", papers:["Yechiam et al. 2025","Chapman et al. 2025","Walasek et al. 2024"] }
+  },
+  {
+    q: "Do AI explanations improve or worsen human decision quality?",
+    sideA: { label:"Explanations help", text:"Vasconcelos et al. (2023): 12–20 pp reduction in overreliance when evaluation cost is low. Prabhudesai et al. (2023): visual uncertainty improves calibration.", papers:["Vasconcelos et al. 2023"] },
+    sideB: { label:"Explanations often hurt", text:"Schemmer et al. (2025): incorrect explanations hurt 3× more than correct ones help. Fok & Weld (2023): explanations rarely produce verifiable content.", papers:["Schemmer et al. 2025","Fok & Weld 2023"] }
+  },
+  {
+    q: "Are choice anomalies driven by probability weighting or attention allocation?",
+    sideA: { label:"Probability weighting (Prospect Theory)", text:"Decades of evidence. Kahneman & Tversky (1979) S-shaped weighting function remains the dominant descriptive model.", papers:["Kahneman & Tversky 1979","Tversky & Kahneman 1992"] },
+    sideB: { label:"Attentional salience", text:"Bordalo et al. (2012): overweighting of salient states explains the same patterns without distorted probability weighting. Design implication: display redesign can fix it.", papers:["Bordalo et al. 2012"] }
+  }
+];
+
+function renderDebates() {
+  document.getElementById('debate-list').innerHTML = DEBATES.map(d => `
+    <div class="debate-card">
+      <div class="dc-question">${d.q}</div>
+      <div class="dc-sides">
+        <div class="dc-side">
+          <div class="dc-side-label" style="color:var(--s1)">${d.sideA.label}</div>
+          <div class="dc-side-text">${d.sideA.text}</div>
+          <div class="dc-papers">${d.sideA.papers.join(" · ")}</div>
+        </div>
+        <div style="width:1px;background:var(--border-light);flex-shrink:0;margin:0 var(--sm)"></div>
+        <div class="dc-side">
+          <div class="dc-side-label" style="color:var(--s5)">${d.sideB.label}</div>
+          <div class="dc-side-text">${d.sideB.text}</div>
+          <div class="dc-papers">${d.sideB.papers.join(" · ")}</div>
+        </div>
+      </div>
+    </div>`).join('');
 }
 
-document.getElementById("q").addEventListener("input",go);
-document.getElementById("fs").addEventListener("change",go);
-document.getElementById("fe").addEventListener("change",go);
-render(PAPERS);
+// Paper card renderer
+function paperCard(p) {
+  const streams = p.s.map(s =>
+    `<span class="pc-stream-tag" style="color:${STREAM_COLORS[s]};border-color:${STREAM_COLORS[s]};background:${STREAM_COLORS[s]}18">${STREAM_NAMES[s]}</span>`
+  ).join('');
+  const titleHtml = p.u
+    ? `<a class="pc-title-link" href="${p.u}">${p.t}</a>`
+    : `<span class="pc-title-link" style="cursor:default">${p.t}</span>`;
+  return `<div class="paper-card">
+    <div class="pc-left">
+      <span class="badge ${EV_CLASS[p.ev]}">${p.ev}</span>
+      <span class="badge ${ST_CLASS[p.st]}">${p.st}</span>
+      <span style="font-size:0.78rem;color:var(--text-3);margin-top:4px">${p.y}</span>
+    </div>
+    <div class="pc-main">
+      ${titleHtml}
+      <div class="pc-meta">${p.a}</div>
+      <div class="pc-verdict">${p.v}</div>
+      <div class="pc-qual">${p.q}</div>
+      <div class="pc-streams">${streams}</div>
+    </div>
+  </div>`;
+}
+
+function filterPapers() {
+  let papers = [...PAPERS];
+  // Path filter
+  if (activePath === 'canonical') papers = papers.filter(p => p.st === 'canonical');
+  else if (activePath === 'frontier') papers = papers.filter(p => p.y >= 2022);
+  else if (activePath === 'debated') papers = papers.filter(p => p.st === 'debated');
+  else if (activePath === 'strong') papers = papers.filter(p => p.ev === 'strong');
+  else if (activePath !== 'all') papers = papers.filter(p => p.s.includes(activePath));
+
+  // Filters
+  if (searchQ) {
+    const q = searchQ.toLowerCase();
+    papers = papers.filter(p =>
+      p.t.toLowerCase().includes(q) ||
+      p.a.toLowerCase().includes(q) ||
+      p.v.toLowerCase().includes(q) ||
+      p.q.toLowerCase().includes(q)
+    );
+  }
+  if (streamFilter !== 'all') papers = papers.filter(p => p.s.includes(streamFilter));
+  if (evFilter !== 'all') papers = papers.filter(p => p.ev === evFilter);
+  if (stFilter !== 'all') papers = papers.filter(p => p.st === stFilter);
+
+  // Sort: newest first
+  papers.sort((a,b) => b.y - a.y);
+  return papers;
+}
+
+function render() {
+  const filtered = filterPapers();
+  const ct = document.getElementById('ct');
+  const pl = document.getElementById('pl');
+  ct.textContent = filtered.length + ' paper' + (filtered.length !== 1 ? 's' : '');
+  if (!filtered.length) {
+    pl.innerHTML = '<div class="empty-state">No papers match these filters.</div>';
+    return;
+  }
+  pl.innerHTML = filtered.map(paperCard).join('');
+}
+
+function setPath(el, path) {
+  document.querySelectorAll('.bp').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  activePath = path;
+  // Hide debate section when not in "all" mode
+  document.getElementById('debate-section').style.display = path === 'all' ? '' : 'none';
+  render();
+}
+
+function clearFilters() {
+  document.getElementById('q').value = '';
+  document.getElementById('fs').value = 'all';
+  document.getElementById('fe').value = 'all';
+  document.getElementById('fst').value = 'all';
+  searchQ = ''; streamFilter = 'all'; evFilter = 'all'; stFilter = 'all';
+  render();
+}
+
+document.getElementById('q').addEventListener('input', e => { searchQ = e.target.value; render(); });
+document.getElementById('fs').addEventListener('change', e => { streamFilter = e.target.value; render(); });
+document.getElementById('fe').addEventListener('change', e => { evFilter = e.target.value; render(); });
+document.getElementById('fst').addEventListener('change', e => { stFilter = e.target.value; render(); });
+
+// Init
+renderOverview();
+renderDebates();
+render();
 </script>
-
-</main>
-<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
 </body>
 </html>

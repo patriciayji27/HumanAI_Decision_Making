@@ -3,72 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Uncertainty Communication — Human-Agent Decision Making</title>
+  <title>Uncertainty Communication — Judgment Under Uncertainty</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .four-part { display:grid; grid-template-columns:1fr 1fr; gap:var(--sm); margin:var(--lg) 0; }
+    .fp-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:var(--md) var(--lg); }
+    .fp-num { font-family:var(--font-heading); font-size:1.4rem; font-weight:700; color:var(--border); margin-bottom:var(--xs); }
+    .fp-title { font-size:0.82rem; font-weight:700; color:var(--text); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.04em; }
+    .fp-body { font-size:0.82rem; color:var(--text-2); line-height:1.55; }
+    .fp-finding { font-size:0.77rem; color:var(--text-3); margin-top:var(--xs); border-top:1px solid var(--border-light); padding-top:var(--xs); }
+    .gap-box { background:rgba(42,157,143,0.07); border:1px solid rgba(42,157,143,0.2); border-radius:var(--radius); padding:var(--md) var(--lg); margin:var(--lg) 0; }
+    .gap-box .gb-label { font-size:0.66rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--s2); margin-bottom:var(--sm); }
+    @media(max-width:600px) { .four-part { grid-template-columns:1fr; } }
+  </style>
 </head>
 <body>
 <nav class="nav"><div class="nav-inner">
-  <a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+  <a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
   <div class="nav-links"><a href="../../index.html">Home</a> <a href="agents-as-advisors.html" class="active">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div>
 </div></nav>
 <main class="main">
 <div class="stream-hero">
   <h1>Uncertainty Communication</h1>
-  <p class="stream-oneliner">Format causally affects decisions. The same probability, presented differently, produces measurably different behavior — sometimes large enough to reverse a preference.</p>
+  <p class="stream-oneliner">How uncertainty is shown determines how it is used. The same probability, displayed differently, produces measurably different behavior — and the display that best explains the number is often not the one that produces the best decision.</p>
 </div>
+
 <div class="verdict-block">
-  <div class="vb-label">Assessment</div>
-  <p>Natural frequencies raise correct Bayesian inference from roughly 16% to 46% (Gigerenzer & Hoffrage, 1995), one of the largest format effects in the judgment literature. The benefit is strongest for multi-step Bayesian integration tasks and smaller for simple probability judgments (Brase, 2008). The frequencies must preserve the natural sampling structure to produce the effect.</p>
-  <p>Hofman, Goldstein & Hullman (2020) demonstrated that displays optimized for comprehension and displays optimized for decision quality can rank differently — a display that helps people accurately report a probability may not help them make a better choice based on that probability. This comprehension-use gap has been shown in specific tasks but its generality across domains is still being established.</p>
-  <p>Numeracy moderates nearly all format effects in this stream. Low-numeracy individuals (~30-50% of the general population by standard measures) are disproportionately harmed by formats requiring arithmetic but benefit most from visual aids like icon arrays (Garcia-Retamero & Cokely, 2013). High-numeracy individuals extract both more precise and more affective meaning from numbers (Peters et al., 2006).</p>
+  <div class="vb-label">What the evidence shows</div>
+  <p>Natural frequencies raise correct Bayesian inference from roughly 16% to 46% (Gigerenzer & Hoffrage, 1995) — one of the largest format effects in the judgment literature. The benefit is specific to multi-step integration tasks and depends on preserving the natural sampling structure. For simple probability judgments, the advantage is smaller.</p>
+  <p>Hofman, Goldstein & Hullman (2020) demonstrated that displays optimized for comprehension and displays optimized for decision quality can rank differently. This comprehension-use gap is the most underappreciated finding in this stream: most research measures whether users understand the display; most applications need users to make better decisions because of the display. These are not the same goal.</p>
+  <p>Numeracy moderates nearly all format effects. Low-numeracy individuals (~30–50% of the general population by standard measures) are disproportionately harmed by formats requiring arithmetic but benefit most from visual aids like icon arrays (Garcia-Retamero & Cokely, 2013).</p>
 </div>
-<div class="ts"><h2>Key claims</h2>
-<div class="claim-block">
-    <div class="cb-claim"><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> Natural frequencies dramatically improve Bayesian reasoning.</div>
-    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Gigerenzer & Hoffrage (1995): ~15% to ~50% correct inference. Replicated across dozens of studies.</div></div>
-    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Benefit strongest for multi-step Bayesian problems. Smaller for simple judgments. Frequencies must be 'natural' (preserving reference class structure). The evolved-processor interpretation is debated.</div></div>
-    <div class="cb-verdict"><strong>Verdict:</strong> Robust and practically important. Interfaces requiring Bayesian reasoning should present information as natural frequencies. The broader claim — that frequency formats should be used universally — is less well-supported.</div>
+
+<!-- Four-part framework -->
+<div class="ts">
+  <h2>Four problems that look like one</h2>
+  <p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--md)">Uncertainty communication research and design regularly compresses four distinct problems together. Separating them changes which interventions are relevant.</p>
+  <div class="four-part">
+    <div class="fp-card">
+      <div class="fp-num">1</div>
+      <div class="fp-title">Understanding the display</div>
+      <div class="fp-body">Can the user correctly decode what the uncertainty representation means? This is a reading comprehension problem.</div>
+      <div class="fp-finding">Most studied. Natural frequencies, icon arrays, and quantile dotplots outperform probability statements and error bars. Comprehension is necessary but not sufficient for good decisions.</div>
+    </div>
+    <div class="fp-card">
+      <div class="fp-num">2</div>
+      <div class="fp-title">Acting on the display</div>
+      <div class="fp-body">Does the display change what the user decides? This is a decision quality problem — distinct from comprehension.</div>
+      <div class="fp-finding">The comprehension-use gap (Hofman et al., 2020) shows these can diverge. The field optimizes mostly for (1) while most applications need (2).</div>
+    </div>
+    <div class="fp-card">
+      <div class="fp-num">3</div>
+      <div class="fp-title">Trusting the source</div>
+      <div class="fp-body">How does the display affect the user's confidence in who or what produced the uncertainty estimate?</div>
+      <div class="fp-finding">Underresearched. Affects AI adoption as much as display format. Confident-sounding AI output inflates source trust regardless of actual accuracy (Steyvers & Peters, 2025).</div>
+    </div>
+    <div class="fp-card">
+      <div class="fp-num">4</div>
+      <div class="fp-title">Learning over time</div>
+      <div class="fp-body">Does repeated exposure to the display help users form better mental models of uncertainty?</div>
+      <div class="fp-finding">Mostly unstudied in naturalistic settings. Animated displays (HOPs) provide experience-based exposure that may support faster calibration, but longitudinal evidence is sparse.</div>
+    </div>
   </div>
-<div class="claim-block">
-    <div class="cb-claim"><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> Displays that improve comprehension can worsen decision quality.</div>
-    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Hofman, Goldstein & Hullman (2020). Comprehension accuracy and decision quality rankings can diverge.</div></div>
-    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Evidence base thinner than the frequency literature. May be task-specific. Not all studies find a gap.</div></div>
-    <div class="cb-verdict"><strong>Verdict:</strong> Directionally important. The practical implication: measure both comprehension and decision quality. When they diverge, choose based on the application's goal.</div>
+</div>
+
+<!-- Comprehension-use gap -->
+<div class="ts">
+  <h2>The comprehension-use gap</h2>
+  <div class="gap-box">
+    <div class="gb-label">The core finding</div>
+    <p style="font-size:0.9rem;line-height:1.65;color:var(--text-2);margin-bottom:var(--sm)">Hofman, Goldstein & Hullman (2020) showed that a display optimized to help users correctly report a probability can rank differently than a display optimized to help users make better choices based on that probability. The display that produces the highest comprehension score is not always the one that produces the best decisions.</p>
+    <p style="font-size:0.9rem;line-height:1.65;color:var(--text-2);margin:0">This matters because the vast majority of uncertainty communication research measures comprehension as the dependent variable. When designing for decision quality (the application goal), this research base is only partially applicable. Measure both, and when they diverge, choose based on the application's actual goal.</p>
   </div>
-<div class="claim-block">
-    <div class="cb-claim"><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> Error bars and confidence intervals are chronically misunderstood — including by researchers.</div>
-    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Belia et al. (2005), Hoekstra et al. (2014). Majority of researchers endorse incorrect CI interpretations.</div></div>
-    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Functional impact may be smaller if users treat CIs as rough 'amount of uncertainty' signals rather than computing precise inferential conclusions.</div></div>
-    <div class="cb-verdict"><strong>Verdict:</strong> For non-expert interfaces, error bars and CIs should be avoided in favor of more interpretable formats (icon arrays, quantile dotplots).</div>
-  </div>
+</div>
+
+<!-- Format landscape -->
+<div class="ts">
+  <h2>Format landscape</h2>
+  <div class="etw"><table class="et">
+    <thead><tr><th>Format</th><th>Strengths</th><th>Weaknesses</th><th>Best for</th></tr></thead>
+    <tbody>
+      <tr><td>Natural frequencies</td><td>46% correct Bayesian reasoning vs. 16% for probability (Gigerenzer & Hoffrage, 1995)</td><td>Requires correct reference class structure. Smaller benefit for simple (non-Bayesian) judgments.</td><td>Multi-step conditional probability tasks</td></tr>
+      <tr><td>Icon arrays (n-of-N)</td><td>Works across numeracy levels; large benefit for low-numeracy users (Garcia-Retamero & Cokely, 2013)</td><td>Does not scale to continuous or distributional uncertainty</td><td>Binary risk communication, medical contexts</td></tr>
+      <tr><td>Quantile dotplots</td><td>Improved probability-of-superiority judgments vs. error bars and density plots (Kay et al., 2016)</td><td>Requires brief onboarding; unfamiliar to most users</td><td>Distributional comparisons, ranking tasks</td></tr>
+      <tr><td>Hypothetical outcome plots (HOPs)</td><td>Converts distribution reading to frequency estimation; positive lab evidence for comparisons</td><td>Sensitive to animation parameters; may mislead for long-tail distributions</td><td>Comparison tasks where distributional shape matters</td></tr>
+      <tr><td>Verbal probability</td><td>Very low cognitive cost; natural for conversation</td><td>"Likely" means 0.55–0.90 across individuals (Wallsten et al., 1986); enormous variability</td><td>Only with hybrid verbal-numeric anchors</td></tr>
+      <tr><td>Error bars / CIs</td><td>Compact; familiar in scientific contexts</td><td>Majority of researchers misinterpret CIs (Hoekstra et al., 2014); Belia et al. (2005) show scientists misread overlap</td><td>Specialist audiences only — not public-facing</td></tr>
+      <tr><td>Point forecast</td><td>Simplest; lowest cognitive cost</td><td>Hides uncertainty entirely; leads to overconfidence in single-outcome scenarios</td><td>High-frequency, low-stakes decisions where uncertainty is small</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<!-- Frontiers -->
+<div class="ts">
+  <h2>Understudied frontiers</h2>
+  <p>Most uncertainty communication research focuses on single-outcome binary risks (disease probability, weather event). Several important use cases remain underaddressed:</p>
+  <p><strong>Continuous uncertainty and forecast distributions.</strong> Displaying the full distribution of a continuous outcome (e.g., tomorrow's temperature, a model's output range) requires different formats than displaying a single probability. Quantile dotplots are the most promising format, but longitudinal evidence is sparse.</p>
+  <p><strong>Ranking and comparison under uncertainty.</strong> Many AI decisions involve choosing among multiple uncertain options, not just accepting or rejecting one. Format effects in multi-option comparisons are less studied than single-outcome formats.</p>
+  <p><strong>Long-horizon uncertainty.</strong> AI forecasts often cover extended time horizons where probability estimates are inherently wider. Most display research uses short-horizon, well-calibrated forecasts. How displays should adapt for long-horizon, high-variance forecasts remains largely unexplored.</p>
+  <p><strong>Selective prediction and abstention.</strong> AI systems that express uncertainty by withholding a prediction altogether ("I don't know") are a third option beyond numerical confidence scores. The conditions under which abstention outperforms expressed uncertainty are not well characterized.</p>
 </div>
 
 <div class="ts"><h2>Key papers</h2>
 <ul class="psl">
-<li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Gigerenzer & Hoffrage (1995)</span> <span class="p-note">Frequency advantage — the most impactful format finding</span></li>
+<li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Gigerenzer & Hoffrage (1995)</span> <span class="p-note">Frequency advantage — largest format effect in this stream</span></li>
 <li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Garcia-Retamero & Cokely (2013)</span> <span class="p-note">Icon arrays work across numeracy levels</span></li>
 <li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Hofman, Goldstein & Hullman (2020)</span> <span class="p-note">The comprehension-use gap</span></li>
-<li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Kay et al. (2016)</span> <span class="p-note">Quantile dotplots</span></li>
-<li><span class="badge ev-mixed">mixed</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Padilla, Kay & Hullman (2022)</span> <span class="p-note">Cognitive science framework for uncertainty visualization</span></li>
+<li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Kay et al. (2016)</span> <span class="p-note">Quantile dotplots for distributional comparisons</span></li>
+<li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Wallsten et al. (1986)</span> <span class="p-note">Verbal probability variability — "likely" spans 35 percentage points</span></li>
+<li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Budescu et al. (2009, 2014)</span> <span class="p-note">Hybrid verbal-numeric formats reduce misinterpretation</span></li>
+<li><span class="badge ev-mixed">mixed</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Padilla, Kay & Hullman (2022)</span> <span class="p-note">Cognitive framework for uncertainty visualization design</span></li>
 </ul>
 </div>
+
 <div class="ts"><h2>Design implications grounded in evidence</h2>
-<p><strong>For Bayesian reasoning tasks, use natural frequencies.</strong> Gigerenzer & Hoffrage (1995) raised correct inference from 16% to 46% by changing "the probability of a positive test given the disease is 80%" to "out of every 1,000 people, 10 have the disease; of those 10, 8 test positive." The effect size is large enough that format selection should be a first-order design decision for any interface presenting diagnostic or conditional probability information. The benefit is specific to multi-step integration tasks; for simple probability judgments, the advantage is smaller (Brase, 2008).</p>
-<p><strong>For low-numeracy populations, use icon arrays.</strong> Garcia-Retamero & Cokely (2013) showed icon arrays (100 person-figures, n colored) substantially improve risk understanding. The benefit is largest for low-numeracy users (~30-50% of the general population per Lipkus, 2007). For non-expert AI interfaces, icon arrays should be the default for binary-outcome risk communication.</p>
-<p><strong>For distributional comparisons, quantile dotplots outperform density plots and intervals.</strong> Kay et al. (2016) found quantile dotplots (20-100 dots positioned at distribution quantiles) improved probability-of-superiority judgments compared to error bars, density plots, and prediction intervals. The format requires brief onboarding (~30 seconds of explanation) but then performs well across numeracy levels.</p>
-<p><strong>Do not use error bars for non-expert audiences.</strong> Belia et al. (2005) found many published scientists misinterpret error bars; Hoekstra et al. (2014) found majority of researchers misinterpret 95% CIs. If experts cannot read these formats correctly, using them in public-facing interfaces is a known design error.</p>
+<p><strong>Choose format based on application goal, not comprehension scores alone.</strong> The comprehension-use gap means you need to measure decision quality, not just whether users can read the display. If your application cares about whether users act differently, test for action quality directly.</p>
+<p><strong>For Bayesian reasoning tasks, use natural frequencies.</strong> Gigerenzer & Hoffrage (1995) raised correct inference from 16% to 46% by converting "the probability of a positive test given the disease is 80%" to "out of every 1,000 people, 10 have the disease; of those 10, 8 test positive." The frequencies must preserve the natural sampling structure to produce the effect — rewritten conditional formats do not always work.</p>
+<p><strong>For low-numeracy populations, use icon arrays.</strong> Icon arrays (100 person-figures, n colored) substantially improve risk understanding, with the largest benefit for low-numeracy users — roughly 30–50% of the general population. For any public-facing AI interface displaying binary-outcome risk, icon arrays should be the default over probability statements or percentages.</p>
+<p><strong>Never use error bars or CIs in public-facing interfaces.</strong> Belia et al. (2005) found many published scientists misinterpret error bar overlap; Hoekstra et al. (2014) found majority of researchers hold incorrect beliefs about confidence intervals. Using these formats in non-specialist contexts is a predictable design error.</p>
+<p><strong>For verbal probability in AI output, use hybrid formats.</strong> "Very likely [>90%]" reduced misinterpretation from ~40% to ~15% in IPCC communication (Budescu et al., 2014). LLM systems that output unanchored verbal probability terms ("probably," "likely") are producing ambiguous communication. Hybrid formats require only prompt-level formatting changes.</p>
 </div>
+
 <div style="margin-top: var(--2xl); padding-top: var(--xl); border-top: 1px solid var(--border-light);">
   <div class="sec-label">Continue reading</div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--md);"><a class="sc" href="sampling-representation.html" style="border-left-color: var(--s7);">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--md);">
+    <a class="sc" href="sampling-representation.html" style="border-left-color: var(--s7);">
       <div class="sc-label" style="color: var(--s7);">Sampling, Granularity & Experience</div>
-      <div class="sc-tension">Description vs. experience: how information source changes processing</div>
+      <div class="sc-tension">Description vs. experience: how information source changes rare-event processing</div>
     </a>
-<a class="sc" href="agents-as-advisors.html" style="border-left-color: var(--s8);">
+    <a class="sc" href="agents-as-advisors.html" style="border-left-color: var(--s8);">
       <div class="sc-label" style="color: var(--s8);">AI Agents as Decision Partners</div>
       <div class="sc-tension">How AI communicates uncertainty determines user response</div>
-    </a></div>
+    </a>
+  </div>
 </div>
 </main>
-<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer>
 </body></html>

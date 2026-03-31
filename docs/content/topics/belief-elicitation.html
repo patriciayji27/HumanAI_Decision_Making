@@ -3,82 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Belief Elicitation & Calibration — Human-Agent Decision Making</title>
+  <title>Belief Elicitation & Calibration — Judgment Under Uncertainty</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .three-problems { display:grid; grid-template-columns:1fr 1fr 1fr; gap:var(--sm); margin:var(--lg) 0; }
+    .tp-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:var(--md) var(--lg); border-top:3px solid; }
+    .tp-title { font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:var(--xs); }
+    .tp-body { font-size:0.82rem; color:var(--text-2); line-height:1.55; margin-bottom:var(--sm); }
+    .tp-example { font-size:0.76rem; color:var(--text-3); font-style:italic; }
+    .belief-types { display:grid; grid-template-columns:1fr 1fr; gap:var(--sm); margin:var(--lg) 0; }
+    .bt-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:var(--md); }
+    .bt-num { font-size:0.68rem; font-weight:700; color:var(--text-3); text-transform:uppercase; margin-bottom:4px; }
+    .bt-title { font-size:0.84rem; font-weight:600; color:var(--text); margin-bottom:4px; }
+    .bt-body { font-size:0.8rem; color:var(--text-2); line-height:1.5; }
+    .core-claim-box { background:var(--bg-accent); border-radius:var(--radius-lg); padding:var(--lg) var(--xl); margin:var(--xl) 0; border-left:4px solid var(--s1); }
+    .core-claim-box .cc-label { font-size:0.66rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--s1); margin-bottom:var(--sm); }
+    @media(max-width:600px) { .three-problems { grid-template-columns:1fr; } .belief-types { grid-template-columns:1fr; } }
+  </style>
 </head>
 <body>
 <nav class="nav"><div class="nav-inner">
-  <a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+  <a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
   <div class="nav-links"><a href="../../index.html">Home</a> <a href="agents-as-advisors.html" class="active">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div>
 </div></nav>
 <main class="main">
 <div class="stream-hero">
   <h1>Belief Elicitation & Calibration</h1>
-  <p class="stream-oneliner">The method used to ask changes the belief you get back. Different formats access different aspects of a person's uncertainty representation, and there may be no single ground-truth internal probability to recover.</p>
+  <p class="stream-oneliner">Asking someone about their beliefs changes those beliefs. The method used to ask is not a neutral channel — and there may be no single ground-truth internal probability to recover in the first place.</p>
 </div>
+
 <div class="verdict-block">
-  <div class="vb-label">Assessment</div>
-  <p>The overconfidence finding — 90% confidence intervals contain the true value about 50% of the time — is among the most replicated in judgment research (Lichtenstein, Fischhoff & Phillips, 1982). The mechanism is anchoring-and-adjustment: people anchor on a central estimate and don't spread wide enough (Soll & Klayman, 2004). However, the ecological rationality critique (Gigerenzer et al., 1991) showed the magnitude depends substantially on how test questions are selected — using hard, unrepresentative items inflates measured overconfidence relative to ecologically sampled items.</p>
-  <p>Elicited beliefs depend on the format used to ask. The same person, asked the same question via numeric scale, probability wheel, verbal expression, or distribution builder, produces systematically different probability estimates (Wallsten et al., 1986). This suggests elicitation is partly constructive — the method shapes the belief it claims to measure — rather than purely revelatory.</p>
-  <p>Proper scoring rules (Brier, logarithmic) incentivize truthful reporting under expected utility theory, but under prospect theory's nonlinear probability weighting, the optimal report under a "proper" scoring rule may diverge from the person's actual belief. Theoretical corrections exist (Offerman et al., 2009) but are rarely implemented in practice.</p>
+  <div class="vb-label">What the evidence shows</div>
+  <p>The overconfidence finding — 90% confidence intervals contain the true value about 50% of the time — is among the most replicated in judgment research (Lichtenstein, Fischhoff & Phillips, 1982). The mechanism is anchoring-and-adjustment: people anchor on a central estimate and spread too narrowly. But the ecological rationality critique (Gigerenzer et al., 1991) showed the magnitude depends on item selection: using hard, unrepresentative questions inflates apparent miscalibration.</p>
+  <p>Elicited beliefs depend on format. The same person, asked the same question via numeric scale, probability wheel, verbal expression, or distribution builder, produces systematically different estimates (Wallsten et al., 1986). This is not noise — it is evidence that elicitation is partly constructive. The method shapes the belief it claims to measure.</p>
 </div>
+
+<!-- Core claim box -->
+<div class="core-claim-box">
+  <div class="cc-label">The central insight of this stream</div>
+  <p style="font-size:0.95rem;line-height:1.65;color:var(--text);font-family:var(--font-heading);font-weight:600;margin-bottom:var(--sm)">There may be no single ground-truth internal probability to recover.</p>
+  <p style="font-size:0.88rem;line-height:1.65;color:var(--text-2);margin:0">This is a stronger claim than "measurement is imperfect." It suggests that for many beliefs, the belief itself is not a stable, pre-formed object that elicitation merely reads off. The belief is partly constructed in the act of response. Different elicitation formats access different representations — or generate different representations — rather than measuring the same underlying thing through different instruments. The practical implication: no single elicitation format is the "correct" one, and format choice is a substantive design decision, not a cosmetic one.</p>
+</div>
+
+<!-- Three problems -->
+<div class="ts">
+  <h2>Three distinct problems that get conflated</h2>
+  <div class="three-problems">
+    <div class="tp-card" style="border-top-color:var(--s1)">
+      <div class="tp-title" style="color:var(--s1)">Elicitation as measurement</div>
+      <div class="tp-body">The goal is to accurately read out a belief that already exists — minimizing the distortion introduced by the elicitation instrument.</div>
+      <div class="tp-example">Forecasting tournaments. Proper scoring rules. Confidence calibration tasks. Research question: how well does the method recover the "true" belief?</div>
+    </div>
+    <div class="tp-card" style="border-top-color:var(--s2)">
+      <div class="tp-title" style="color:var(--s2)">Elicitation as training</div>
+      <div class="tp-body">The goal is to improve the quality of future beliefs through the act of elicitation — using the process to develop calibration skills.</div>
+      <div class="tp-example">The Good Judgment Project. Calibration training programs. AI tutoring systems. Research question: does regular elicitation + feedback improve subsequent forecasting?</div>
+    </div>
+    <div class="tp-card" style="border-top-color:var(--s4)">
+      <div class="tp-title" style="color:var(--s4)">Elicitation as interface scaffolding</div>
+      <div class="tp-body">The goal is to design an interaction where users specify their uncertainty in a way that helps them make better downstream decisions — regardless of what the "true" belief is.</div>
+      <div class="tp-example">Distribution builders for retirement planning. AI systems that ask about confidence before giving a recommendation. Research question: which elicitation design produces better decisions?</div>
+    </div>
+  </div>
+  <p style="font-size:0.84rem;color:var(--text-3);margin-top:var(--sm)">These three goals conflict. What is optimal for measurement (proper scoring rules) may not be optimal for training (adaptive difficulty, feedback timing), which may not be optimal for interface scaffolding (low cognitive load, decision-relevant outputs).</p>
+</div>
+
+<!-- Four belief types -->
+<div class="ts">
+  <h2>Four types of beliefs worth distinguishing</h2>
+  <p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--md)">The constructive view of belief elicitation implies that different beliefs exist in different relationships to the elicitation act. These categories matter for AI system design.</p>
+  <div class="belief-types">
+    <div class="bt-card">
+      <div class="bt-num">Type 1</div>
+      <div class="bt-title">Beliefs already held</div>
+      <div class="bt-body">Pre-formed prior beliefs that the person holds before any elicitation. Elicitation attempts to read these out without disturbing them. Example: "what do you think the probability of rain is tomorrow?" when the person has already checked a forecast.</div>
+    </div>
+    <div class="bt-card">
+      <div class="bt-num">Type 2</div>
+      <div class="bt-title">Beliefs constructed in response</div>
+      <div class="bt-body">Beliefs generated on the spot in response to an unexpected question. The person had no prior, and the belief is constructed from available cues during the elicitation itself. These are especially sensitive to anchors and framing.</div>
+    </div>
+    <div class="bt-card">
+      <div class="bt-num">Type 3</div>
+      <div class="bt-title">Beliefs stabilized through feedback</div>
+      <div class="bt-body">Beliefs that begin as noisy or uncertain but become more stable through repeated elicitation with feedback. Superforecasters' probability estimates have this character — the high calibration is an outcome of the process, not a pre-existing trait.</div>
+    </div>
+    <div class="bt-card">
+      <div class="bt-num">Type 4</div>
+      <div class="bt-title">Beliefs transformed by AI interaction</div>
+      <div class="bt-body">Beliefs that are reshaped by interacting with an AI elicitor — which may confirm, challenge, or restructure the person's prior. An AI that explains its own uncertainty while asking about yours is not just measuring; it is intervening. The measurement and training problems collapse into one.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Key claims -->
 <div class="ts"><h2>Key claims</h2>
 <div class="claim-block">
     <div class="cb-claim"><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> Confidence intervals are systematically overconfident — 90% intervals contain truth about 50% of the time.</div>
-    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Lichtenstein, Fischhoff & Phillips (1982). Soll & Klayman (2004) identified the mechanism: anchoring on a central estimate with insufficient outward adjustment.</div></div>
-    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Magnitude depends on item difficulty and selection. The hard-easy effect is well-established. Ecological sampling reduces measured miscalibration. Frequency-estimation tasks show less overconfidence than confidence-interval tasks.</div></div>
-    <div class="cb-verdict"><strong>Verdict:</strong> The directional finding is among the most robust in judgment research. But 'people are overconfident' is a family of context-dependent phenomena with distinct mechanisms, not a single uniform bias.</div>
+    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Lichtenstein, Fischhoff & Phillips (1982). Soll & Klayman (2004) identified anchoring-and-adjustment as the mechanism.</div></div>
+    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Magnitude depends on item difficulty and selection. Ecological sampling (representative items) substantially reduces apparent miscalibration. Frequency-estimation tasks show less overconfidence than confidence-interval tasks.</div></div>
+    <div class="cb-verdict"><strong>Verdict:</strong> The directional finding is robust. But "people are overconfident" is a family of context-dependent phenomena, not a single uniform bias — and each variant has a different mechanism and different intervention.</div>
   </div>
 <div class="claim-block">
     <div class="cb-claim"><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> Elicitation format causally affects the belief measured.</div>
-    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">The same person produces different estimates on numeric scales, probability wheels, distribution builders, and verbal expressions. Wallsten et al. (1986) documented enormous variability in verbal terms.</div></div>
+    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">The same person produces different estimates on numeric scales, probability wheels, distribution builders, and verbal expressions. Wallsten et al. (1986) documented that "likely" spans 0.55 to 0.90 across individuals.</div></div>
     <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Format sensitivity does not mean elicitation is useless — it means format is a design variable. Within a given format, individual differences often exceed format differences.</div></div>
-    <div class="cb-verdict"><strong>Verdict:</strong> Format is not neutral. Any system that elicits beliefs without reporting and justifying the format choice is incomplete.</div>
+    <div class="cb-verdict"><strong>Verdict:</strong> Format is not neutral. Any system that elicits beliefs without reporting and justifying the format choice is incomplete as a scientific instrument and as a design artifact.</div>
   </div>
 <div class="claim-block">
     <div class="cb-claim"><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> Calibration is a trainable skill with stable individual differences.</div>
-    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Tetlock's Good Judgment Project (Mellers et al., 2015). Decomposition, base-rate thinking, and incremental updating can be taught.</div></div>
-    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Trainability varies by domain. Domains with sparse or delayed feedback show less improvement. 'Superforecaster' status may partly reflect selection effects. Cross-domain transfer is weak.</div></div>
-    <div class="cb-verdict"><strong>Verdict:</strong> Calibration training via AI tutoring is a high-value, low-risk application. But expecting generalization beyond the training domain is not supported.</div>
+    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Tetlock's Good Judgment Project (Mellers et al., 2015). Decomposition, base-rate thinking, and incremental updating characterize the best performers — and can be taught.</div></div>
+    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Trainability is domain-specific. Cross-domain transfer is weak. Domains with sparse or delayed feedback show less improvement. "Superforecaster" performance may partly reflect selection effects.</div></div>
+    <div class="cb-verdict"><strong>Verdict:</strong> AI-delivered calibration training is a high-value application with a real evidence base. The constraint is that training must be domain-specific — expecting generalization is not supported.</div>
   </div>
 </div>
+
 <div class="ts"><h2>Elicitation methods compared</h2>
 <div class="etw"><table class="et">
 <thead><tr><th>Method</th><th>Captures</th><th>Main failure</th><th>Cognitive cost</th><th>Evidence</th></tr></thead>
 <tbody>
-<tr><td>Point probability</td><td>Single best estimate</td><td>Discards second-order uncertainty</td><td>Low</td><td><span class="badge ev-strong">Strong</span></td></tr>
-<tr><td>Confidence interval</td><td>Central estimate + range</td><td>Chronic overconfidence; anchoring</td><td>Low–Med</td><td><span class="badge ev-strong">Strong</span></td></tr>
-<tr><td>Quantile estimates</td><td>Coarse distribution shape</td><td>Three numbers strain many users</td><td>Medium</td><td><span class="badge ev-mixed">Mixed</span></td></tr>
-<tr><td>Distribution builder</td><td>Full subjective distribution</td><td>Heavy load; sensitive to defaults</td><td>High</td><td><span class="badge ev-mixed">Mixed</span></td></tr>
-<tr><td>Verbal expression</td><td>Coarse gist</td><td>Enormous variability (see <a class="concept-ref" href="../../concepts/verbal-probability.html">verbal probability</a>)</td><td>Very low</td><td><span class="badge ev-strong">Strong</span></td></tr>
-<tr><td>Prediction market</td><td>Aggregated group belief</td><td>Measures market, not individual</td><td>Low</td><td><span class="badge ev-strong">Strong</span></td></tr>
+<tr><td>Point probability</td><td>Single best estimate</td><td>Discards second-order uncertainty entirely</td><td>Low</td><td><span class="badge ev-strong">Strong</span></td></tr>
+<tr><td>Confidence interval</td><td>Central estimate + range</td><td>Chronic overconfidence; anchoring-driven narrowness</td><td>Low–Med</td><td><span class="badge ev-strong">Strong</span></td></tr>
+<tr><td>Quantile estimates</td><td>Coarse distribution shape (P10/P50/P90)</td><td>Three numbers strain many users; anchoring on P50</td><td>Medium</td><td><span class="badge ev-mixed">Mixed</span></td></tr>
+<tr><td>Distribution builder</td><td>Full subjective distribution</td><td>Heavy cognitive load; sensitive to bin defaults</td><td>High</td><td><span class="badge ev-mixed">Mixed</span></td></tr>
+<tr><td>Verbal expression</td><td>Coarse gist</td><td>Enormous variability — "likely" spans 35 pp across users</td><td>Very low</td><td><span class="badge ev-strong">Strong</span></td></tr>
+<tr><td>Prediction market</td><td>Aggregated group belief</td><td>Measures market equilibrium, not individual beliefs</td><td>Low (per user)</td><td><span class="badge ev-strong">Strong</span></td></tr>
 </tbody></table></div></div>
+
 <div class="ts"><h2>Key papers</h2>
 <ul class="psl">
 <li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Lichtenstein, Fischhoff & Phillips (1982)</span> <span class="p-note">Overconfidence review — established the core finding</span></li>
 <li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Soll & Klayman (2004)</span> <span class="p-note">Anchoring mechanism for narrow intervals</span></li>
-<li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Mellers et al. (2015) / Tetlock (2015)</span> <span class="p-note">Superforecasting — calibration as skill</span></li>
-<li><span class="badge ev-strong">strong</span> <span class="badge st-debated">debated</span> <span class="p-ref">Gigerenzer, Hoffrage & Kleinbölting (1991)</span> <span class="p-note">Ecological critique of overconfidence</span></li>
-<li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Gneiting & Raftery (2007)</span> <span class="p-note">Unified proper scoring rule theory</span></li>
-<li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Goldstein & Rothschild (2014)</span> <span class="p-note">Distribution builders for non-experts</span></li>
+<li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Mellers et al. (2015) / Tetlock (2015)</span> <span class="p-note">Superforecasting — calibration as trainable skill</span></li>
+<li><span class="badge ev-strong">strong</span> <span class="badge st-debated">debated</span> <span class="p-ref">Gigerenzer, Hoffrage & Kleinbölting (1991)</span> <span class="p-note">Ecological critique — item selection inflates overconfidence</span></li>
+<li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Gneiting & Raftery (2007)</span> <span class="p-note">Unified proper scoring rule theory — with known limitations under CPT</span></li>
+<li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Goldstein & Rothschild (2014)</span> <span class="p-note">Distribution builders for non-experts — promising but load-sensitive</span></li>
 </ul>
 </div>
+
 <div class="ts"><h2>Design implications grounded in evidence</h2>
-<p><strong>Verbal elicitation (the default LLM format) produces the widest variability.</strong> Wallsten et al. (1986) documented that "likely" means 0.55 to 0.90 across individuals. For an AI system eliciting beliefs through conversation, this means two users who both say "likely" may hold beliefs differing by 35 percentage points. Hybrid verbal-numeric formats ("very likely [>90%]") reduced misinterpretation from ~40% to ~15% in IPCC communication (Budescu et al., 2014). Implementing this in LLM output requires only formatting changes, not model changes.</p>
-<p><strong>Calibration training can be delivered via AI at scale.</strong> The Good Judgment Project (Mellers et al., 2015) demonstrated that decomposition, base-rate thinking, and incremental updating raise forecasting performance from the median to the top decile when taught systematically. An AI tutoring system with adaptive difficulty, personalized feedback, and domain-specific question banks could deliver this training at marginal cost near zero. The constraint: domain transfer is weak (Tetlock, 2015), so training must be domain-specific.</p>
-<p><strong>Distribution builders capture more information than point estimates but only with trained users.</strong> Goldstein & Rothschild (2014) showed that interactive bin-filling interfaces let non-experts construct meaningful full distributions. But performance depends on bin count, default shapes, and whether the interface uses density or cumulative format. For practical deployment, a three-quantile approach (P10/P50/P90) balances information capture against cognitive load.</p>
+<p><strong>Know which elicitation problem you are solving before picking a format.</strong> A forecasting tournament needs measurement-optimized elicitation (proper scoring rules, high granularity). A calibration training tool needs training-optimized elicitation (adaptive difficulty, immediate feedback). An AI decision interface needs interface-optimized elicitation (low cognitive load, decision-relevant output). These have different optimal formats.</p>
+<p><strong>Verbal elicitation in LLM interfaces produces the widest ambiguity.</strong> When users say "I think it's likely" and the AI responds "I also think it's likely," the two parties may hold beliefs 35 percentage points apart (Wallsten et al., 1986). Hybrid verbal-numeric formats reduced IPCC misinterpretation from ~40% to ~15% (Budescu et al., 2014) — the same logic applies to AI conversational interfaces. Adding numeric anchors to verbal probability terms is a low-cost, high-impact improvement.</p>
+<p><strong>Calibration training via AI is feasible and well-motivated.</strong> The Good Judgment Project demonstrated that decomposition, base-rate thinking, and incremental updating raise forecasting performance substantially when taught systematically. AI tutoring with adaptive difficulty and domain-specific question banks could deliver this at scale. The binding constraint is domain specificity — the training effect does not transfer broadly, so the system needs to train in the relevant domain.</p>
 </div>
+
 <div style="margin-top: var(--2xl); padding-top: var(--xl); border-top: 1px solid var(--border-light);">
   <div class="sec-label">Continue reading</div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--md);"><a class="sc" href="uncertainty-communication.html" style="border-left-color: var(--s2);">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--md);">
+    <a class="sc" href="uncertainty-communication.html" style="border-left-color: var(--s2);">
       <div class="sc-label" style="color: var(--s2);">Uncertainty Communication</div>
       <div class="sc-tension">The reverse problem: getting uncertainty information into someone's head</div>
     </a>
-<a class="sc" href="agents-as-advisors.html" style="border-left-color: var(--s8);">
+    <a class="sc" href="agents-as-advisors.html" style="border-left-color: var(--s8);">
       <div class="sc-label" style="color: var(--s8);">AI Agents as Decision Partners</div>
-      <div class="sc-tension">Conversational elicitation — theoretical promise, absent evidence</div>
-    </a></div>
+      <div class="sc-tension">Conversational elicitation — when the AI is both measuring and intervening simultaneously</div>
+    </a>
+  </div>
 </div>
 </main>
-<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer>
 </body></html>

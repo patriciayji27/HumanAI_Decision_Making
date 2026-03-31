@@ -3,101 +3,183 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Agents as Decision Partners — Human-Agent Decision Making</title>
+  <title>AI Agents as Decision Partners — Judgment Under Uncertainty</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .seg-header { font-family:var(--font-heading); font-size:1.05rem; font-weight:700; margin-bottom:var(--sm); margin-top:var(--xl); display:flex; align-items:center; gap:var(--sm); }
+    .seg-header::before { content:''; display:inline-block; width:3px; height:1.1em; background:currentColor; border-radius:2px; opacity:0.5; }
+    .seg-intro { font-size:0.9rem; color:var(--text-2); line-height:1.65; margin-bottom:var(--md); max-width:620px; }
+    .seg-section { margin-bottom:var(--2xl); padding-bottom:var(--xl); border-bottom:1px solid var(--border-light); }
+    .seg-section:last-child { border-bottom:none; }
+    .key-finding { background:var(--bg-card); border-left:3px solid var(--accent); padding:var(--md) var(--lg); border-radius:0 var(--radius) var(--radius) 0; margin-bottom:var(--md); font-size:0.88rem; line-height:1.6; color:var(--text-2); }
+    .key-finding strong { color:var(--text); display:block; margin-bottom:3px; }
+    .design-box { background:var(--accent-bg); border:1px solid rgba(180,77,45,0.15); border-radius:var(--radius); padding:var(--md) var(--lg); margin-top:var(--md); font-size:0.86rem; color:var(--text-2); line-height:1.6; }
+    .design-box .db-label { font-size:0.66rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:var(--xs); }
+  </style>
 </head>
 <body>
 <nav class="nav"><div class="nav-inner">
-  <a class="nav-brand" href="../../index.html">Human-Agent Decision Making</a>
+  <a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
   <div class="nav-links"><a href="../../index.html">Home</a> <a href="agents-as-advisors.html" class="active">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div>
 </div></nav>
 <main class="main">
 <div class="stream-hero">
   <h1>AI Agents as Decision Partners</h1>
-  <p class="stream-oneliner">Calibrated AI confidence is necessary but not sufficient for good human-AI decisions. Explanation style, decision protocol, and the user's ability to detect AI errors matter at least as much — and possibly more.</p>
+  <p class="stream-oneliner">How AI recommendations actually affect human decisions — and why the answer is almost never just about whether the AI is right.</p>
 </div>
-<div class="verdict-block">
-  <div class="vb-label">Assessment</div>
-  <p>Correct AI explanations improve human decision accuracy by roughly 5 percentage points in studied tasks (Schemmer et al., 2025), while incorrect explanations reduce it by roughly 15 points — a 3:1 asymmetry that changes the expected value calculation for shipping explanation features. This asymmetry has been demonstrated in controlled experiments but not yet broadly replicated across domains.</p>
-  <p>Human-AI teams outperform both human alone and AI alone in a minority of studied conditions (Vaccaro et al., 2024 meta-analysis of 106 studies). The main moderators are AI accuracy (moderate works best) and task difficulty. The default outcome in most studied settings is that the human's involvement adds noise rather than value, primarily because users accept AI predictions at ~80% rates regardless of correctness (Bansal et al., 2021).</p>
-  <p>Protocol-level interventions (cognitive forcing, structured disagreement) have produced larger reductions in overreliance than explanation-level interventions (XAI features) in the studies that have compared them directly. Buçinca et al. (2021) found that requiring users to commit before seeing AI output reduced agreement with incorrect AI from 69% to 52%, while adding LIME explanations had no detectable effect.</p>
-</div>
-<div class="ts"><h2>Key claims</h2>
-<div class="claim-block">
-    <div class="cb-claim"><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> Algorithm aversion and algorithm appreciation are both real — the direction is context-sensitive, not a stable individual trait.</div>
-    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Dietvorst et al. (2015) demonstrated aversion robustly. Logg, Minson & Moore (2019) showed the reverse for objective-seeming tasks. Horowitz & Kahn (2024) found a Dunning-Kruger pattern: low AI knowledge → aversion, medium → overreliance, high → calibrated.</div></div>
-    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">The context-dependence structure (task type × failure visibility × user expertise × perceived AI competence) is still being mapped. Current models don't predict which regime a given setting will fall into.</div></div>
-    <div class="cb-verdict"><strong>Verdict:</strong> The phenomena are real. Treat this as a calibration problem: most users arrive with miscalibrated priors about AI reliability, and the challenge is correcting those priors.</div>
-  </div>
-<div class="claim-block">
-    <div class="cb-claim"><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> Human-AI complementarity is achieved in a minority of studied conditions.</div>
-    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Vaccaro, Almaatouq & Malone (2024) meta-analysis found complementarity is not the default. Bansal et al. (2021) showed it requires humans to identify when the AI is wrong — which is precisely the task humans perform worst at.</div></div>
-    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Most studies use classification tasks with known ground truth. In domains where humans have strong expertise and AI errors are systematically different, complementarity may be more achievable. Publication bias may also understate the failure rate.</div></div>
-    <div class="cb-verdict"><strong>Verdict:</strong> As a default assumption, complementarity is unlikely without specific design interventions. The productive question is which protocol features increase the probability of complementarity, and at what cognitive cost.</div>
-  </div>
-<div class="claim-block">
-    <div class="cb-claim"><span class="badge ev-mixed">mixed</span> <span class="badge st-emerging">emerging</span> Incorrect AI explanations damage decisions more than correct explanations improve them — the impact is asymmetric.</div>
-    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Schemmer et al. (2025) demonstrated this in controlled experiments. Vasconcelos et al. (2023) found explanations reduce overreliance only when cognitive effort of engagement is low relative to stakes.</div></div>
-    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">The evidence base is small. The asymmetry has been shown in specific domains but not broadly replicated. The definition of 'incorrect explanation' varies across studies.</div></div>
-    <div class="cb-verdict"><strong>Verdict:</strong> Promising and important if it replicates. Every explanation feature should be evaluated by asking what happens when it is wrong, not just whether it helps when it is right.</div>
-  </div>
-<div class="claim-block">
-    <div class="cb-claim"><span class="badge ev-mixed">mixed</span> <span class="badge st-emerging">emerging</span> LLMs are reluctant to express uncertainty, likely due to RLHF training, and non-expert users are especially susceptible to unhedged output.</div>
-    <div class="cb-row"><div class="cb-label">Support</div><div class="cb-text">Steyvers & Peters (2025) reviewed metacognition in LLMs and found systematic reluctance to express uncertainty. Zhou et al. (2024) documented how RLHF stylistically suppresses hedging.</div></div>
-    <div class="cb-row"><div class="cb-label">Qualification</div><div class="cb-text">Primarily a theoretical framework with predictions laid out but not yet tested. The magnitude of user susceptibility to false fluency in naturalistic settings is unknown.</div></div>
-    <div class="cb-verdict"><strong>Verdict:</strong> The theoretical case is strong and the mechanism is plausible. LLM output formatting is a tractable intervention point — the question is whether AI labs will prioritize calibrated hedging over fluent confidence.</div>
-  </div>
-</div>
-<div class="ts"><h2>Decision protocols compared</h2>
-<div class="etw"><table class="et">
-<thead><tr><th>Protocol</th><th>Mechanism</th><th>Evidence</th><th>Succeeds when</th><th>Fails when</th></tr></thead>
-<tbody>
-<tr><td>AI recommends, human accepts/rejects</td><td>Binary override</td><td><span class="badge ev-strong">Strong</span></td><td>Human has domain expertise; errors are detectable</td><td>Default: 80%+ accept rate even when AI is wrong</td></tr>
-<tr><td>Human decides, AI gives second opinion</td><td>Sequential, human-anchored</td><td><span class="badge ev-mixed">Mixed</span></td><td>Preserves agency; AI flags disagreements</td><td>Anchoring: human rarely adjusts enough</td></tr>
-<tr><td>Cognitive forcing (decide before seeing AI)</td><td>Commitment before exposure</td><td><span class="badge ev-mixed">Mixed</span></td><td>Reduces anchoring and automation bias</td><td>Cognitive cost too high for routine decisions</td></tr>
-<tr><td>AI informs without recommending</td><td>AI as data provider</td><td><span class="badge ev-mixed">Mixed</span></td><td>Reduces automation bias</td><td>User may not extract the useful signal</td></tr>
-<tr><td>Adaptive delegation</td><td>Route easy to AI, hard to human</td><td><span class="badge ev-weak">Weak</span></td><td>High-volume domains with clear difficulty gradients</td><td>Requires accurate difficulty estimation — itself unsolved</td></tr>
-</tbody></table></div></div>
 
-<div class="ts"><h2>Explanation failure modes</h2>
-<div class="etw"><table class="et">
-<thead><tr><th>Failure mode</th><th>Mechanism</th><th>Consequence</th><th>Design response</th></tr></thead>
-<tbody>
-<tr><td>False fluency</td><td>Users attribute accuracy to linguistic quality</td><td>Overreliance on confident-sounding but wrong output</td><td>Decouple confidence signals from prose style</td></tr>
-<tr><td>Attention overload</td><td>Explanation exhausts cognitive budget</td><td>Decision quality drops despite more information</td><td>Show fewer, more relevant features</td></tr>
-<tr><td>Anchoring</td><td>Explanation primes a specific framing</td><td>User explores less of the decision space</td><td>Present explanations after initial judgment</td></tr>
-<tr><td>Asymmetric damage</td><td>Wrong explanations hurt more than right ones help</td><td>Net-negative expected value when accuracy is imperfect</td><td>Withhold explanations when confidence is low</td></tr>
-</tbody></table></div></div>
-<div class="ts"><h2>Key papers</h2>
-<ul class="psl">
-<li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Dietvorst, Simmons & Massey (2015)</span> <span class="p-note">Algorithm aversion — foundational</span></li>
-<li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Bansal et al. (2021)</span> <span class="p-note">Complementarity conditions — most cited human-AI team study</span></li>
-<li><span class="badge ev-strong">strong</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Vaccaro, Almaatouq & Malone (2024)</span> <span class="p-note">Meta-analysis of human-AI team performance</span></li>
-<li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Buçinca, Malaya & Gajos (2021)</span> <span class="p-note">Cognitive forcing functions reduce overreliance</span></li>
-<li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Vasconcelos et al. (2023)</span> <span class="p-note">Cost-benefit framework for when explanations reduce overreliance</span></li>
-<li><span class="badge ev-mixed">mixed</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Schemmer et al. (2025)</span> <span class="p-note">Asymmetric damage from incorrect explanations</span></li>
-<li><span class="badge ev-mixed">mixed</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Steyvers & Peters (2025)</span> <span class="p-note">LLM metacognition and uncertainty communication</span></li>
-<li><span class="badge ev-mixed">mixed</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Collins et al. (2025)</span> <span class="p-note">Overreliance harms: deskilling, critical thinking erosion</span></li>
-</ul>
+<div class="verdict-block">
+  <div class="vb-label">What the evidence shows</div>
+  <p>Human-AI teams outperform either side alone in a minority of studied conditions — Vaccaro et al.'s 2024 meta-analysis of 106 studies found this is not the default outcome. The modal result is that AI alone performs comparably to the human-AI team, because humans accept AI predictions at roughly 80% regardless of correctness (Bansal et al., 2021).</p>
+  <p>The most tractable lever is not explanation quality but protocol design. Buçinca et al. (2021) found that requiring users to commit to a judgment before seeing AI output reduced agreement with incorrect AI from 69% to 52% — a larger effect than adding explanation features. Schemmer et al. (2025) found incorrect explanations hurt decision quality ~3× more than correct ones help, which means explanation accuracy needs to be a shipping criterion alongside model accuracy.</p>
 </div>
-<div class="ts"><h2>Design implications grounded in evidence</h2>
-<p><strong>Allowing users to modify AI output restores adoption without sacrificing accuracy.</strong> Dietvorst et al. (2015, Experiment 6) found that letting participants adjust the algorithm's forecast by up to 10 points raised usage from 36% to 72% — with negligible impact on forecast quality. The practical implementation: editable confidence scores, adjustable parameters, or "AI draft + user edit" workflows rather than accept/reject interfaces.</p>
-<p><strong>Cognitive forcing (committing to a judgment before seeing AI output) reduced agreement with incorrect AI predictions from 69% to 52%.</strong> Buçinca et al. (2021, Study 1) demonstrated this across three experiments in a calorie estimation task. The cost: ~50% more time per decision and lower reported satisfaction. This makes cognitive forcing practical for high-stakes, low-frequency decisions (medical diagnosis, loan approval) but impractical for routine automation (content moderation, spam filtering).</p>
-<p><strong>Explanations reduce overreliance only when evaluation cost is low relative to stakes.</strong> Vasconcelos et al. (2023) formalized this as a cost-benefit function across five studies: when explanation evaluation required minimal effort, overreliance dropped 12-20 percentage points. When effort was high, no reduction occurred. Design implication: short, verifiable explanations (single most relevant feature, binary comparison) will outperform comprehensive explanations (full feature attribution, multi-paragraph rationale) in most production settings.</p>
-<p><strong>Incorrect explanations hurt ~3× as much as correct ones help.</strong> Schemmer et al. (2025) found that correct explanations improved accuracy by ~5 percentage points while incorrect explanations decreased it by ~15 points. If this ratio holds broadly, explanation features have negative expected value whenever explanation accuracy falls below ~75%. This means explanation accuracy should be a shipping criterion, not just model accuracy.</p>
-<p><strong>Human-AI complementarity is achieved in a minority of studied conditions.</strong> Vaccaro et al. (2024, meta-analysis of 106 studies) found that the modal outcome is AI alone performing comparably to the human-AI team. Complementarity requires moderate AI accuracy (high enough to be useful, low enough that human override adds value), sufficient task difficulty, and expert human overseers. Before investing in human-in-the-loop architectures, assess whether these conditions are met.</p>
+
+<!-- SECTION 1: Reliance priors -->
+<div class="seg-section">
+  <div class="seg-header" style="color:var(--s8)">Reliance priors: aversion, appreciation, and trust calibration</div>
+  <p class="seg-intro">Before users interact with an AI system, they arrive with a prior about whether to trust it. That prior is neither stable nor rational — it depends on task type, visible failures, perceived AI competence relative to their own, and how much they know about AI in general.</p>
+
+  <div class="key-finding">
+    <strong>Algorithm aversion (Dietvorst et al., 2015)</strong>
+    Seeing an algorithm fail — even when it still outperforms humans on average — causes users to abandon it at rates well below what expected-value reasoning would recommend. The aversion is triggered by failure salience, not objective performance. Letting users modify the algorithm's output (by as little as ±10 units) largely eliminated the aversion without hurting accuracy.
+  </div>
+  <div class="key-finding">
+    <strong>Algorithm appreciation (Logg et al., 2019)</strong>
+    For tasks perceived as objective or numerical, users often over-weight algorithm recommendations. The direction of bias (aversion vs. appreciation) depends on perceived task subjectivity — it is not a stable individual trait.
+  </div>
+  <div class="key-finding">
+    <strong>AI knowledge follows a Dunning-Kruger pattern (Horowitz & Kahn, 2024)</strong>
+    Across a 9-country experiment (N=9,000), users with low AI background knowledge showed aversion; medium-knowledge users showed the strongest overreliance; high-knowledge users were best calibrated. The implication: the most dangerous reliance profile is partial knowledge, not ignorance.
+  </div>
+
+  <div class="design-box">
+    <div class="db-label">Design takeaway</div>
+    Treat reliance as a calibration problem, not a binary setting. Users with partial AI knowledge need the most active management — they are confident but wrong about when to trust the system. Editable interfaces (allow modification of AI output) reduce aversion without degrading performance.
+  </div>
 </div>
+
+<!-- SECTION 2: Protocol design -->
+<div class="seg-section">
+  <div class="seg-header" style="color:var(--s8)">Protocol design: when advice arrives and how users are asked to respond</div>
+  <p class="seg-intro">The protocol — the structural rules governing how AI advice is presented and when — is arguably the highest-leverage intervention point. Small changes to sequencing produce large changes in reliance behavior.</p>
+
+  <div class="etw"><table class="et">
+    <thead><tr><th>Protocol</th><th>Core mechanism</th><th>Effect on overreliance</th><th>Cost</th></tr></thead>
+    <tbody>
+      <tr><td>AI recommends → human accepts/rejects</td><td>Binary override</td><td>Default: ~80% acceptance regardless of AI correctness</td><td>Low</td></tr>
+      <tr><td>Human commits first, then sees AI</td><td>Anchoring on own judgment</td><td>Incorrect AI acceptance drops 17 pp (69%→52%, Buçinca 2021)</td><td>~50% more time per decision</td></tr>
+      <tr><td>Human decides, AI flags disagreements</td><td>AI as exception alert</td><td>Preserves human agency; reduces automation bias</td><td>Anchoring: human rarely adjusts enough</td></tr>
+      <tr><td>AI informs without recommending</td><td>AI as data provider</td><td>Reduces automation bias</td><td>User may fail to extract the useful signal</td></tr>
+      <tr><td>Adaptive delegation (easy→AI, hard→human)</td><td>Difficulty-based routing</td><td>Potential high ceiling, but requires accurate difficulty scoring</td><td>Difficulty estimation is itself unsolved</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="design-box">
+    <div class="db-label">Design takeaway</div>
+    Commit-first protocols have the strongest evidence for reducing overreliance, but come with cognitive cost (~50% more time, lower satisfaction). Reserve for high-stakes, low-frequency decisions. For routine decisions, AI-flags-disagreement is a lower-cost alternative, though anchoring effects reduce its impact.
+  </div>
+</div>
+
+<!-- SECTION 3: Explanation economics -->
+<div class="seg-section">
+  <div class="seg-header" style="color:var(--s8)">Explanation economics: when explanations help, harm, or cost too much</div>
+  <p class="seg-intro">XAI features are often shipped on the assumption that transparency improves outcomes. The evidence is less optimistic. Explanations have a cost-benefit structure that depends critically on explanation accuracy, user cognitive budget, and stakes.</p>
+
+  <div class="key-finding">
+    <strong>Asymmetric damage (Schemmer et al., 2025)</strong>
+    Correct explanations improved accuracy by ~5 percentage points. Incorrect explanations decreased it by ~15 points — a 3:1 asymmetry. If this ratio holds broadly, explanation features have negative expected value whenever explanation accuracy falls below ~75%.
+  </div>
+  <div class="key-finding">
+    <strong>Cost-benefit threshold (Vasconcelos et al., 2023)</strong>
+    Explanations reduced overreliance only when the cognitive cost of evaluating them was low relative to decision stakes. When effort was high, overreliance persisted regardless of explanation quality. Across five studies, overreliance dropped 12–20 percentage points when effort was low.
+  </div>
+  <div class="key-finding">
+    <strong>Verifiability is the key (Fok & Weld, 2023)</strong>
+    Most current explanation designs do not produce explanations users can actually verify — they produce explanations that look authoritative. Verifiable explanations (single most-relevant feature, binary comparison) are the exception, not the rule.
+  </div>
+
+  <div class="design-box">
+    <div class="db-label">Design takeaway</div>
+    Before shipping an explanation feature, ask: what happens when the explanation is wrong? Explanation accuracy should be a shipping criterion alongside model accuracy. Short, verifiable explanations (one feature, binary format) outperform comprehensive explanations in most production settings. Withhold explanations when model confidence is low.
+  </div>
+</div>
+
+<!-- SECTION 4: Uncertainty expression -->
+<div class="seg-section">
+  <div class="seg-header" style="color:var(--s8)">Uncertainty expression: confidence, hedging, and false fluency</div>
+  <p class="seg-intro">AI systems communicate — or fail to communicate — their own uncertainty through linguistic choices, confidence scores, and hedging behavior. These choices have measurable downstream effects on user reliance.</p>
+
+  <div class="key-finding">
+    <strong>LLMs suppress uncertainty (Steyvers & Peters, 2025)</strong>
+    LLMs trained with RLHF are stylistically incentivized toward confident, fluent output. Users — especially non-experts — cannot reliably distinguish AI confidence from AI accuracy. The result: overreliance on wrong-but-fluent output.
+  </div>
+  <div class="key-finding">
+    <strong>Visual uncertainty quantification improves calibration (Prabhudesai et al., 2023)</strong>
+    Displaying AI uncertainty visually (rather than numerically) improved human accuracy and reduced overreliance on high-confidence errors in an image classification task. The benefit was strongest when uncertainty was explicitly tied to the specific decision, not shown as a global model score.
+  </div>
+  <div class="key-finding">
+    <strong>Uncertainty-aware delegation (Lee et al., 2025)</strong>
+    Distance-based uncertainty scores (tied to how far a case is from the training distribution) outperformed probability-based confidence scores for routing decisions between human and AI, yielding 8.2% higher correct decisions in a stroke rehabilitation domain.
+  </div>
+
+  <div class="design-box">
+    <div class="db-label">Design takeaway</div>
+    Decouple confidence signals from prose style. If LLM output sounds confident, that is a stylistic artifact, not a calibration guarantee. Case-specific uncertainty displays outperform global model confidence scores. Hedging language ("I'm less certain about this") in LLM output is technically feasible — it requires prompt engineering, not model changes.
+  </div>
+</div>
+
+<!-- SECTION 5: Complementarity conditions -->
+<div class="seg-section">
+  <div class="seg-header" style="color:var(--s8)">Complementarity conditions: when the team can actually beat both sides</div>
+  <p class="seg-intro">The standard framing of human-AI collaboration assumes that combining human and AI judgment produces better outcomes than either alone. The conditions under which this is actually true are more specific than the field has assumed.</p>
+
+  <div class="key-finding">
+    <strong>Complementarity requires error independence (Steyvers et al., 2022)</strong>
+    The Bayesian model of human-AI integration predicts complementarity only when human and AI errors are uncorrelated and both are well-calibrated. In practice, both conditions are regularly violated: AI errors are systematic and humans anchor on AI output, creating correlated errors.
+  </div>
+  <div class="key-finding">
+    <strong>The meta-analytic baseline (Vaccaro et al., 2024)</strong>
+    Across 106 studies, complementarity was achieved in a minority of conditions. Task difficulty and AI accuracy were the main moderators: AI accuracy at ~80% and task difficulty that challenges humans but not AI was the strongest predictor. When AI accuracy is very high or very low, human involvement adds noise rather than value.
+  </div>
+  <div class="key-finding">
+    <strong>The detection problem (Bansal et al., 2021)</strong>
+    Complementarity requires humans to identify when AI is wrong. This is precisely the task humans perform worst at in studied contexts: users accept AI predictions at ~80% regardless of AI accuracy. The hardest complementarity condition to meet is the most critical one.
+  </div>
+
+  <div class="design-box">
+    <div class="db-label">Design takeaway</div>
+    Before investing in human-in-the-loop architectures, verify whether complementarity conditions are met: is AI accuracy in the 70–85% range? Are human and AI errors genuinely uncorrelated? Do users have enough domain expertise to detect AI failures? If these conditions are not met, the human adds noise rather than judgment, and a cleaner human-out-of-the-loop design may outperform.
+  </div>
+</div>
+
+<div class="ts">
+  <h2>Key papers</h2>
+  <ul class="psl">
+    <li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Dietvorst, Simmons & Massey (2015)</span> <span class="p-note">Algorithm aversion — foundational</span></li>
+    <li><span class="badge ev-strong">strong</span> <span class="badge st-canonical">canonical</span> <span class="p-ref">Bansal et al. (2021)</span> <span class="p-note">Complementarity conditions — most cited human-AI team study</span></li>
+    <li><span class="badge ev-strong">strong</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Vaccaro, Almaatouq & Malone (2024)</span> <span class="p-note">Meta-analysis — complementarity in the minority</span></li>
+    <li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Buçinca, Malaya & Gajos (2021)</span> <span class="p-note">Cognitive forcing functions — commit-first protocol</span></li>
+    <li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Vasconcelos et al. (2023)</span> <span class="p-note">Cost-benefit threshold for explanation utility</span></li>
+    <li><span class="badge ev-mixed">mixed</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Schemmer et al. (2025)</span> <span class="p-note">3:1 asymmetric damage from incorrect explanations</span></li>
+    <li><span class="badge ev-mixed">mixed</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Steyvers & Peters (2025)</span> <span class="p-note">LLM uncertainty suppression via RLHF</span></li>
+    <li><span class="badge ev-mixed">mixed</span> <span class="badge st-emerging">emerging</span> <span class="p-ref">Horowitz & Kahn (2024)</span> <span class="p-note">Dunning-Kruger pattern in AI knowledge and reliance</span></li>
+    <li><span class="badge ev-mixed">mixed</span> <span class="badge st-debated">debated</span> <span class="p-ref">Fok & Weld (2023)</span> <span class="p-note">Verifiability as the key XAI criterion</span></li>
+  </ul>
+</div>
+
 <div style="margin-top: var(--2xl); padding-top: var(--xl); border-top: 1px solid var(--border-light);">
   <div class="sec-label">Continue reading</div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--md);"><a class="sc" href="utility-decision-quality.html" style="border-left-color: var(--s3);">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--md);">
+    <a class="sc" href="utility-decision-quality.html" style="border-left-color: var(--s3);">
       <div class="sc-label" style="color: var(--s3);">Decision Quality & Normative Benchmarks</div>
-      <div class="sc-tension">The normative benchmark problem — what 'better' means when an AI helps you decide</div>
+      <div class="sc-tension">The normative benchmark problem — what "better" means when an AI helps you decide</div>
     </a>
-<a class="sc" href="uncertainty-communication.html" style="border-left-color: var(--s2);">
+    <a class="sc" href="uncertainty-communication.html" style="border-left-color: var(--s2);">
       <div class="sc-label" style="color: var(--s2);">Uncertainty Communication</div>
-      <div class="sc-tension">Format effects on understanding and action — how AI communicates uncertainty determines user response</div>
-    </a></div>
+      <div class="sc-tension">How AI communicates uncertainty determines user response — and the failure modes are predictable</div>
+    </a>
+  </div>
 </div>
 </main>
-<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer>
 </body></html>

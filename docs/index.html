@@ -3,13 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home — Human-Agent Decision Making</title>
+  <title>Home — Human-AI Decision Making Under Uncertainty</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .framework { margin: var(--xl) 0 var(--2xl); }
+    .framework-title { font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-3); margin-bottom:var(--lg); padding-bottom:var(--sm); border-bottom:1px solid var(--border-light); }
+    .fw-row { display:flex; align-items:stretch; gap:0; margin-bottom:3px; }
+    .fw-label { width:150px; flex-shrink:0; display:flex; align-items:center; padding-right:var(--md); }
+    .fw-label-inner { font-size:0.69rem; font-weight:600; color:var(--text-3); text-transform:uppercase; letter-spacing:0.06em; line-height:1.4; }
+    .fw-chips { flex:1; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:8px 0; }
+    .fw-chip { display:inline-block; font-size:0.74rem; font-weight:500; padding:5px 12px; border-radius:20px; border:1.5px solid; text-decoration:none; transition:opacity 0.15s,box-shadow 0.15s; white-space:nowrap; }
+    .fw-chip:hover { opacity:0.7; text-decoration:none; box-shadow:0 1px 6px rgba(0,0,0,0.1); }
+    .fw-divider { height:1px; background:var(--border-light); margin:3px 0 3px 150px; }
+    .fw-note { margin-top:var(--md); padding:var(--md) var(--lg); background:var(--bg-surface); border-radius:var(--radius); font-size:0.8rem; color:var(--text-3); line-height:1.6; }
+    .fw-note strong { color:var(--text-2); }
+  </style>
 </head>
 <body>
 <nav class="nav">
   <div class="nav-inner">
-    <a class="nav-brand" href="index.html">Human-Agent Decision Making</a>
+    <a class="nav-brand" href="index.html">Judgment Under Uncertainty</a>
     <div class="nav-links"><a href="index.html" class="active">Home</a> <a href="content/topics/agents-as-advisors.html">Streams</a> <a href="explore.html">Explore</a> <a href="build.html">Build</a></div>
   </div>
 </nav>
@@ -17,8 +30,58 @@
 
 <section class="hero">
   <div class="hero-label">Research Archive</div>
-  <h1 class="hero-thesis">Human-Agent Decision Making Under Uncertainty</h1>
-  <p class="hero-sub">A research archive at the intersection of cognitive science and AI agents, organized by research direction. Covers belief elicitation, uncertainty communication, decision quality benchmarks, attention and salience, risk and ambiguity, temporal dynamics, sampling and experience, and AI-human collaboration.</p>
+  <h1 class="hero-thesis">Judgment Under Uncertainty</h1>
+  <p class="hero-sub">A research archive at the intersection of cognitive science and AI decision systems. Eight streams, organized around one question: how do humans form beliefs, evaluate options, and act under uncertainty — and what changes when AI enters that process?</p>
+</section>
+
+<section class="framework">
+  <div class="framework-title">How the streams connect</div>
+
+  <div class="fw-row">
+    <div class="fw-label"><div class="fw-label-inner">Cognitive<br>foundations</div></div>
+    <div class="fw-chips">
+      <a class="fw-chip" href="content/topics/sampling-representation.html" style="color:var(--s7);border-color:var(--s7);background:rgba(212,160,23,0.07)">Sampling &amp; Experience</a>
+      <a class="fw-chip" href="content/topics/attention-memory-salience.html" style="color:var(--s4);border-color:var(--s4);background:rgba(155,89,182,0.07)">Attention &amp; Salience</a>
+      <a class="fw-chip" href="content/topics/temporal-dynamics.html" style="color:var(--s6);border-color:var(--s6);background:rgba(46,134,171,0.07)">Temporal Dynamics</a>
+    </div>
+  </div>
+  <div class="fw-divider"></div>
+
+  <div class="fw-row">
+    <div class="fw-label"><div class="fw-label-inner">How uncertainty<br>is held</div></div>
+    <div class="fw-chips">
+      <a class="fw-chip" href="content/topics/belief-elicitation.html" style="color:var(--s1);border-color:var(--s1);background:rgba(53,114,165,0.07)">Belief Elicitation &amp; Calibration</a>
+      <a class="fw-chip" href="content/topics/risk-ambiguity.html" style="color:var(--s5);border-color:var(--s5);background:rgba(220,76,100,0.07)">Risk, Ambiguity &amp; Controllability</a>
+    </div>
+  </div>
+  <div class="fw-divider"></div>
+
+  <div class="fw-row">
+    <div class="fw-label"><div class="fw-label-inner">What "good"<br>means</div></div>
+    <div class="fw-chips">
+      <a class="fw-chip" href="content/topics/utility-decision-quality.html" style="color:var(--s3);border-color:var(--s3);background:rgba(231,111,81,0.07)">Decision Quality &amp; Normative Benchmarks</a>
+    </div>
+  </div>
+  <div class="fw-divider"></div>
+
+  <div class="fw-row">
+    <div class="fw-label"><div class="fw-label-inner">Communication<br>interface</div></div>
+    <div class="fw-chips">
+      <a class="fw-chip" href="content/topics/uncertainty-communication.html" style="color:var(--s2);border-color:var(--s2);background:rgba(42,157,143,0.07)">Uncertainty Communication</a>
+    </div>
+  </div>
+  <div class="fw-divider"></div>
+
+  <div class="fw-row">
+    <div class="fw-label"><div class="fw-label-inner">AI in<br>the loop</div></div>
+    <div class="fw-chips">
+      <a class="fw-chip" href="content/topics/agents-as-advisors.html" style="color:var(--s8);border-color:var(--s8);background:rgba(38,70,83,0.07)">AI Agents as Decision Partners</a>
+    </div>
+  </div>
+
+  <div class="fw-note">
+    <strong>How to read this:</strong> The bottom stream is where the others converge. A good AI decision system must grapple with how humans acquire information, how they hold beliefs under uncertainty, what a "good" decision looks like, and how uncertainty should be communicated. Each upstream stream identifies a distinct failure mode that propagates into human-AI collaboration.
+  </div>
 </section>
 
 <section>
@@ -27,7 +90,7 @@
 
     <a class="sc" href="content/topics/agents-as-advisors.html" style="border-left-color: var(--s8);">
       <div class="sc-label" style="color: var(--s8);">AI Agents as Decision Partners</div>
-      <div class="sc-tension">Calibrated AI confidence does not reliably improve human decisions — explanation style, fluency, and decision protocol matter at least as much.</div>
+      <div class="sc-tension">Whether AI improves human decisions depends less on AI accuracy and more on how recommendations are delivered, when they arrive, and how users are asked to respond.</div>
     </a>
 
     <a class="sc" href="content/topics/utility-decision-quality.html" style="border-left-color: var(--s3);">
@@ -111,14 +174,14 @@
       <div class="pc-verdict">Dominant descriptive model. Reference dependence, loss aversion, and probability weighting remain the framework most applied work builds on.</div>
       <div class="pc-holds">The qualitative effects are robust. The λ≈2.25 estimate shows more heterogeneity than textbooks suggest — recent meta-analyses range from 1.31 to 1.96. Salience theory competes on mechanism.</div>
     </a>
-    <a class="pc" href="explore.html">
+    <a class="pc" href="content/papers/gigerenzer-hoffrage-1995.html">
       <div class="pc-badges"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
       <div class="pc-title">Natural Frequencies Improve Bayesian Reasoning</div>
       <div class="pc-cite">Gigerenzer & Hoffrage, 1995</div>
       <div class="pc-verdict">Format causally affects reasoning performance. Natural frequencies raise correct Bayesian inference from ~15% to ~50%.</div>
       <div class="pc-holds">Robust across dozens of replications. Benefit is strongest for multi-step Bayesian problems; smaller for simple judgments. The evolved-processor interpretation is debated.</div>
     </a>
-    <a class="pc" href="explore.html">
+    <a class="pc" href="content/papers/vaccaro-2024.html">
       <div class="pc-badges"><span class="badge ev-strong">Strong</span> <span class="badge st-emerging">Emerging</span></div>
       <div class="pc-title">When Combinations of Humans and AI Are Useful</div>
       <div class="pc-cite">Vaccaro, Almaatouq & Malone, 2024</div>
@@ -129,6 +192,6 @@
 </section>
 
 </main>
-<footer class="footer"><p>Human-Agent Decision Making — A personal research archive</p></footer>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer>
 </body>
 </html>
