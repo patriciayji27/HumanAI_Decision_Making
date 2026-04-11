@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gilovich et al. (1985) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-debated">Debated</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">The Hot Hand in Basketball: On the Misperception of Random Sequences</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Gilovich, Vallone & Tversky · Cognitive Psychology, 1985</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/sampling-representation.html">Sampling & Experience</a>
+<a class="xref-chip" href="../topics/belief-elicitation.html">Belief Elicitation</a>
+</div>
+<div class="ts">
+<h2>The original claim</h2>
+<p>Players and fans believe in "hot hand" — that a player who has made several consecutive shots is more likely to make the next one. Gilovich et al. analyzed shooting sequences from the Philadelphia 76ers and free throw data and found no evidence of streak dependence in shot outcomes. The belief in the hot hand appeared to be a misperception of random sequences — people see patterns in sequences that are statistically indistinguishable from random coin flips.</p>
+</div>
+<div class="ts">
+<h2>The 2018 reversal</h2>
+<p>Miller & Sanjurjo (2018) demonstrated a subtle but consequential bias in the original Gilovich et al. analysis. Because the sample is conditioned on observing a hit (to compute the probability of the next shot after a hit), the expected proportion of hits following a hit is systematically lower than the unconditional hit rate in a finite sequence — even for a truly random shooter. This means the original test was biased toward finding no hot hand even if one exists. After correcting for this bias, re-analyses of the original data suggest genuine hot hand effects in several datasets.</p>
+<div class="etw"><table class="et">
+<thead><tr><th>Analysis</th><th>Hot hand evidence</th></tr></thead>
+<tbody>
+<tr><td>Gilovich et al. (1985) original</td><td>None — p>0.05 in all tests</td></tr>
+<tr><td>Miller & Sanjurjo (2018) corrected</td><td>Significant in 3 of 4 datasets after bias correction</td></tr>
+<tr><td>Subsequent NBA tracking data analyses</td><td>Small but positive effect in shot selection and accuracy conditional on prior makes</td></tr>
+</tbody></table></div>
+</div>
+<div class="ts">
+<h2>Why this case matters for this archive</h2>
+<p>This is one of the cleanest examples of a canonical behavioral finding (pattern perception in random sequences) that is both partially correct (people do perceive streaks) and partially wrong (there may actually be real streaks). The case illustrates that distinguishing genuine patterns from cognitive artifacts in sequential data requires careful statistical analysis — a problem that AI systems analyzing human behavior face directly.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

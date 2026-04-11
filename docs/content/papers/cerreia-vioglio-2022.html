@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cerreia-Vioglio et al. (2022) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-mixed">Mixed</span> <span class="badge st-emerging">Emerging</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Making Decisions under Model Misspecification</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Cerreia-Vioglio, Hansen, Maccheroni & Marinacci · arXiv, 2022</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/risk-ambiguity.html">Risk & Ambiguity</a>
+<a class="xref-chip" href="../topics/utility-decision-quality.html">Decision Quality</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>Extends max-min ambiguity aversion (Gilboa-Schmeidler) to settings where the decision maker not only faces multiple candidate models but also knows all of those models are approximations — misspecified. Prior ambiguity theory assumed decision makers were uncertain which model was correct; this paper assumes the decision maker suspects that <em>none</em> of the candidate models is fully correct, and incorporates this misspecification concern into the decision criterion.</p>
+</div>
+<div class="ts">
+<h2>The decision criterion</h2>
+<p>The resulting criterion generalizes Hansen-Sargent multiplier preferences (which penalize deviations from a single reference model) to allow for a structured set of candidate models, each potentially misspecified. The "misspecification fear" parameter λ controls how much weight to put on model-violating scenarios — scenarios outside the support of any candidate model. When λ=0, the criterion collapses to max-min EU; as λ→∞, it approaches expected utility with respect to the best-fit model.</p>
+</div>
+<div class="ts">
+<h2>Why it matters for AI</h2>
+<p>AI models are, by construction, misspecified approximations of the data-generating process. A decision framework that acknowledges model misspecification — rather than treating the model's confidence as a calibrated probability — is more appropriate for AI-assisted decisions than standard EU or even standard ambiguity models. The parameter λ could, in principle, be estimated from the history of model errors, providing a quantified "misspecification premium" that should inflate displayed uncertainty.</p>
+</div>
+<div class="ts">
+<h2>Qualifications</h2>
+<p>Axiomatic theory paper with limited empirical application so far. Identification of the misspecification fear parameter from behavioral data is an open problem. Primarily relevant to economists and decision theorists; has not yet been translated into practical interface design guidelines.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guo et al. (2017) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">On Calibration of Modern Neural Networks</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Guo, Pleiss, Sun & Weinberger · ICML 2017</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/belief-elicitation.html">Belief Elicitation</a>
+<a class="xref-chip" href="../topics/agents-as-advisors.html">AI Agents</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>Documented that modern deep neural networks are poorly calibrated despite high accuracy. A model is well-calibrated if its predicted confidence matches its empirical accuracy — when the model says 90%, it should be correct 90% of the time. Guo et al. showed that deep ResNets and DenseNets trained on CIFAR and ImageNet are systematically overconfident, especially as model capacity and depth increase.</p>
+</div>
+<div class="ts">
+<h2>The calibration failure and the fix</h2>
+<div class="etw"><table class="et">
+<thead><tr><th>Method</th><th>Effect on calibration</th><th>Effect on accuracy</th></tr></thead>
+<tbody>
+<tr><td>Uncalibrated deep network</td><td>Badly overconfident (ECE ~5-10%)</td><td>High</td></tr>
+<tr><td>Temperature scaling (T&gt;1)</td><td>Substantially improved calibration</td><td>Unchanged (same argmax)</td></tr>
+<tr><td>Platt scaling</td><td>Similar to temperature scaling</td><td>Unchanged</td></tr>
+<tr><td>Isotonic regression</td><td>Best on validation, but overfits on small sets</td><td>Unchanged</td></tr>
+</tbody></table></div>
+<p>Temperature scaling is a single-parameter post-hoc recalibration: divide the logits by T before softmax. T &gt; 1 makes the distribution softer (less confident); T &lt; 1 makes it sharper. The optimal T is fit on a validation set. It costs nothing at inference time and preserves accuracy perfectly.</p>
+</div>
+<div class="ts">
+<h2>Why it matters for this archive</h2>
+<p>AI confidence scores displayed to human decision makers are only useful if they are calibrated — a model that reports 90% confidence while being correct 70% of the time will systematically mislead users toward overreliance. Guo et al. established that calibration failure is the default for modern deep learning, not an edge case. Temperature scaling is now a standard post-processing step. The problem is more complex for LLMs, where calibration varies by domain, question type, and prompting strategy.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

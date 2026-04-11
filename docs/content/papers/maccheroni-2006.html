@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maccheroni et al. (2006) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Ambiguity Aversion, Robustness, and the Variational Representation of Preferences</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Maccheroni, Marinacci & Rustichini · Econometrica, 2006</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/risk-ambiguity.html">Risk & Ambiguity</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>Variational preferences (VP) unify several previously separate models of decision under ambiguity under a single axiomatic framework. The key representation: a decision maker's utility from an act f equals min<sub>p</sub>{ E<sub>p</sub>[u(f)] + c(p) }, where c(p) is a cost function penalizing deviations from a reference prior. By choosing different cost functions, VP recovers max-min EU (Gilboa-Schmeidler), multiplier preferences (Hansen-Sargent), and mean-variance preferences as special cases.</p>
+</div>
+<div class="ts">
+<h2>What it unifies</h2>
+<div class="etw"><table class="et">
+<thead><tr><th>Special case</th><th>Cost function c(p)</th><th>Interpretation</th></tr></thead>
+<tbody>
+<tr><td>Max-min EU</td><td>0 if p in a set Π, ∞ otherwise</td><td>Only worst-case prior in the set matters</td></tr>
+<tr><td>Hansen-Sargent multiplier</td><td>θ·relative entropy D(p||q₀)</td><td>Deviations from reference model q₀ are penalized proportionally</td></tr>
+<tr><td>Mean-variance</td><td>ρ·variance of p</td><td>Variance aversion under approximation</td></tr>
+</tbody></table></div>
+</div>
+<div class="ts">
+<h2>Qualifications</h2>
+<p>Highly technical axiomatic paper. The empirical identification problem is substantial — the cost function c(p) has many possible forms, and behavioral data typically cannot distinguish between competing specifications without strong parametric restrictions. Primarily used in macroeconomics and financial economics for robust decision making and asset pricing.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

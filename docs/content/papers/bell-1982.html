@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bell (1982) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-mixed">Mixed</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Regret in Decision Making under Uncertainty</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Bell · Operations Research, 1982</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/utility-decision-quality.html">Decision Quality</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>Proposed that decision makers anticipate and seek to minimize regret — the painful emotion of comparing the outcome of a chosen option to what would have happened under the unchosen option. Regret theory provides an alternative to prospect theory that explains preference reversals without invoking probability weighting. The key equation: utility of an outcome includes a regret/rejoice term proportional to how much better or worse it is than the foregone alternative.</p>
+</div>
+<div class="ts">
+<h2>When regret theory applies and doesn't</h2>
+<div class="etw"><table class="et">
+<thead><tr><th>Condition</th><th>Regret theory relevance</th></tr></thead>
+<tbody>
+<tr><td>Unchosen outcome is observable</td><td>High — regret requires knowing what you missed</td></tr>
+<tr><td>Unchosen outcome is hidden</td><td>Low — no regret without counterfactual information</td></tr>
+<tr><td>Decision is repeated</td><td>High — prior regret shapes future choices</td></tr>
+<tr><td>Outcome is irreversible</td><td>Very high — regret is intensified when you can't undo the choice</td></tr>
+</tbody></table></div>
+<p>Published simultaneously with Loomes & Sugden's regret theory paper (also 1982). Bell's version emphasizes the functional form; Loomes & Sugden's version emphasizes axiomatics. Together they established regret as a serious alternative to EU and prospect theory for the regret-minimization evaluation target.</p>
+</div>
+<div class="ts">
+<h2>Why it matters for AI decision systems</h2>
+<p>AI systems that show users only their chosen outcome — not the outcome of the unchosen alternative — suppress the regret mechanism. Systems that show counterfactual outcomes (what would have happened if you had chosen differently) activate it. This is a design choice with predictable behavioral consequences: showing counterfactuals may increase regret-averse, conservative behavior in future decisions.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

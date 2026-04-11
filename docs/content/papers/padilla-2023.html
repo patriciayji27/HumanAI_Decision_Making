@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Padilla et al. (2023) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-mixed">Mixed</span> <span class="badge st-emerging">Emerging</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Multiple Forecast Visualizations (MFVs): Trade-offs in Trust and Performance in Multiple COVID-19 Forecast Visualizations</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Padilla, Fygenson, Castro & Bertini · IEEE TVCG, 2023</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/uncertainty-communication.html">Uncertainty Communication</a>
+<a class="xref-chip" href="../topics/sampling-representation.html">Sampling & Experience</a>
+</div>
+
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>Three experiments (N=1,299 total, US Prolific sample) testing how visualization design choices for multiple forecast line charts affect (a) viewer trust and (b) trend prediction accuracy, using real-time COVID-19 mortality forecast data from November 2021. Design variables: number of forecasts shown (1–15 + 95% CI), color vs. grayscale encoding, and presence/absence of best-case and worst-case model forecasts.</p>
+<p>Core finding: there is a systematic <strong>trust-accuracy inversion</strong>. Simpler displays (95% CI, single median forecast) elicited the highest trust but produced the worst trend prediction — they were the least likely to induce predictions consistent with the actual COVID-19 trend. Multiple-forecast displays improved prediction accuracy but at lower trust ratings.</p>
+</div>
+
+<div class="ts">
+<h2>Quantitative results</h2>
+<div class="etw"><table class="et">
+<thead><tr><th>Finding</th><th>Specific result</th></tr></thead>
+<tbody>
+<tr><td>Trust asymptote</td><td>Trust increased with number of forecasts and plateaued at 6–9 models. No meaningful trust gain beyond 9 forecasts.</td></tr>
+<tr><td>Highest trust</td><td>95% CI forecast and single median forecast were rated significantly more trustworthy than all MFVs.</td></tr>
+<tr><td>Worst prediction</td><td>95% CI and median forecast were least likely to produce predictions consistent with the actual trend (decrease in mortalities). 5-model MFV showed greatest accuracy.</td></tr>
+<tr><td>Color effect</td><td>Grayscale encoded forecasts were 4.8 pp more trusted than color-encoded (β=−4.8, p=.031), no interaction with number of forecasts.</td></tr>
+<tr><td>Worst-case forecast effect</td><td>Adding worst-case model decreased trust, especially at low model counts. Adding best-case had smaller trust penalty.</td></tr>
+<tr><td>CI label trust</td><td>25% CI and 50% CI were rated similarly (~50/100). 95% and 99% rated higher (~70/100). Trust did not scale proportionally to interval size.</td></tr>
+</tbody></table></div>
+</div>
+
+<div class="ts">
+<h2>The trust-accuracy inversion</h2>
+<p>The 95% CI format — most trusted across all three experiments — was also the format most likely to produce trend predictions inconsistent with the actual COVID-19 trajectory. Participants rated it trustworthy because it appeared clearer and more authoritative, but it compressed the full range of model disagreement into a single summary band. The result was directional overconfidence.</p>
+<p>This is a direct instance of the comprehension-use gap documented by Hofman et al. (2020): the format users trust most and find clearest is not the format that supports the most accurate judgments. The design preference for CI formats in public health communication may be optimizing for perceived credibility at the expense of predictive utility.</p>
+</div>
+
+<div class="ts">
+<h2>Qualifications</h2>
+<p>Ecological validity is a genuine strength — real COVID-19 data, real models — but also a confound: some model forecasts happen to align with the actual outcome, making "correct prediction" partly a function of which models were selected. Single-country US sample. Trust is measured by self-report slider, not behavior. Participants could not discriminate individual forecasts above ~10 models (manipulation check). The optimal number of forecasts (5–9 for performance, 6–9 for trust plateau) may not transfer to non-pandemic domains.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

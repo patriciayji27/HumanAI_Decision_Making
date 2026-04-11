@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernandes et al. (2018) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-mixed">Mixed</span> <span class="badge st-debated">Debated</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Uncertainty Displays Using Quantile Dotplots or CDFs Improve Transit Decision-Making</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Fernandes, Walls, Munson, Hullman & Kay · CHI 2018</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/uncertainty-communication.html">Uncertainty Communication</a>
+<a class="xref-chip" href="../topics/sampling-representation.html">Sampling & Experience</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>Compared uncertainty displays for bus arrival time predictions in a realistic decision task (how early to leave home to catch a bus with high probability). Formats tested: 95% CI error bars, density plots, quantile dotplots, and CDFs. Both quantile dotplots and CDFs led to substantially better decisions than error bars — participants set departure times that more accurately reflected the underlying arrival time distribution.</p>
+</div>
+<div class="ts">
+<h2>Key results</h2>
+<div class="etw"><table class="et">
+<thead><tr><th>Format</th><th>Decision quality</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>95% CI (error bars)</td><td>Poor — participants treated interval endpoints as hard boundaries</td><td>Deterministic construal: intervals misread as "the range within which outcomes always fall"</td></tr>
+<tr><td>Density plot</td><td>Mixed — better than CI but area estimation is inaccurate</td><td>Area-under-curve estimation is cognitively difficult</td></tr>
+<tr><td>Quantile dotplot</td><td>Best — improved probability estimation accuracy</td><td>Converts probability estimation to counting (more natural)</td></tr>
+<tr><td>CDF</td><td>Best — tied with dotplots</td><td>Allows direct tail probability reading on y-axis</td></tr>
+</tbody></table></div>
+<p>The paper provides empirical support for the theoretical argument in Kay et al. (2016): frequency-like representations (dotplots) reduce the abstraction required for probability estimation by letting users count outcomes rather than integrate areas.</p>
+</div>
+<div class="ts">
+<h2>Qualifications</h2>
+<p>Transit decision domain (bus arrival times) — a familiar, low-stakes context that may inflate performance relative to medical or financial uncertainty. Online study with MTurk workers. CDFs and dotplots both require brief onboarding for unfamiliar users; the study provided instructions. Long-term performance across novel tasks is untested.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

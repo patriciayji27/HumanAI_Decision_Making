@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barron & Erev (2003) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Small Feedback-Based Decisions and Their Limited Correspondence with Description-Based Decisions</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Barron & Erev · Organizational Behavior and Human Decision Processes, 2003</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/sampling-representation.html">Sampling & Experience</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>Original empirical documentation of the description-experience gap. In description-based tasks (participants see the full probability distribution), behavior follows prospect theory — rare events are overweighted. In experience-based tasks (participants discover outcomes by sampling), behavior is reversed — rare events are underweighted. The same participants, the same payoff structure, opposite behavior.</p>
+</div>
+<div class="ts">
+<h2>The reversal</h2>
+<div class="etw"><table class="et">
+<thead><tr><th>Task type</th><th>Rare event weighting</th><th>Predicted by</th></tr></thead>
+<tbody>
+<tr><td>Description (shown probabilities)</td><td>Overweighted relative to objective probability</td><td>Prospect theory's probability weighting function</td></tr>
+<tr><td>Experience (sample outcomes)</td><td>Underweighted relative to objective probability</td><td>Sampling error + recency weighting of recent outcomes</td></tr>
+</tbody></table></div>
+<p>The mechanism proposed: when sampling, participants who never observe a 1-in-10 event treat it as a 0-in-10 event. The underweighting of rare events is partly a consequence of the information actually received (sampling error) and partly a consequence of recency — more recent samples receive more weight in the evaluation.</p>
+</div>
+<div class="ts">
+<h2>Why it matters for AI</h2>
+<p>AI systems that present risks numerically (description mode) — "there is a 2% chance of this outcome" — will produce different user behavior than systems that let users observe outcomes over time (experience mode). Most AI interfaces operate in description mode. Users who interact with AI systems that rarely fail will underweight the failure rate, even if they are told the numerical failure probability. The design implication: narrative examples of failure cases may be more effective than numerical probability statements for calibrating user expectations about AI errors.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

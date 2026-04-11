@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poursabzi-Sangdeh et al. (2021) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-debated">Debated</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Manipulating and Measuring Model Interpretability</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Poursabzi-Sangdeh, Goldstein, Hofman, Vaughan & Wallach · CHI 2021</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/agents-as-advisors.html">AI Agents</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>N=3,800, five pre-registered experiments. Participants were shown functionally identical house price prediction models that varied in two interpretability factors: number of features (few vs. many) and model transparency (clear internal structure vs. black-box). The study directly tested whether interpretability produces its intended effects: helping users follow the model when it is correct and detect errors when it is wrong.</p>
+</div>
+<div class="ts">
+<h2>The null result</h2>
+<p>Simpler, more interpretable models did <strong>not</strong> reliably help participants follow the model when it was correct or detect errors when it was wrong. More interpretable models did cause participants to switch their answers at a higher rate (they engaged more), but this did not translate into improved joint accuracy. The interpretability manipulations had smaller-than-expected effects on decision quality.</p>
+<div class="etw"><table class="et">
+<thead><tr><th>Interpretability factor</th><th>Effect on compliance</th><th>Effect on error detection</th></tr></thead>
+<tbody>
+<tr><td>Fewer features</td><td>Small positive effect on following model</td><td>No reliable effect</td></tr>
+<tr><td>Model transparency (clear vs. black-box)</td><td>No reliable difference</td><td>No reliable difference</td></tr>
+</tbody></table></div>
+</div>
+<div class="ts">
+<h2>Qualifications and debate</h2>
+<p>The null result is real and important, but may be specific to how interpretability was operationalized (feature count, model transparency in a regression context). It does not rule out that better-designed explanations — ones that specifically help users identify model failure modes — could succeed. The result argues against assuming interpretability works; it does not demonstrate that no form of XAI can help. Heavily cited as a caution against interpretability hype; equally cited by critics as underspecifying the intervention.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

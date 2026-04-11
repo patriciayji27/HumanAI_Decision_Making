@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zhang et al. (2020) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Effect of Confidence and Explanation on Accuracy and Trust Calibration in AI-Assisted Decision Making</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Zhang, Liao & Bellamy · FAT* 2020</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/agents-as-advisors.html">AI Agents</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>Two experiments (N≈180 each) in which crowdworkers made income prediction judgments with and without AI confidence scores or local LIME explanations. The study's central distinction: <em>trust calibration</em> (whether humans correctly adjust their reliance case-by-case) vs. <em>joint accuracy</em> (whether calibrated trust actually improves final decisions).</p>
+</div>
+<div class="ts">
+<h2>Key findings</h2>
+<div class="etw"><table class="et">
+<thead><tr><th>Intervention</th><th>Effect on trust calibration</th><th>Effect on joint accuracy</th></tr></thead>
+<tbody>
+<tr><td>AI confidence score</td><td>Improved — users showed higher agreement with AI when AI was high-confidence</td><td>No improvement over baseline</td></tr>
+<tr><td>Local LIME explanation</td><td>Mixed — increased general trust but not case-by-case calibration</td><td>No improvement</td></tr>
+</tbody></table></div>
+<p>The critical finding: confidence scores successfully calibrated <em>trust</em> in the sense of shifting reliance when the model was more certain, but this did not translate into better joint decision accuracy. The reason: complementarity requires humans to bring unique correct judgments when the model errs — but in this domain, humans and AI had comparable accuracy and errors were not sufficiently independent to enable complementarity.</p>
+<p>This paper established the trust calibration vs. accuracy gap as a core research problem in human-AI decision making and became one of the most-cited papers in the field (800+ citations).</p>
+</div>
+<div class="ts">
+<h2>Qualifications</h2>
+<p>Income prediction task (UCI Adult dataset) with crowdworkers — low ecological validity for professional decision contexts. AI and human accuracy were roughly matched by design; domains where AI is substantially better or worse may show different dynamics. LIME explanations used as-is; better explanation designs might produce different results.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

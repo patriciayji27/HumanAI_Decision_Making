@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knight (1921) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Risk, Uncertainty and Profit</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Knight · Houghton Mifflin, 1921</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/risk-ambiguity.html">Risk & Ambiguity</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>First formal distinction between risk and uncertainty in economics. Knight defined <em>risk</em> as situations where outcomes are uncertain but the probability distribution is known or can be calculated (rolling a die, actuarial mortality rates). <em>Uncertainty</em> — later called Knightian uncertainty — refers to situations where no objective probability can be assigned because the situation is novel, unique, or too complex to enumerate outcomes (starting a new business, developing a new technology).</p>
+</div>
+<div class="ts">
+<h2>The distinction and its implications</h2>
+<div class="etw"><table class="et">
+<thead><tr><th>Concept</th><th>Knight's term</th><th>Modern equivalent</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Known probability distribution</td><td>Risk</td><td>Aleatory uncertainty</td><td>Insurance actuarial tables; casino games</td></tr>
+<tr><td>Unknown probability distribution</td><td>Uncertainty</td><td>Epistemic/Knightian uncertainty; ambiguity</td><td>Novel market entry; AI model out-of-distribution error rates</td></tr>
+</tbody></table></div>
+<p>Knight's core argument: genuine entrepreneurial profit exists because of irreducible uncertainty, not risk. If all outcomes could be probabilities, competition would drive profit to zero. It is the uninsurable nature of true uncertainty that creates the opportunity for profit.</p>
+</div>
+<div class="ts">
+<h2>Why it matters for AI</h2>
+<p>Most AI systems present themselves as risk engines — outputting probability scores as if the underlying distribution were known. But AI models deployed on out-of-distribution data face Knightian uncertainty: the model's confidence score reflects its training distribution, not the actual probability of error in the deployment context. Treating AI confidence as "risk" (calculable) when it is actually "uncertainty" (unknowable) is the precise failure mode that drives user overreliance in novel deployment contexts.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

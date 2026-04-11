@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Handa et al. (2024) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-mixed">Mixed</span> <span class="badge st-emerging">Emerging</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Bayesian Preference Elicitation with Language Models</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Handa, Gal, Pavlick, Goodman, Andreas, Tamkin & Li · arXiv, 2024</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/agents-as-advisors.html">AI Agents</a>
+<a class="xref-chip" href="../topics/belief-elicitation.html">Belief Elicitation</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>OPEN (Optimal Preference Elicitation with Natural language) combines Bayesian Optimal Experimental Design (BOED) with language model question generation. Standard LM-based preference elicitation asks questions without tracking or modeling the user's posterior uncertainty. OPEN addresses this by using BOED to select the most informative next question given current uncertainty, while using an LM to phrase it naturally.</p>
+</div>
+<div class="ts">
+<h2>Key mechanism</h2>
+<div class="etw"><table class="et">
+<thead><tr><th>Component</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Feature extractor (LM)</td><td>Identifies relevant preference dimensions from domain description (e.g., "whether article is about science" for content recommendation)</td></tr>
+<tr><td>BOED question selector</td><td>Chooses next question to maximally reduce uncertainty about user preferences given current posterior</td></tr>
+<tr><td>LM phrasing</td><td>Converts BOED-selected question into natural language</td></tr>
+<tr><td>Preference predictor</td><td>Structured probabilistic model updated after each response</td></tr>
+</tbody></table></div>
+<p>OPEN outperforms pure LM-based elicitation on preference prediction accuracy in content recommendation domains. The key advantage is explicit uncertainty tracking — the system knows what it doesn't know, and asks about that.</p>
+</div>
+<div class="ts">
+<h2>Connection to belief elicitation literature</h2>
+<p>OPEN is an AI system that implements elicitation-as-interface-scaffolding (Type 3 in this archive's taxonomy): the goal is not to measure a pre-existing preference but to help the user articulate and stabilize preferences through structured interaction. The Bayesian framework makes the constructive nature of elicitation explicit: as questions are asked, the system and user co-construct a preference representation.</p>
+</div>
+<div class="ts">
+<h2>Qualifications</h2>
+<p>Tested in content recommendation — a well-structured domain with clear feature spaces. Preference elicitation in less structured domains (ethical decisions, complex trade-offs) may not admit the same feature decomposition. The approach requires a structured feature space, which limits generality. BOED computation scales poorly with feature count.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

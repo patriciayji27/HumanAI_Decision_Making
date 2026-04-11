@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tversky & Kahneman (1981) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">The Framing of Decisions and the Psychology of Choice</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Tversky & Kahneman · Science, 1981</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/utility-decision-quality.html">Decision Quality</a>
+<a class="xref-chip" href="../topics/attention-memory-salience.html">Attention & Salience</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>Demonstrated that logically equivalent descriptions of the same choice — differing only in whether outcomes are framed as gains or losses — produce systematically different preferences. The definitive demonstration is the Asian disease problem:</p>
+<div class="etw"><table class="et">
+<thead><tr><th>Frame</th><th>Option A</th><th>Option B</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>Gain frame ("saves lives")</td><td>Save 200 certain</td><td>1/3 chance save 600, 2/3 chance save none</td><td>72% chose A (risk averse)</td></tr>
+<tr><td>Loss frame ("deaths")</td><td>400 will die certain</td><td>1/3 chance none die, 2/3 chance 600 die</td><td>78% chose B (risk seeking)</td></tr>
+</tbody></table></div>
+<p>Options A and B in the two frames are mathematically identical in expected deaths. The reversal (risk aversion for gains, risk seeking for losses) is predicted by prospect theory's S-shaped value function: concave above the reference point, convex below.</p>
+</div>
+<div class="ts">
+<h2>Why it matters for AI systems</h2>
+<p>Any AI that frames recommendations in gain or loss terms — "this treatment saves 80%" vs. "this treatment has a 20% failure rate" — can predictably shift user choices without changing the underlying evidence. This is not a bug to eliminate; it is a fundamental property of human cognition that must be accounted for in interface design. Framing is not neutral, and the choice of frame in AI output is a design decision with predictable behavioral consequences.</p>
+</div>
+<div class="ts">
+<h2>Qualifications</h2>
+<p>Hypothetical outcomes in survey format. Framing effects attenuate when decision makers are sophisticated, when the problem is repeated with feedback, or when both frames are shown simultaneously. Effect sizes vary across cultures and numeracy levels.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

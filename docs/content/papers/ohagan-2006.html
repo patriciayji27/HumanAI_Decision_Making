@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O'Hagan et al. (2006) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Uncertain Judgements: Eliciting Experts' Probabilities</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">O'Hagan, Buck, Daneshkhah, Eiser, Garthwaite, Jenkinson, Oakley & Rakow · Wiley, 2006</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/belief-elicitation.html">Belief Elicitation</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>The SHELF (Sheffield Elicitation Framework) monograph — the most comprehensive structured protocol for eliciting probability distributions from domain experts. Synthesizes decades of expert elicitation research into a concrete procedure: define the quantity, select a suitable expert, conduct a structured interview using multiple techniques, fit a parametric distribution to elicited quantiles, and validate through consistency checks.</p>
+</div>
+<div class="ts">
+<h2>Key methodological recommendations</h2>
+<div class="etw"><table class="et">
+<thead><tr><th>Stage</th><th>Recommendation</th><th>Rationale</th></tr></thead>
+<tbody>
+<tr><td>Background</td><td>Define the quantity precisely and give the expert feedback on their general calibration</td><td>Experts are systematically overconfident; pre-calibration reduces initial anchoring</td></tr>
+<tr><td>Elicitation</td><td>Use quantile-based elicitation (P25, P50, P75, P95) not probability-for-value</td><td>Easier to reason about "a value I'm 75% sure won't be exceeded" than about probability at a specific value</td></tr>
+<tr><td>Fitting</td><td>Fit a parametric family (Beta, Gamma, Normal) to the elicited quantiles</td><td>Forces coherence; quantiles from different parts of the distribution may imply different distributions</td></tr>
+<tr><td>Feedback</td><td>Show the fitted distribution back to the expert and allow revision</td><td>Experts rarely think in distributional terms; visualization often reveals unexpected implied beliefs</td></tr>
+</tbody></table></div>
+</div>
+<div class="ts">
+<h2>Qualifications</h2>
+<p>SHELF was developed primarily for engineering risk assessment, clinical trials, and environmental modeling — domains with single well-defined quantities and identifiable domain experts. Adaptation to AI interface contexts (conversational elicitation, rapid repeated elicitation from non-experts) requires significant redesign. The structured interview requirement limits scalability to large populations.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>

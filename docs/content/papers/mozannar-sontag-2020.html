@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mozannar & Sontag (2020) — Judgment Under Uncertainty</title>
+<link rel="stylesheet" href="../../assets/css/style.css"></head><body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="../../index.html">Judgment Under Uncertainty</a>
+<div class="nav-links"><a href="../../index.html">Home</a> <a href="../topics/agents-as-advisors.html">Streams</a> <a href="../../explore.html">Explore</a> <a href="../../build.html">Build</a></div></div></nav>
+<main class="main">
+<div style="margin-bottom:var(--lg);"><span class="badge ev-strong">Strong</span> <span class="badge st-canonical">Canonical</span></div>
+<h1 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:var(--xs);">Consistent Estimators for Learning to Defer to an Expert</h1>
+<p style="font-size:0.88rem;color:var(--text-3);margin-bottom:var(--sm);">Mozannar & Sontag · ICML 2020</p>
+<div style="display:flex;gap:var(--sm);flex-wrap:wrap;margin-bottom:var(--xl);">
+<a class="xref-chip" href="../topics/agents-as-advisors.html">AI Agents</a>
+</div>
+<div class="ts">
+<h2>The specific contribution</h2>
+<p>Foundational formalization of the <em>learning to defer</em> problem: jointly learning a classifier and a deferral rule that routes individual instances either to the AI model or to a human expert, to maximize system-wide performance. Unlike prior work that used the model's own confidence as a deferral proxy, Mozannar & Sontag proposed a consistent surrogate loss function — grounded in cost-sensitive learning — that directly optimizes the joint human-AI system objective.</p>
+</div>
+<div class="ts">
+<h2>Key result</h2>
+<p>The surrogate loss L<sub>CE</sub><sup>α</sup> generalizes the cross-entropy loss and is shown to be consistent (minimizing the surrogate minimizes the true system loss in the limit of infinite data). The approach learns a deferral policy that complements the human expert: the model focuses on regions where the human is unreliable, and defers otherwise.</p>
+<div class="etw"><table class="et">
+<thead><tr><th>Approach</th><th>What it optimizes</th><th>Problem</th></tr></thead>
+<tbody>
+<tr><td>Confidence-based deferral</td><td>Model confidence threshold</td><td>Not calibrated to human error distribution — may defer when human is also wrong</td></tr>
+<tr><td>Mozannar & Sontag L<sub>CE</sub><sup>α</sup></td><td>Joint system accuracy</td><td>Requires labeled human decisions in training — expert must be the same at deployment</td></tr>
+</tbody></table></div>
+</div>
+<div class="ts">
+<h2>Why it matters for this archive</h2>
+<p>The "adaptive delegation" protocol described in the AI Agents stream — route easy cases to AI, hard ones to humans — requires exactly this kind of deferral mechanism. Mozannar & Sontag provide the theoretical baseline that subsequent work (Okati et al. 2021, Verma & Nalisnick 2022) has extended. The key unsolved problem: expert behavior at deployment time may differ from the training distribution — a direct instance of the same out-of-distribution problem AI models face.</p>
+</div>
+</main>
+<footer class="footer"><p>Judgment Under Uncertainty — A personal research archive</p></footer></body></html>
